@@ -1,0 +1,4 @@
+*.o
+canmon
+canmonview
+canmoncl

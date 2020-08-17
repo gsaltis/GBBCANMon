@@ -56,6 +56,9 @@ WebSocketServerThreadID;
 string
 s_websocket_port = NULL; 
 
+string
+WebSocketIFAddress = NULL;
+
 /*****************************************************************************!
  * Local Functions
  *****************************************************************************/

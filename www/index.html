@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Vertiv CAN Monitor</title>
+    <link type="text/css" rel="stylesheet" href="style.css">
+    <script src="scripts.js"></script>
+    <script src="websocketinfo.js"></script>
+  </head>
+  <body onload="MainInitialize();">
+    <div class="MainArea">
+      <div class="DataArea">
+       <div class="GeneralLabel DataLine1">Message Count :</div>
+       <div id="MessageCount" class="GeneralData DataLine1"></div>
+       <div class="GeneralLabel DataLine2">Start Time : </div>
+       <div id="MonitorStartTime" class="GeneralData DataLine2"></div>
+       <div class="GeneralLabel GeneralButton DataLine3" onclick="CBMonitorToggle()">Monitor CAN Bus :</div>
+       <div id="MonitorStatus" class="GeneralData DataLine3"></div>
+       <div class="GeneralLabel DataLine4">Monitor CAN File Name :</div>
+       <div id="MonitorFilename" class="GeneralData DataLine4"></div>
+       <div class="GeneralLabel GeneralButton DataLine5"  onclick="CBPrepareDownloadFilename()">Prepare Download File</div>
+       <div id="DownloadFilename" class="GeneralData DataLine5"><a href=""></a></div>
+      </div>
+    </div>
+    <div class="LogoArea">
+      <div class="LogoMain">
+        <div class="LogoVBottom"></div>
+        <div class="LogoV"></div>
+ 	<div class="LogoVLeft"></div>
+ 	<div class="LogoVRight"></div>
+        <div class="LogoVMiddle"></div>
+      </div>
+      <div class="LogoVBottom2"></div>
+    </div>
+    <div class="TopArea">
+    </div>
+    <div class="LeftArea">
+    </div> 
+    <div id="MessageLine" class="MessageLine"></div>;
+  </body>
+</html>
+

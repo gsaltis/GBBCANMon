@@ -1,0 +1,240 @@
+:root
+{
+  --VertivBorder			: solid 2px #7F2E0F;
+  --VertivBackground			: #Fb5b1B;
+  --VertivLogoLetterColor		: white;
+  --VertivBackgroundLighter		: #FbAb8B;
+  --VertivLogoAreaSize			: 75px;
+  --VertivLogoBackground		: #FB5B1B;
+  --GeneralLabelWidth			: 170px;
+  --DataColor				: #212124;
+  --MessageLineHeight			: 21px;
+  --DataLineHeight			: 20px;
+}
+
+div.MainArea
+{
+  position				: absolute;
+  left					: var(--VertivLogoAreaSize);
+  right					: 0px;
+  top					: var(--VertivLogoAreaSize);
+  bottom				: 0px;
+  padding-left				: 10px;
+  padding-top				: 10px;
+  margin-top				: 0px;
+  background				: linear-gradient(#888, #EEE);
+}
+
+div.TopArea
+{
+  position				: absolute;
+  left					: var(--VertivLogoAreaSize);
+  top					: 0px;
+  right					: 0px;
+  height				: calc(var(--VertivLogoAreaSize) - 2px);
+  background				: linear-gradient(90deg, var(--VertivBackground), var(--VertivBackgroundLighter));
+  border-bottom				: var(--VertivBorder);
+  border-top				: var(--VertivBorder);
+  border-right				: var(--VertivBorder);
+}
+
+div.LeftArea
+{
+  position				: absolute;
+  left					: 0px;
+  width					: var(--VertivLogoAreaSize);
+  top					: var(--VertivLogoAreaSize);
+  bottom				: var(--MessageLineHeight); 
+  background				: linear-gradient(var(--VertivBackground), var(--VertivBackgroundLighter));
+  border-right				: var(--VertivBorder);
+  border-left				: var(--VertivBorder);
+  border-bottom				: var(--VertivBorder);
+}
+
+div.MessageLine
+{
+  position				: absolute;
+  height				: var(--MessageLineHeight);
+  left					: 0px;
+  right					: 0px;
+  bottom				: 0px;
+  border-top				: var(--VertivBorder); 
+  background				: white;
+  padding-left				: 5px;
+  line-height				: var(--MessageLineHeight);
+  vertical-align			: middle;
+  font-family				: Segoe UI;
+  font-size				: 11pt;
+  font-weight				: 600;
+}
+
+div.DataArea
+{
+  position				: absolute;
+  left					: 10px;
+  top					: 10px;
+  width					: 400px;
+  height				: 300px;
+  border				: var(--VertivBorder);
+  border-radius				: 10px;
+  background				: linear-gradient(#FFFFFF80, #FFFFFF10);
+}
+
+div.LogoArea
+{
+  position				: absolute;
+  left					: 0px;
+  top					: 0px;
+  height				: var(--VertivLogoAreaSize);
+  width					: var(--VertivLogoAreaSize);
+  background				: var(--VertivBackground);
+  border-top				: var(--VertivBorder);
+  border-left				: var(--VertivBorder);
+}
+
+div.LogoMain
+{
+  position				: absolute;
+  left					: 5px;
+  top					: 5px;
+  width					: calc(var(--VertivLogoAreaSize) - 10px);
+  height				: calc(var(--VertivLogoAreaSize) - 10px);
+  background				: var(--VertivLogoBackground);
+  border-radius				: 50%;
+  overflow				: hidden;
+}
+
+div.LogoVBottom
+{
+  position				: absolute;
+  width					: 20px;
+  height				: 20px;
+  transform				: rotate(45deg);
+  left					: 22.5px;
+  bottom				: -7px;
+  background				: var(--VertivLogoLetterColor);
+}
+
+div.LogoVBottom2
+{
+  position				: absolute;
+  width					: 30px;
+  bottom				: 3px;
+  left					: 22px;
+  height				: 5px;
+  background				: var(--VertivBackground);
+}
+
+div.LogoV
+{
+  position				: absolute;
+  left					: 3px;
+  top					: 18.5px;
+  width					: 59px;
+  height				: 29.5px;
+  background				: var(--VertivLogoLetterColor); 
+}
+
+div.LogoVLeft
+{
+  position				: absolute;
+  left					: -36px;
+  top					: 16.5px;
+  width					: 56px;
+  height				: 60px;
+  background				: var(--VertivLogoBackground);
+  transform				: rotate(315deg);
+}
+
+div.LogoVRight
+{
+  position				: absolute;
+  left					: 46px;
+  top					: 16.5px;
+  width					: 56px;
+  height				: 60px;
+  background				: var(--VertivLogoBackground);
+  transform				: rotate(45deg);
+}
+
+div.LogoVMiddle
+{
+  position				: absolute;
+  width					: 20px;
+  height				: 20px;
+  transform				: rotate(45deg);
+  left					: 22.5px;
+  top   				: 8.5px;
+  background				: var(--VertivLogoBackground); 
+}
+
+div.GeneralLabel
+{
+  position				: absolute;
+  width					: var(--GeneralLabelWidth);
+  height				: 20px;
+  font-family				: Segoe UI;
+  font-size				: 10pt;
+  font-weight				: bold;
+  text-align				: right;
+  left					: 10px;
+}
+
+div.GeneralButton
+{
+  background				: linear-gradient(#CCC, #333);
+  border				: black 1px solid;
+  border-radius				: 4px;
+  cursor				: pointer;
+  text-align				: center;
+}
+
+div.GeneralButton:hover
+{
+  border				: black 2px solid;
+  background				: linear-gradient(#333, #CCC);
+}
+
+div.GeneralData
+{
+  position				: absolute;
+  left					: calc(var(--GeneralLabelWidth) + 20px);
+  right					: 10px;
+  height				: var(--DataLineHeight);
+  font-family				: Segoe UI;
+  font-size				: 10pt;
+  font-weight				: 500;
+  text-align				: left;
+  color					: var(--DataColor);
+  overflow-x				: hidden;
+}
+
+.DataLine1
+{
+  top					: 10px;
+}
+
+.DataLine2
+{
+  top					: 30px;
+}
+
+.DataLine3
+{
+  top					: 50px;
+}
+
+.DataLine4
+{
+  top					: 70px;
+}
+
+.DataLine5
+{
+  top					: 90px;
+}
+
+
+*
+{
+}

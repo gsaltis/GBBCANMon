@@ -305,8 +305,17 @@ WebSocketIFHandleResponsePrepareDownloadFile
 
   aref.href = InPacket.linkname;
   aref.innerHTML = InPacket.filename;
-}
 
+  for (i = 0 ; i < InPacket.archivedfiles.length; i++) {
+    aref = document.getElementById("DownloadFilename" + (i + 1)).children[0];
+	aref.innerHTML = InPacket.archivedfiles[i];
+  }
+  for ( ; i < 5 ; i++ ) {
+    aref = document.getElementById("DownloadFilename" + (i + 1)).children[0];
+    aref.innerHTML = "";
+	aref.href = "";
+  }
+}
 // FILE: ./Files/WebSocketIF/WebSocketIFSendDeviceDefRegRequestNext.js
 /*****************************************************************************!
  * Function : WebSocketIFSendDeviceDefRegRequestNext
@@ -676,5 +685,5 @@ WebSocketIFHandleResponseBayTypes(InBayTypes)
 }
 
 // FILE: ./websocketinfo.js
-var WebSocketIFAddress = "192.168.100.110";
+var WebSocketIFAddress = "192.168.0.16";
 var WebSocketIFPort = "8011";

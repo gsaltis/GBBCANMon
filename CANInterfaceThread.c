@@ -26,6 +26,8 @@
 #include "BytesManage.h"
 #include "CANMonLog.h"
 #include "FileUtils.h"
+#include "DirManagement.h"
+#include "MemoryManager.h"
 
 /*****************************************************************************!
  * Local Macros
@@ -49,6 +51,9 @@ CANInterfaceMessagesCount = 0;
 bool
 CANInterfaceMonitor = true;
 
+int
+CANInterfaceThreadMaxArchiveFiles = 4;
+
 /*****************************************************************************!
  * Local Functions
  *****************************************************************************/
@@ -62,17 +67,18 @@ HandleRequest
 (CANInterface* InInterface, frameid InID, dataframe InData, time_t InTime);
 
 /*****************************************************************************!
- * Function : CANInterfaceThreadInit 
+ * Function : CANInterfaceThreadInit
  *****************************************************************************/
 void
 CANInterfaceThreadInit
 ()
 {
+  CANInterfaceThreadManageArchives(CANInterfaceOutputFilename);
   CANInterfaceOutputFile = FileUtilsOpen(CANInterfaceOutputFilename, "wb");
   if ( CANInterfaceOutputFile == NULL ) {
     CANMonLogWrite("Could not open %s\n", CANInterfaceOutputFilename);
-  }    
-  
+  }
+ 
   pthread_create(&CANInterfaceThreadID, NULL, CANInterfaceThread, NULL);
 }
 
@@ -103,7 +109,7 @@ CANInterfaceThread
         dataframe df;
         df.data64 = ByteManageSwap8(data);
         if ( CANInterfaceMonitor ) {
-    	  HandleRequest(MainCANInterface, fid, df, time(NULL)); 
+    	  HandleRequest(MainCANInterface, fid, df, time(NULL));
           CANInterfaceMessagesCount++;
         }
 	break;
@@ -190,4 +196,6 @@ CANInterfaceFileClose
     CANInterfaceOutputFile = NULL;
   }
 }
-
+#include "CANInterfaceThreadManageArchives.c"
+#include "CANInterfaceThreadGetArchivedFilenames.c"
+#include "CANInterfaceThreadCreateArchive.c"

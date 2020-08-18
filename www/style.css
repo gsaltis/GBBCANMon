@@ -73,7 +73,7 @@ div.DataArea
   position				: absolute;
   left					: 10px;
   top					: 10px;
-  width					: 400px;
+  width					: 600px;
   height				: 300px;
   border				: var(--VertivBorder);
   border-radius				: 10px;
@@ -233,6 +233,32 @@ div.GeneralData
 {
   top					: 90px;
 }
+
+.DataLine6
+{
+  top					: 110px;
+}
+
+.DataLine7
+{
+  top					: 130px;
+}
+
+.DataLine8
+{
+  top					: 150px;
+}
+
+.DataLine9
+{
+  top					: 170px;
+}
+
+.DataLine10
+{
+  top					: 190px;
+}
+
 
 
 *

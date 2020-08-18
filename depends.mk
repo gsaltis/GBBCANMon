@@ -8,19 +8,22 @@ Bay.o: Bay.c Bay.h String.h Panel.h FuseBreaker.h CanMsg.h DeviceDef.h \
  FileUtils.h Devices.h
 BayType.o: BayType.c BayType.h String.h MemoryManager.h JSONIF.h ascii.h
 BytesManage.o: BytesManage.c
-CANDefsToJSON.o: CANDefsToJSON.c String.h FileUtils.h MemoryManager.h \
- AllCanDefinitions.h CanMsg.h DeviceDef.h DeviceDefines.h DeviceRegDef.h \
- NumericTypes.h JSONIF.h DeviceMessageDef.h
 CANInterface.o: CANInterface.c CANInterface.h String.h MemoryManager.h \
  CLIThread.h ThreadSafePrint.h BytesManage.h Devices.h CanMsg.h \
  DeviceDef.h DeviceDefines.h DeviceRegDef.h NumericTypes.h JSONIF.h \
  DeviceMessageDef.h main.h FuseBreakerType.h PanelType.h BayType.h \
  WebConnection.h
-CANInterfaceDevDeviceName.o: CANInterfaceDevDeviceName.c
 CANInterfaceThread.o: CANInterfaceThread.c CANInterface.h String.h \
  CANInterfaceThread.h main.h DeviceDef.h DeviceDefines.h DeviceRegDef.h \
  NumericTypes.h JSONIF.h DeviceMessageDef.h FuseBreakerType.h PanelType.h \
- BayType.h WebConnection.h CanMsg.h BytesManage.h CANMonLog.h FileUtils.h
+ BayType.h WebConnection.h CanMsg.h BytesManage.h CANMonLog.h FileUtils.h \
+ DirManagement.h MemoryManager.h CANInterfaceThreadManageArchives.c \
+ CANInterfaceThreadGetArchivedFilenames.c \
+ CANInterfaceThreadCreateArchive.c
+CANInterfaceThreadCreateArchive.o: CANInterfaceThreadCreateArchive.c
+CANInterfaceThreadGetArchivedFilenames.o: \
+ CANInterfaceThreadGetArchivedFilenames.c
+CANInterfaceThreadManageArchives.o: CANInterfaceThreadManageArchives.c
 CANMonLog.o: CANMonLog.c String.h FileUtils.h MemoryManager.h CANMonLog.h \
  CANMonLogInit.c CANMonLogWrite.c CANMonLogSetFilename.c
 CANMonLogInit.o: CANMonLogInit.c
@@ -28,9 +31,6 @@ CANMonLogSetFilename.o: CANMonLogSetFilename.c
 CANMonLogWrite.o: CANMonLogWrite.c
 CANRegisterDef.o: CANRegisterDef.c CANRegisterDef.h String.h \
  NumericTypes.h
-CANSimMain.o: CANSimMain.c CanMsg.h DeviceDef.h DeviceDefines.h \
- DeviceRegDef.h NumericTypes.h JSONIF.h String.h DeviceMessageDef.h \
- Devices.h CANInterface.h ThreadSafePrint.h DirManagement.h
 CanMsg.o: CanMsg.c CanMsg.h DeviceDef.h DeviceDefines.h DeviceRegDef.h \
  NumericTypes.h JSONIF.h String.h DeviceMessageDef.h ThreadSafePrint.h
 DefFileToken.o: DefFileToken.c DefFileToken.h
@@ -53,8 +53,11 @@ DirManagement.o: DirManagement.c DirManagement.h String.h MemoryManager.h \
 DirManagementGetInstallDir.o: DirManagementGetInstallDir.c
 DirManagementSetInstallDir.o: DirManagementSetInstallDir.c
 FileUtils.o: FileUtils.c String.h MemoryManager.h DirManagement.h \
- CANMonLog.h FileUtilsOpen.c
+ CANMonLog.h ascii.h FileUtilsOpen.c FilenameExtractSuffix.c \
+ FileUtilsCopyFile.c
+FileUtilsCopyFile.o: FileUtilsCopyFile.c
 FileUtilsOpen.o: FileUtilsOpen.c
+FilenameExtractSuffix.o: FilenameExtractSuffix.c
 FuseBreaker.o: FuseBreaker.c FuseBreaker.h String.h CanMsg.h DeviceDef.h \
  DeviceDefines.h DeviceRegDef.h NumericTypes.h JSONIF.h \
  DeviceMessageDef.h MemoryManager.h Panel.h PanelType.h Bay.h BayType.h \
@@ -81,11 +84,6 @@ Panel.o: Panel.c Panel.h FuseBreaker.h String.h CanMsg.h DeviceDef.h \
  DeviceMessageDef.h PanelType.h MemoryManager.h Bay.h BayType.h main.h \
  FuseBreakerType.h WebConnection.h CANInterface.h PanelConnection.h \
  Devices.h SQLStatements.h
-PanelConnection.o: PanelConnection.c PanelConnection.h String.h \
- MemoryManager.h JSONIF.h Bay.h Panel.h FuseBreaker.h CanMsg.h \
- DeviceDef.h DeviceDefines.h DeviceRegDef.h NumericTypes.h \
- DeviceMessageDef.h PanelType.h BayType.h main.h FuseBreakerType.h \
- WebConnection.h CANInterface.h
 PanelType.o: PanelType.c MemoryManager.h ascii.h PanelType.h String.h \
  JSONIF.h
 SQLStatements.o: SQLStatements.c String.h SQLStatements.h
@@ -127,4 +125,3 @@ main.o: main.c CANInterface.h String.h DeviceDef.h DeviceDefines.h \
  PanelType.h BayType.h main.h FuseBreakerType.h WebConnection.h \
  PanelConnection.h DirManagement.h CANMonLog.h MainProcessCommandLine.c \
  MainDisplayHelp.c MainInitialize.c MainExit.c
-mongoose.o: mongoose.c

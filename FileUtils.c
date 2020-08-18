@@ -14,6 +14,11 @@
 #include <stdint.h>
 #include <string.h>
 #include <sys/stat.h>
+#include <unistd.h>
+#include <sys/sendfile.h>
+#include <fcntl.h>
+#include <sys/types.h>
+#include <errno.h>
 
 /*****************************************************************************!
  * Local Headers
@@ -22,6 +27,7 @@
 #include "MemoryManager.h"
 #include "DirManagement.h"
 #include "CANMonLog.h"
+#include "ascii.h"
 
 /*****************************************************************************!
  * Local Macros
@@ -47,7 +53,7 @@ GetFileBuffer
   char*                                 buffer;
   int                                   filesize;
   struct stat                           statbuf;
-  
+ 
   file = fopen(InFilename, "rb");
   if ( NULL == file ) {
     fprintf(stderr, "Could not open %s\n", InFilename);
@@ -95,10 +101,10 @@ GetFileLines
   char**                                temp_lines;
   char**                                lines;
   int                                   lines_count;
-  
+ 
   lines = NULL;
   lines_count = 0;
-  
+ 
   start = InBuffer;
   while ( ! done ) {
 
@@ -159,7 +165,7 @@ FileExists
   if ( NULL == InFilename ) {
     return false;
   }
-  
+ 
   return stat(InFilename, &statbuf) == 0;
 }
 
@@ -170,26 +176,22 @@ string
 FilenameExtractBase
 (string InFilename)
 {
-  string                                base;
-  StringList*                           strings;
-  if ( NULL == InFilename ) {
-    return NULL;
+  string								s;
+  int                                   n;
+
+  s = strchr(InFilename, '.');
+  if ( s == NULL ) {
+	return StringCopy(InFilename);
   }
 
-  strings = StringSplit(InFilename, ".", false);
-  if ( NULL == strings ) {
-    return NULL;
+  if ( s == InFilename ) {
+	return NULL;
   }
 
-  if ( strings->stringCount < 1 ) {
-    StringListDestroy(strings);
-    return NULL;
-  }
-  base = StringCopy(strings->strings[0]);
-  StringListDestroy(strings);
-  return base;
+  n = s - InFilename;
+
+  return StringNCopy(InFilename, n);
 }
-
 
 /*****************************************************************************!
  * Function : FileCreateEmptyFile
@@ -209,3 +211,5 @@ FileCreateEmptyFile
 }
 
 #include "FileUtilsOpen.c"
+#include "FilenameExtractSuffix.c"
+#include "FileUtilsCopyFile.c"

@@ -33,6 +33,14 @@
 /*****************************************************************************!
  * Exported Functions
  *****************************************************************************/
+bool
+FileUtilsCopyFile
+(string InFromFilename, string InToFilename);
+
+string
+FilenameExtractSuffix
+(string InFilename);
+
 FILE*
 FileUtilsOpen
 (string InFilename, string InFilePermissions);

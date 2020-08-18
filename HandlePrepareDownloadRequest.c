@@ -14,6 +14,8 @@ HandlePrepareDownloadRequest
   int					                packetid;
   bool					                b;
   string                                installDir;
+  StringList*							filenames;
+  int									i;
 
   packetid = JSONIFGetInt(InPacket, "packetid");
   installDir = DirManagementGetInstallDir();
@@ -49,9 +51,23 @@ HandlePrepareDownloadRequest
   
   responseString = StringConcatTo(responseString, "  \"filename\" : \"");
   responseString = StringConcatTo(responseString, filename);
-  responseString = StringConcatTo(responseString, "\"\n");
- 
- 
+  responseString = StringConcatTo(responseString, "\",\n");
+  responseString = StringConcatTo(responseString, "  \"archivedfiles\" : [ \n");
+  
+  filenames = CANInterfaceThreadGetArchivedFilenames(filename); 
+  StringListSort(filenames);
+  for (i = 0; i < filenames->stringCount; i++) {
+    if ( i + 1 < filenames->stringCount ) {
+  	  s = StringMultiConcat("\"", filenames->strings[i], "\", ", NULL);
+    } else {
+	  s = StringMultiConcat("\"", filenames->strings[i], "\" ", NULL);
+    }
+    responseString = StringConcatTo(responseString, s);
+	FreeMemory(s);
+  }
+
+  StringListDestroy(filenames);
+  responseString = StringConcatTo(responseString, "]\n");
   responseString = StringConcatTo(responseString, "}\n");
 
   WebSocketFrameResponseSend(InConnection, "respreparedownloadfile", responseString, packetid, 0, "");

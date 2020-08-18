@@ -1,0 +1,5 @@
+alias c=./canmon
+alias m=make
+alias mc='make clean'
+alias r=./restart
+export PS1="GBBCANMon : "

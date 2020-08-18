@@ -2,3 +2,8 @@
 canmon
 canmonview
 canmoncl
+CANMon*.txt
+*.a
+*-bak
+www/websocketinfo.js
+www/bundle

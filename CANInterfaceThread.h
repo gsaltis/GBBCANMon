@@ -1,7 +1,7 @@
 /*****************************************************************************
  * FILE NAME    : CANInterfaceThread.h
  * DATE         : July 14 2020
- * PROJECT      : CAN Monitor 
+ * PROJECT      : CAN Monitor
  * COPYRIGHT    : Copyright (C) 2020 by Vertiv Company
  *****************************************************************************/
 #ifndef _caninterfacethread_h_
@@ -47,6 +47,30 @@ CANInterfaceOutputFilename;
 /*****************************************************************************!
  * Exported Functions
  *****************************************************************************/
+void
+CANInterfaceThreadCreateArchive
+(string InFilename);
+
+StringList*
+CANInterfaceThreadGetArchivedFilenames
+(string InFilename);
+
+void
+CANInterfaceThreadManageArchives
+(string InFilename);
+
+void
+CANInterfaceThreadManageArchives
+(string InFilename);
+
+void
+CANInterfaceManageArchives
+(string InOutputFilename);
+
+void
+CANInterfaceManageArchives
+(string InOutputFilename);
+
 void
 CANInterfaceThreadInit
 ();

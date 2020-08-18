@@ -13,4 +13,5 @@ MainDisplayHelp
   fprintf(stdout, "        -ci, --caninterface interfacename - Specify the CAN interface name\n");  
   fprintf(stdout, "        -id, --installdir dirname         - Specifiy the base directory for system files\n");
   fprintf(stdout, "        -l,  --logfile                    - Specify the log filename\n");
+  fprintf(stdout, "        -n,  --noui                       - Specify to not use the command line interface\n");
 }

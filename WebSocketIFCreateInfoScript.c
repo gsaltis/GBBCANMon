@@ -42,7 +42,7 @@ WebSocketIFCreateInfoScript
       b = (char)(sa->sin_addr.s_addr & 0xFF);
   
       //! Check that we have a at least a C Address
-      if ( b & 0xC0 ) {
+      if ( (b & 0xC0) == 0xC0 ) {
         address = StringCopy(inet_ntoa(sa->sin_addr));
         file = fopen("www/websocketinfo.js", "wb");
  	if ( NULL == file ) {

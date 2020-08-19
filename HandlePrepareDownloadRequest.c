@@ -16,6 +16,7 @@ HandlePrepareDownloadRequest
   string                                installDir;
   StringList*							filenames;
   int									i;
+  string								base;
 
   packetid = JSONIFGetInt(InPacket, "packetid");
   installDir = DirManagementGetInstallDir();
@@ -27,7 +28,7 @@ HandlePrepareDownloadRequest
   fullFilename = StringMultiConcat(installDir, CANInterfaceOutputFilename, NULL);
   CANMonLogWrite("Request for %s file made\n", tarFilename);
   CANMonLogWrite("Compressing %s\n", fullFilename);
-  s = StringMultiConcat("tar czf ", tarFilename, " ", fullFilename, NULL);
+  s = StringMultiConcat("tar Pczf ", tarFilename, " ", fullFilename, NULL);
   b = CANInterfaceMonitor;
 
   // Only manage the montior switch if the switch is true -- We are currently monitoring the CAN BUS
@@ -57,10 +58,11 @@ HandlePrepareDownloadRequest
   filenames = CANInterfaceThreadGetArchivedFilenames(filename); 
   StringListSort(filenames);
   for (i = 0; i < filenames->stringCount; i++) {
+	base = FilenameExtractBase(filenames->strings[i]);
     if ( i + 1 < filenames->stringCount ) {
-  	  s = StringMultiConcat("\"", filenames->strings[i], "\", ", NULL);
+  	  s = StringMultiConcat("\"", base, ".tar.gz\", ", NULL);
     } else {
-	  s = StringMultiConcat("\"", filenames->strings[i], "\" ", NULL);
+	  s = StringMultiConcat("\"", base, ".tar.gz\" ", NULL);
     }
     responseString = StringConcatTo(responseString, s);
 	FreeMemory(s);

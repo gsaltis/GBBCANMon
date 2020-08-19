@@ -33,6 +33,10 @@
 /*****************************************************************************!
  * Exported Functions
  *****************************************************************************/
+void
+FileUtilsTarFile
+(string InFilename, string InWWWBaseDir);
+
 bool
 FileUtilsCopyFile
 (string InFromFilename, string InToFilename);

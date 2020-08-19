@@ -53,7 +53,7 @@ OBJS2			= $(sort				\
 			    FileUtils.o				\
 			    ThreadSafePrint.o			\
 			    AllCanDefinitions.o			\
-                DirManagement.o             \
+	                    DirManagement.o             	\
 			   )
 
 OBJS3			= $(sort				\

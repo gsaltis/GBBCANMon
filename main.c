@@ -4,6 +4,7 @@
  * PROJECT      : CAN Monitor
  * COPYRIGHT    : Copyright (C) 2020 by Vertiv Company
  *****************************************************************************/
+#define _GNU_SOURCE
 
 /*****************************************************************************!
  * Global Headers
@@ -15,6 +16,9 @@
 #include <string.h>
 #include <sqlite3.h>
 #include <mongoose.h>
+#include <errno.h>
+#include <dirent.h>
+#include <unistd.h>
 
 /*****************************************************************************!
  * Local Headers
@@ -29,6 +33,7 @@
 #include "WebSocketIF.h"
 #include "DirManagement.h"
 #include "CANMonLog.h"
+#include "FileUtils.h"
 
 /*****************************************************************************!
  * Local Macros
@@ -104,6 +109,10 @@ MainClearDatabase
 
 bool
 MainUseUI = true;
+
+void
+MainRemoveTarFiles
+();
 
 /*****************************************************************************!
  * Function : main
@@ -198,4 +207,4 @@ MainClearDatabase
 #include "MainDisplayHelp.c"
 #include "MainInitialize.c"
 #include "MainExit.c"
-
+#include "MainRemoveTarFiles.c"

@@ -24,6 +24,8 @@
 #include "MemoryManager.h"
 #include "DirManagement.h"
 #include "CANMonLog.h"
+#include "FileUtils.h"
+#include "CANInterfaceThread.h"
 
 /*****************************************************************************!
  * Local Macros
@@ -95,18 +97,6 @@ HTTPServerThread
   }
 }
 
-/*****************************************************************************!
- * Function : HTTPEventHandler
- *****************************************************************************/
-void
-HTTPEventHandler
-(struct mg_connection* nc, int ev, void* p)
-{
-  struct http_message*			message;
+#include "HTTPEventHandler.c"
 
-  if (ev == MG_EV_HTTP_REQUEST) {
-    message = (struct http_message*)p;
-    mg_serve_http(nc, message, s_http_server_opts);
-  }
-}
 

@@ -54,9 +54,10 @@ DirManagementGetInstallDir.o: DirManagementGetInstallDir.c
 DirManagementSetInstallDir.o: DirManagementSetInstallDir.c
 FileUtils.o: FileUtils.c String.h MemoryManager.h DirManagement.h \
  CANMonLog.h ascii.h FileUtilsOpen.c FilenameExtractSuffix.c \
- FileUtilsCopyFile.c
+ FileUtilsCopyFile.c FileUtilsTarFile.c
 FileUtilsCopyFile.o: FileUtilsCopyFile.c
 FileUtilsOpen.o: FileUtilsOpen.c
+FileUtilsTarFile.o: FileUtilsTarFile.c
 FilenameExtractSuffix.o: FilenameExtractSuffix.c
 FuseBreaker.o: FuseBreaker.c FuseBreaker.h String.h CanMsg.h DeviceDef.h \
  DeviceDefines.h DeviceRegDef.h NumericTypes.h JSONIF.h \
@@ -65,11 +66,12 @@ FuseBreaker.o: FuseBreaker.c FuseBreaker.h String.h CanMsg.h DeviceDef.h \
  PanelConnection.h Devices.h
 FuseBreakerType.o: FuseBreakerType.c MemoryManager.h String.h ascii.h \
  FuseBreakerType.h JSONIF.h
+HTTPEventHandler.o: HTTPEventHandler.c
 HTTPServerThread.o: HTTPServerThread.c HTTPServerThread.h String.h main.h \
  DeviceDef.h DeviceDefines.h DeviceRegDef.h NumericTypes.h JSONIF.h \
  DeviceMessageDef.h FuseBreakerType.h PanelType.h BayType.h \
  WebConnection.h CANInterface.h MemoryManager.h DirManagement.h \
- CANMonLog.h
+ CANMonLog.h FileUtils.h CANInterfaceThread.h HTTPEventHandler.c
 HandleCommandLog.o: HandleCommandLog.c
 HandlePrepareDownloadRequest.o: HandlePrepareDownloadRequest.c
 JSONIF.o: JSONIF.c String.h MemoryManager.h JSONIF.h
@@ -77,6 +79,7 @@ MainDisplayHelp.o: MainDisplayHelp.c
 MainExit.o: MainExit.c
 MainInitialize.o: MainInitialize.c
 MainProcessCommandLine.o: MainProcessCommandLine.c
+MainRemoveTarFiles.o: MainRemoveTarFiles.c
 MemoryManager.o: MemoryManager.c MemoryManager.h ThreadSafePrint.h
 NumericTypes.o: NumericTypes.c
 Panel.o: Panel.c Panel.h FuseBreaker.h String.h CanMsg.h DeviceDef.h \
@@ -123,5 +126,6 @@ main.o: main.c CANInterface.h String.h DeviceDef.h DeviceDefines.h \
  CANInterfaceThread.h MemoryManager.h UserInputThread.h \
  HTTPServerThread.h WebSocketIF.h FuseBreaker.h CanMsg.h Bay.h Panel.h \
  PanelType.h BayType.h main.h FuseBreakerType.h WebConnection.h \
- PanelConnection.h DirManagement.h CANMonLog.h MainProcessCommandLine.c \
- MainDisplayHelp.c MainInitialize.c MainExit.c
+ PanelConnection.h DirManagement.h CANMonLog.h FileUtils.h \
+ MainProcessCommandLine.c MainDisplayHelp.c MainInitialize.c MainExit.c \
+ MainRemoveTarFiles.c

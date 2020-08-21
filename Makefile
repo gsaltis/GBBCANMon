@@ -2,6 +2,7 @@ CC			= gcc
 LINK			= gcc
 
 CC_FLAGS		= -g -c -Wall -Ilib/include  -DDEVELOPMENT
+TARGET_FLAGS	= -DNEED_NET_IF_H -DNEED_SYS_IOCTL_H -DNEED_LINUX_CAN_H -DNEED_LINUX_CAN_RAW_H -DNNED_TERMIO_H -DNEED_FILE_UTILS_TAR_FILE_C
 
 LINK_FLAGS		= -g -Llib
 
@@ -99,7 +100,7 @@ $(TARGET3)		: $(OBJS3)
 
 %.o			: %.c
 			  @echo [CC] $@
-			  @$(CC) $(CC_FLAGS) $<
+			  @$(CC) $(CC_FLAGS) $(TARGET_FLAGS) $<
 
 %.o			: lib/%.c
 			  @echo [CC] $@

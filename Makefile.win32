@@ -3,7 +3,7 @@ LINK			= gcc
 
 CC_FLAGS		= -g -c -Wall -Ilib/include  -DDEVELOPMENT
 
-LINK_FLAGS		= -g -Llib
+LINK_FLAGS		= -g -Llib -lm
 SUFFIX			= .exe
 
 TARGET			= canmonview$(SUFFIX)

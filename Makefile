@@ -3,7 +3,7 @@ LINK			= gcc
 
 CC_FLAGS		= -g -c -Wall -Ilib/include  -DDEVELOPMENT
 
-LINK_FLAGS		= -g -Llib -ldl -lncurses -lsqlite3
+LINK_FLAGS		= -g -Llib
 
 TARGET			= canmon
 
@@ -58,6 +58,13 @@ OBJS2			= $(sort				\
 
 OBJS3			= $(sort				\
 			    canmonview.o			\
+		    	    BytesManage.o			\
+			    CanMsg.o				\
+			    Devices.o				\
+			    DefFileToken.o			\
+			    DeviceDef.o                         \
+			    DeviceMessageDef.o			\
+			    DeviceRegDef.o			\
 			    CANMonLog.o				\
 			    String.o				\
 			    MemoryManager.o			\
@@ -67,6 +74,9 @@ OBJS3			= $(sort				\
 			    CanMsg.o				\
 			    NumericTypes.o			\
 			    DirManagement.o			\
+			    json.o				\
+			    jsoncanif.o				\
+			    JSONIF.o				\
 	 		   )
 
 LIBS			= -ljson -lmongoose -lm -lpthread -lsqlite3 -lrt
@@ -81,13 +91,17 @@ $(TARGET)		: $(OBJS)
 
 $(TARGET2)		: $(OBJS2)
 			  @echo [LD] $(TARGET2)
-			  @$(LINK) $(LINK_FLAGS) -o $(TARGET2) $(OBJS2) $(LIBS)
+			  @$(LINK) $(LINK_FLAGS) -o $(TARGET2) $(OBJS2)
 
 $(TARGET3)		: $(OBJS3)
 			  @echo [LD] $(TARGET3)
-			  @$(LINK) $(LINK_FLAGS) -o $(TARGET3) $(OBJS3) $(LIBS)
+			  @$(LINK) $(LINK_FLAGS) -o $(TARGET3) $(OBJS3)
 
 %.o			: %.c
+			  @echo [CC] $@
+			  @$(CC) $(CC_FLAGS) $<
+
+%.o			: lib/%.c
 			  @echo [CC] $@
 			  @$(CC) $(CC_FLAGS) $<
 

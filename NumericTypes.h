@@ -55,5 +55,9 @@ float
 GetFloatValueFromString
 (bool* InStatus, char* InString);
 
+char*
+ConvertIntToCommaString
+(int InValue, char* InReturnBuffer);
+
 #endif // _numerictypes_h_
 

@@ -13,6 +13,7 @@
 #include <stdlib.h>
 #include <ctype.h>
 #include <string.h>
+#include <stdio.h>
 
 /*******************************************************************************!
  * Local Macros
@@ -23,6 +24,14 @@
     toupper(c) >= 'A' && toupper(c) <= 'F' ? \
         (toupper(c) - 'A' + 10) : \
         0
+
+/*******************************************************************************!
+ * Local Functions
+ *******************************************************************************/
+void
+ConvertIntToCommaString2R
+(char* InSource, char* InReturn);
+
 /*******************************************************************************!
  * Function : GetIntValueFromString
  *******************************************************************************/
@@ -209,3 +218,44 @@ GetFloatValueFromString
     *InStatus = true;
     return atof(InString);
 }
+
+/*******************************************************************************!
+ * Function : ConvertIntToCommaString
+ *******************************************************************************/
+char*
+ConvertIntToCommaString
+(int InValue, char* InReturnBuffer)
+{
+  char					s2[32];
+  sprintf(s2, "%d", InValue);
+  if ( strlen(s2) < 4 ) {
+    strcpy(InReturnBuffer, s2);
+    return InReturnBuffer;
+  }
+  ConvertIntToCommaString2R(s2, InReturnBuffer);
+  return InReturnBuffer;
+}
+
+/*******************************************************************************!
+ * Function : ConvertIntToCommaString
+ *******************************************************************************/
+
+void
+ConvertIntToCommaString2R
+(char* InSource, char* InReturn)
+{
+  *InReturn = *InSource;
+   InReturn++;
+   InSource++;
+   if ( strlen(InSource) % 3 == 0 && *InSource ) {
+     *InReturn = ',';
+     InReturn++;
+   }
+   if (*InSource == 0x00 ) {
+     *InReturn = 0x00;
+     return;
+   }
+   ConvertIntToCommaString2R(InSource, InReturn);
+}
+
+     

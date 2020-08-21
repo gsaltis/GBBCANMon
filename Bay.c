@@ -701,6 +701,7 @@ BaysSaveValues
   bool					haveBay;
   Bay*					bay;
   int					i;
+  string				installDir;
 
   if ( InFilename ) {
     filename = InFilename;
@@ -712,7 +713,9 @@ BaysSaveValues
   }
   basename = FilenameExtractBase(filename);
   basename = StringConcatTo(basename, "-Values.json");
-  file = FileUtilsOpen(basename, "wb");
+  installDir = DirManagementGetInstallDir();
+  file = FileUtilsOpen(dir, basename, "wb");
+  FreeMemory(installDir);
   FreeMemory(basename);
   if ( NULL == file ) {
     return false;
@@ -753,6 +756,7 @@ BaysSave
   string                                s;
   FILE*                                 file;
   string                        filename;
+  string				installDir;
 
   if ( InFilename ) {
     filename = InFilename;
@@ -771,7 +775,9 @@ BaysSave
   }
   BaysFileName = StringCopy(filename);
 
-  file = FileUtilsOpen(BaysFileName, "wb");
+  installDir = DirManagementGetInstallDir();
+  file = FileUtilsOpen(installDir, BaysFileName, "wb");
+  FreeMemory(installDir);
   if ( NULL == file ) {
     return false;
   }

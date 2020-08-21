@@ -3,20 +3,23 @@
  *****************************************************************************/
 FILE*
 FileUtilsOpen
-(string InFilename, string InFilePermissions)
+(string InBaseDir, string InFilename, string InFilePermissions)
 {
-  string                                dir;
   string                                filename;
   FILE*                                 file;
 
-  dir = DirManagementGetInstallDir();
-  filename = StringConcat(dir, InFilename);
-
+  // If we were supplied a base direcdtory, prepend it
+  if ( InBaseDir ) {
+    filename = StringConcat(InBaseDir, InFilename);
+  } else {
+    filename = StringCopy(InFilename);
+  }
+#ifdef USE_LOG
   CANMonLogWrite("File Opened : %s\n", filename);
+#endif
   file = fopen(filename, InFilePermissions);
  
   FreeMemory(filename);
-  FreeMemory(dir);
 
   return file;
 }

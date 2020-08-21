@@ -73,8 +73,12 @@ void
 CANInterfaceThreadInit
 ()
 {
+  string				installDir;
+
+  installDir = DirManagementGetInstallDir();
   CANInterfaceThreadManageArchives(CANInterfaceOutputFilename);
-  CANInterfaceOutputFile = FileUtilsOpen(CANInterfaceOutputFilename, "wb");
+  CANInterfaceOutputFile = FileUtilsOpen(installDir, CANInterfaceOutputFilename, "wb");
+  FreeMemory(installDir);
   if ( CANInterfaceOutputFile == NULL ) {
     CANMonLogWrite("Could not open %s\n", CANInterfaceOutputFilename);
   }
@@ -164,24 +168,31 @@ void
 CANInterfaceFileOpen
 (bool InAppendFile)
 {
-  if ( CANInterfaceOutputFile ) {
+  string				installDir;
+
+  installDir = DirManagementGetInstallDir();
+  do 
+  {
+    if ( CANInterfaceOutputFile ) {
+      if ( InAppendFile ) {
+        return;
+      }
+      fclose(CANInterfaceOutputFile);
+      CANInterfaceOutputFile = FileUtilsOpen(installDir, CANInterfaceOutputFilename, "wb");
+      if ( NULL == CANInterfaceOutputFile ) {
+        fprintf(stderr, "Could not open %s\n", CANInterfaceOutputFilename);
+	break;
+      }
+    }
     if ( InAppendFile ) {
-      return;
+      CANInterfaceOutputFile = FileUtilsOpen(installDir, CANInterfaceOutputFilename, "ab");
+      if ( NULL == CANInterfaceOutputFile ) {
+        fprintf(stderr, "Could not open %s\n", CANInterfaceOutputFilename);
+        break;
+      }
     }
-    fclose(CANInterfaceOutputFile);
-    CANInterfaceOutputFile = FileUtilsOpen(CANInterfaceOutputFilename, "wb");
-    if ( NULL == CANInterfaceOutputFile ) {
-      fprintf(stderr, "Could not open %s\n", CANInterfaceOutputFilename);
-      return;
-    }
-  }
-  if ( InAppendFile ) {
-    CANInterfaceOutputFile = FileUtilsOpen(CANInterfaceOutputFilename, "ab");
-    if ( NULL == CANInterfaceOutputFile ) {
-      fprintf(stderr, "Could not open %s\n", CANInterfaceOutputFilename);
-      return;
-    }
-  }
+  } while (false);
+  FreeMemory(installDir);
 }
 
 /*****************************************************************************!

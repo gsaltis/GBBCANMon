@@ -8,3 +8,6 @@ CANMon*.txt
 www/websocketinfo.js
 www/bundle
 *.log
+*~
+*.exe
+*#

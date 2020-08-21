@@ -102,7 +102,7 @@ void GetGroupArray(int* FullGroupList, DeviceDef* InDeviceDef)
 string
 GetDeviceList()
 {
-  string				deviceList;
+  string                                deviceList;
   DeviceDef*                            deviceDef;
     
   for ( deviceDef = mainDeviceDefs->defs; deviceDef;  deviceDef = deviceDef->next ) {
@@ -135,8 +135,8 @@ void GetDeviceCount(char* CountList, DeviceDef* MyDeviceDef)
  *****************************************************************************/
 string GetGroupList(DeviceDef* MyDeviceDef)
 {
-  string				returnString;
-  StringList*				list;
+  string                                returnString;
+  StringList*                           list;
 
   list = StringListCreate();
     
@@ -347,7 +347,7 @@ void
 ClearDeviceRegisters
 (CanDevice* InDevice)
 {
-  int					i, n;
+  int                                   i, n;
   
   n = DeviceDefGetRegCount(InDevice->deviceDefinition);
   for ( i = 0; i < n ; i++ ) {
@@ -400,7 +400,7 @@ int
 SetDeviceRegister
 (CanDevice* InDevice, string InShortName, string InGroup, float InValue)
 { 
-  CanReg*				reg;
+  CanReg*                               reg;
 
   reg = DeviceFindRegister(InDevice, InShortName, InGroup);
   if ( NULL == reg ) {
@@ -417,8 +417,8 @@ float
 GetDeviceRegisterFloat
 (CanDevice* InDevice, int InIndex, string InGroup)
 {
-  CanReg*				reg;
-  char					s[17];
+  CanReg*                               reg;
+  char                                  s[17];
   
   snprintf(s, sizeof(s) - 1, "%d", InIndex);
   reg = DeviceFindRegister(InDevice, s, InGroup);
@@ -585,8 +585,8 @@ CanDevice*
 AddCANDevice
 (string InDeviceDefName, uint16_t InDeviceCANAddress)
 {
-  CanDevice*				device;
-  DeviceDef*				deviceDef;
+  CanDevice*                            device;
+  DeviceDef*                            deviceDef;
 
   device = FindCANDeviceByDefNameAddress(InDeviceDefName, InDeviceCANAddress);
   if ( device ) {
@@ -610,9 +610,9 @@ CanDevice*
 CreateDevice
 (DeviceDef* InDeviceDef, uint16_t InDeviceCANAddress)
 {
-  CanDevice* 				device;
-  int					m, reg;
-  DeviceRegDef*				regDef;
+  CanDevice*                            device;
+  int                                   m, reg;
+  DeviceRegDef*                         regDef;
 
   device = &CanDeviceList[NumDevices];  
   NumDevices++;
@@ -636,14 +636,14 @@ CanDevice*
 FindCANDeviceByDefNameAddress
 (string InDeviceDefName, uint16_t InDeviceCANAddress)
 {
-  int					i;
-  CanDevice*				device;
+  int                                   i;
+  CanDevice*                            device;
 
   for ( i = 0 ; i < NumDevices ; i++ ) {
     device = &CanDeviceList[i];
     if ( StringEqual(device->deviceDefinition->name, InDeviceDefName) ) {
       if ( device->CanAddress == InDeviceCANAddress ) {
-     	return device;
+        return device;
       } 
     }
   }
@@ -662,7 +662,7 @@ CanDevice* AddSingleDevice(char* DeviceName)
   DeviceDef*                            deviceDef;
   int                                   reg;
   DeviceRegDef*                         regDef;
-  int					m;
+  int                                   m;
 
   // This section finds the largest CAN address and the largest SNLow used so far in existing devices.
   for (int dev = 0; dev < NumDevices; dev++) {
@@ -807,12 +807,12 @@ void SendResponses(CANInterface* InInterface, int Protocol, int SrcAddr, int Des
           if ( regDef ) {
             CanReg* reg = GetRegisterByDef(CurrDevice, regDef);
             if ( reg ) {
-	      uint64_t					d;
+              uint64_t                                  d;
 
               int Cont = resp + 1 < messageDef->responsesCount ? 1 : 0;
               frameid Id = GetFrameId(Protocol, CurrDevice->CanAddress, SrcAddr, Cont);
               dataframe Data = GetDataFrame(CurrDevice->State, reg->registerDef->messageType, reg->registerDef->valueType, reg->Value);
-	      d = ByteManageSwap8(Data.data64);
+              d = ByteManageSwap8(Data.data64);
               CANInterfaceWrite(InInterface, Id.data32, d, 8);  // and send the register
             }
           }
@@ -829,7 +829,7 @@ CanReg*
 GetRegisterByName
 (CanDevice* InDevice, char* InName)
 {
-  int					n, i;
+  int                                   n, i;
 
   n = GetDeviceRegCount(InDevice->deviceDefinition->regDefs);
   for (i = 0; i < n; i++) {
@@ -882,21 +882,21 @@ void HandleRequest(CANInterface* InInterface, frameid Id, dataframe Data, time_t
 bool PortOpened = false;
 void* HandleCanTraffic()
 {
-  CANInterface*				interface;
-  interface = CANInterfaceInit("slcan0");
-  if ( NULL == interface ) {
+  CANInterface*                         iterface;
+  iterface = CANInterfaceInit("slcan0");
+  if ( NULL == iterface ) {
     while (true) { 
       sleep(1);
     }
   }
   while (true)
   {
-    uint32_t				id;
-    uint64_t				data;
-    uint8_t				dataLength;
-    uint8_t 				result;
+    uint32_t                            id;
+    uint64_t                            data;
+    uint8_t                             dataLength;
+    uint8_t                             result;
 
-    result = CANInterfaceRead(interface, &id, &data, &dataLength);
+    result = CANInterfaceRead(iterface, &id, &data, &dataLength);
     switch ( result ) {
       case CAN_READ_TIMEOUT : {
         break;
@@ -906,14 +906,14 @@ void* HandleCanTraffic()
         fid.data32 = id;
         dataframe df;
         df.data64 = ByteManageSwap8(data);
-    	HandleRequest(interface, fid, df, time(NULL)); 
-	break;
+        HandleRequest(iterface, fid, df, time(NULL)); 
+        break;
       }
       case CAN_READ_ERROR : {
-	break;
+        break;
       }
       default : {
-	break;
+        break;
       }
     }
   }
@@ -1029,9 +1029,9 @@ string
 GetDeviceNumbersString
 (string InDeviceName)
 {
-  CanDevice*				device;
-  int					i;
-  string				returnString;
+  CanDevice*                            device;
+  int                                   i;
+  string                                returnString;
 
   returnString = NULL;
   if ( InDeviceName == NULL ) {
@@ -1055,8 +1055,8 @@ CanReg*
 FindRegisterByIndexGroup
 (CanDevice* InDevice, int InIndex, string InGroup)
 {
-  CanReg*				reg;
-  char					s[17];
+  CanReg*                               reg;
+  char                                  s[17];
   if ( InDevice == NULL || InGroup == NULL ) {
     return NULL;
   }

@@ -1,0 +1,52 @@
+CC			= gcc
+LINK			= gcc
+
+CC_FLAGS		= -g -c -Wall -Ilib/include  -DDEVELOPMENT
+
+LINK_FLAGS		= -g -Llib
+SUFFIX			= .exe
+
+TARGET			= canmonview$(SUFFIX)
+
+ALLTARGETS		= $(TARGET) 
+
+OBJS			= $(sort				\
+			    canmonview.o			\
+			    String.o				\
+			    MemoryManager.o			\
+			    FileUtils.o				\
+			    ThreadSafePrint.o			\
+			    NumericTypes.o			\
+			    DeviceDef.o                         \
+			    DeviceRegDef.o			\
+			    json.o				\
+			    JSONIF.o				\
+			    DeviceMessageDef.o			\
+			    DefFileToken.o			\
+			    CanMsg.o				\
+	 		   )
+
+.PHONY			: all clean veryclean
+
+all			: $(ALLTARGETS)
+
+$(TARGET)		: $(OBJS)
+			  @echo [LD] $(TARGET)
+			  @$(LINK) $(LINK_FLAGS) -o $(TARGET) $(OBJS)
+
+%.o			: %.c
+			  @echo [CC] $@
+			  @$(CC) $(CC_FLAGS) $<
+
+%.o			: lib/%.c
+			  @echo [CC] $@
+			  @$(CC) $(CC_FLAGS) $<
+
+include			  depends.mk
+
+junkclean		: 
+			  -rm -rf $(wildcard)
+
+clean			: 
+			  -rm -rf $(wildcard *.o $(ALLTARGETS))
+

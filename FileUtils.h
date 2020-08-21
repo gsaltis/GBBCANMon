@@ -47,7 +47,7 @@ FilenameExtractSuffix
 
 FILE*
 FileUtilsOpen
-(string InFilename, string InFilePermissions);
+(string InBaseDir, string InFilename, string InFilePermissions);
 
 string
 FilenameExtractBase

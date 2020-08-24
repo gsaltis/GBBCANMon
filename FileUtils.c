@@ -4,6 +4,7 @@
  * PROJECT      : Bay Simulator
  * COPYRIGHT    : Copyright (C) 2020 by Vertiv Company
  *****************************************************************************/
+#define _GNU_SOURCE
 
 /*****************************************************************************!
  * Global Headers
@@ -15,7 +16,6 @@
 #include <string.h>
 #include <sys/stat.h>
 #include <unistd.h>
-#include <sys/sendfile.h>
 #include <fcntl.h>
 #include <sys/types.h>
 #include <errno.h>
@@ -213,3 +213,6 @@ FileCreateEmptyFile
 #include "FileUtilsOpen.c"
 #include "FilenameExtractSuffix.c"
 #include "FileUtilsCopyFile.c"
+#ifdef NEED_FILE_UTILS_TAR_FILE_C
+#include "FileUtilsTarFile.c"
+#endif

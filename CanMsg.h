@@ -6,7 +6,9 @@
  *******************************************************************************/
 #include <unistd.h>
 #include <stdint.h>
+#if NEED_LINUX_CAN_H
 #include <linux/can.h>
+#endif
 #include <time.h>
 
 /*******************************************************************************!
@@ -31,6 +33,9 @@
 #define max(X, Y) (((X) > (Y)) ? (X) : (Y))
 #define COMMANDSIZE 128
 #define delim " \n"
+#ifndef CAN_MAX_DLEN
+#define CAN_MAX_DLEN 8
+#endif
 
 /* 
 
@@ -109,12 +114,12 @@ typedef const struct{
  * Exported Type : CanDevice
  *******************************************************************************/
 typedef struct  {
-    int 				CanAddress;
-    enum 				{ normal = 0xf0, error = 0xF2, offline = 0xFF, addressing = 0xf4 } State;
-    DeviceDef*				deviceDefinition;
-    CanReg*                         	Registers;
-    int					registersCount;
-    time_t				lastContactTime;
+    int                                 CanAddress;
+    enum                                { normal = 0xf0, error = 0xF2, offline = 0xFF, addressing = 0xf4 } State;
+    DeviceDef*                          deviceDefinition;
+    CanReg*                             Registers;
+    int                                 registersCount;
+    time_t                              lastContactTime;
 } CanDevice;
 
 /*******************************************************************************!
@@ -126,13 +131,13 @@ typedef union
     uint16_t msgid[2];
     struct
     {
-        unsigned RES2 : 1;		/* reserved */
-        unsigned RES1 : 1;		/* reserved */
-        unsigned CNT : 1;		/* 1:continuous frame */
-        unsigned SrcAddr : 8;		/* source address */
-        unsigned DstAddr : 8;		/* destination/group address low bits*/
-        unsigned PTP : 1;		/* 0:broadcast, 1:point to point */
-        unsigned ProtNo : 9;		/* protocol number */
+        unsigned RES2 : 1;              /* reserved */
+        unsigned RES1 : 1;              /* reserved */
+        unsigned CNT : 1;               /* 1:continuous frame */
+        unsigned SrcAddr : 8;           /* source address */
+        unsigned DstAddr : 8;           /* destination/group address low bits*/
+        unsigned PTP : 1;               /* 0:broadcast, 1:point to point */
+        unsigned ProtNo : 9;            /* protocol number */
     }msgbit;
 }frameid;
 
@@ -188,5 +193,9 @@ CanRegSetFromString
 string
 CanRegGetFromString
 (string InValueString, CanReg* InCanReg);
+
+string
+CANValueGetFromString
+(string InValueString, DeviceRegDef* InCanRegDef, ufloatbit32_t InValue);
 
 #endif

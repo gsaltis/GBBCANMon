@@ -33,6 +33,10 @@
 /*****************************************************************************!
  * Exported Functions
  *****************************************************************************/
+void
+FileUtilsTarFile
+(string InFilename, string InWWWBaseDir);
+
 bool
 FileUtilsCopyFile
 (string InFromFilename, string InToFilename);
@@ -43,7 +47,7 @@ FilenameExtractSuffix
 
 FILE*
 FileUtilsOpen
-(string InFilename, string InFilePermissions);
+(string InBaseDir, string InFilename, string InFilePermissions);
 
 string
 FilenameExtractBase

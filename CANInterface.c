@@ -12,12 +12,23 @@
 #include <stdlib.h>
 #include <stdint.h>
 #include <stdbool.h>
+#ifdef NEED_NET_IF_H
 #include <net/if.h>
+#endif
+#ifdef NEED_SYS_IOCTL_H
 #include <sys/ioctl.h>
+#endif
+#ifdef NEED_LINUX_CAN_H
 #include <linux/can.h>
+#endif
+#ifdef NEED_LINUX_CAN_RAW_H
 #include <linux/can/raw.h>
+#endif
+
 #include <fcntl.h>
+#ifdef NEED_TERMIO_H
 #include <termio.h>
+#endif
 #include <unistd.h>
 
 /******************************************************************************!
@@ -170,15 +181,15 @@ CANInterfaceReadTimeout
         memcpy(InData, &(frame.data), sizeof(frame.data));
         *InDataLength = frame.can_dlc;
         if ( CANMonitorInput ) {
- 	  int protocol, srcaddress, destaddress, messagetype, errortype, valuetype;
- 	  ufloatbit32_t value;
- 	  frameid id;
-	  id.data32 = *InID;
+          int protocol, srcaddress, destaddress, messagetype, errortype, valuetype;
+          ufloatbit32_t value;
+          frameid id;
+          id.data32 = *InID;
           dataframe data;
-	  data.data64 = ByteManageSwap8(*InData);
-   	  GetRequestBreakdown(id, data, &protocol, &srcaddress, &destaddress, &messagetype, &errortype, 
+          data.data64 = ByteManageSwap8(*InData);
+          GetRequestBreakdown(id, data, &protocol, &srcaddress, &destaddress, &messagetype, &errortype, 
                               &valuetype, &value);
-	  DeviceDef* devicedef = FindDeviceDefByProtocol(mainDeviceDefs, protocol);
+          DeviceDef* devicedef = FindDeviceDefByProtocol(mainDeviceDefs, protocol);
           DeviceMessageDef* messagedef = FindMessageDefByMessageType(devicedef->messageDefs, messagetype);
  
           printf("%08X %016llX %d %6s %3d %02x : %s\n", *InID, data.data64, *InDataLength, devicedef->name, destaddress, messagetype, messagedef->messageName);

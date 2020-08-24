@@ -1,4 +1,4 @@
-all				:
+all				: bundle
 				  ./bundle
 
 TARGET				= bundle

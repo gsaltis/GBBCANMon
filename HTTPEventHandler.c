@@ -14,6 +14,7 @@ HTTPEventHandler
   string								base;
   string								filename;
 
+  // Get the base part of the download file name
   fileNameBase = FilenameExtractBase(CANInterfaceOutputFilename);
 
   if (ev == MG_EV_HTTP_REQUEST) {
@@ -21,18 +22,23 @@ HTTPEventHandler
 
    	s = (string)message->uri.p;
 
+	// Extract the first request line - the URL
     lines = StringSplit(s, "\n", true);
     if ( lines->stringCount > 0 ) {
+
+	  // Get the URL Line so we can check for a archived version of the data file
+ 	  // we need to tar up before so the mongoose engine can send it.  If it's not
+	  // an archived version but simply the data file we just drop through and 
+	  // let the mongoose engine handle since it's already been tar'd up
 	  elements = StringSplit(lines->strings[0], " ", true);
 	  urlParts = StringSplit(elements->strings[0], "/", true);
 	  if ( urlParts->stringCount > 0 ) {
 		base = FilenameExtractBase(urlParts->strings[0]);
 		if ( base ) {
-		  if ( StringEqual(base, fileNameBase) ) {
-		    FreeMemory(base);
-  		  } else if ( StringBeginsWith(base, fileNameBase) ) {
+		  // Check if this is a archived version file (begins with the filename but is not the filename)
+  		  if ( StringBeginsWith(base, fileNameBase) && !StringEqual(base, fileNameBase) ) {
+			// It's an archived version of the file so we append a suffix and tar it
 			filename = StringConcat(base, ".txt");
-	        printf("%s %d : %s\n", __FILE__, __LINE__, filename);
 			FileUtilsTarFile(filename, HTTPWWWBaseDir);
 		 	FreeMemory(filename);	
 		  }

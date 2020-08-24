@@ -2,17 +2,13 @@ CC			= gcc
 LINK			= gcc
 
 CC_FLAGS		= -g -c -Wall -Ilib/include  -DDEVELOPMENT
-TARGET_FLAGS	= -DNEED_NET_IF_H -DNEED_SYS_IOCTL_H -DNEED_LINUX_CAN_H -DNEED_LINUX_CAN_RAW_H -DNNED_TERMIO_H -DNEED_FILE_UTILS_TAR_FILE_C
+TARGET_FLAGS		= -DNEED_NET_IF_H -DNEED_SYS_IOCTL_H -DNEED_LINUX_CAN_H -DNEED_LINUX_CAN_RAW_H -DNNED_TERMIO_H -DNEED_FILE_UTILS_TAR_FILE_C
 
 LINK_FLAGS		= -g -Llib
 
 TARGET			= canmon
 
-TARGET2			= canmoncl
-
-TARGET3			= canmonview
-
-ALLTARGETS		= $(TARGET) $(TARGET2) $(TARGET3)
+ALLTARGETS		= $(TARGET)
 
 OBJS			= $(sort 				\
 			    AllCanDefinitions.o			\
@@ -46,57 +42,18 @@ OBJS			= $(sort 				\
 			    linenoise.o				\
 			   )
 
-OBJS2			= $(sort				\
-			    canmoncl.o				\
-			    CANMonLog.o				\
-			    String.o				\
-			    MemoryManager.o			\
-			    FileUtils.o				\
-			    ThreadSafePrint.o			\
-			    AllCanDefinitions.o			\
-	                    DirManagement.o             	\
-			   )
+LIBS			= -ldl -ljson -lmongoose -lm -lpthread -lsqlite3 -lrt
 
-OBJS3			= $(sort				\
-			    canmonview.o			\
-		    	    BytesManage.o			\
-			    CanMsg.o				\
-			    Devices.o				\
-			    DefFileToken.o			\
-			    DeviceDef.o                         \
-			    DeviceMessageDef.o			\
-			    DeviceRegDef.o			\
-			    CANMonLog.o				\
-			    String.o				\
-			    MemoryManager.o			\
-			    FileUtils.o				\
-			    ThreadSafePrint.o			\
-			    AllCanDefinitions.o			\
-			    CanMsg.o				\
-			    NumericTypes.o			\
-			    DirManagement.o			\
-			    json.o				\
-			    jsoncanif.o				\
-			    JSONIF.o				\
-	 		   )
+.PHONY			: all clean veryclean locallibs
 
-LIBS			= -ljson -lmongoose -lm -lpthread -lsqlite3 -lrt
+all			: locallibs $(ALLTARGETS)
 
-.PHONY			: all clean veryclean
-
-all			: $(ALLTARGETS)
+locallibs		: 
+			  @cd lib && make
 
 $(TARGET)		: $(OBJS)
 			  @echo [LD] $(TARGET)
 			  @$(LINK) $(LINK_FLAGS) -o $(TARGET) $(OBJS) $(LIBS)
-
-$(TARGET2)		: $(OBJS2)
-			  @echo [LD] $(TARGET2)
-			  @$(LINK) $(LINK_FLAGS) -o $(TARGET2) $(OBJS2)
-
-$(TARGET3)		: $(OBJS3)
-			  @echo [LD] $(TARGET3)
-			  @$(LINK) $(LINK_FLAGS) -o $(TARGET3) $(OBJS3)
 
 %.o			: %.c
 			  @echo [CC] $@
@@ -113,4 +70,5 @@ junkclean		:
 
 clean			: 
 			  -rm -rf $(wildcard *.o $(ALLTARGETS))
+			  cd lib && make clean
 

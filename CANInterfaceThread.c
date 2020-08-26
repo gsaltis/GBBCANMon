@@ -15,6 +15,7 @@
 #include <string.h>
 #include <pthread.h>
 #include <sqlite3.h>
+#include <time.h>
 
 /*****************************************************************************!
  * Local Headers
@@ -113,8 +114,10 @@ CANInterfaceThread
         dataframe df;
         df.data64 = ByteManageSwap8(data);
         if ( CANInterfaceMonitor ) {
-    	  HandleRequest(MainCANInterface, fid, df, time(NULL));
-          CANInterfaceMessagesCount++;
+	  if ( !CANInterfaceThreadThrottleFile() ) {
+    	    HandleRequest(MainCANInterface, fid, df, time(NULL));
+            CANInterfaceMessagesCount++;
+          }
         }
 	break;
       }
@@ -136,7 +139,7 @@ HandleRequest
 (CANInterface* InInterface, frameid InID, dataframe InData, time_t InTime)
 {
   if ( CANInterfaceMonitor && CANInterfaceOutputFile ) {
-    fprintf(CANInterfaceOutputFile, "%08x %016llX %08lx\n", InID.data32, InData.data64, InTime);
+    MainLimitSizeRuntime += fprintf(CANInterfaceOutputFile, "%08x %016llX %08lx\n", InID.data32, InData.data64, InTime);
     fflush(CANInterfaceOutputFile);
   }
 }
@@ -171,7 +174,7 @@ CANInterfaceFileOpen
   string				installDir;
 
   installDir = DirManagementGetInstallDir();
-  do 
+  do
   {
     if ( CANInterfaceOutputFile ) {
       if ( InAppendFile ) {
@@ -210,3 +213,4 @@ CANInterfaceFileClose
 #include "CANInterfaceThreadManageArchives.c"
 #include "CANInterfaceThreadGetArchivedFilenames.c"
 #include "CANInterfaceThreadCreateArchive.c"
+#include "CANInterfaceThreadThrottleFile.c"

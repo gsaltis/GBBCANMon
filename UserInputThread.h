@@ -1,7 +1,7 @@
 /*****************************************************************************
  * FILE NAME    : UserInputThread.h
- * DATE         : 
- * PROJECT      : 
+ * DATE         :
+ * PROJECT      :
  * COPYRIGHT    : Copyright (C) 2020 by Vertiv Company
  *****************************************************************************/
 #ifndef _userinputthread_h_

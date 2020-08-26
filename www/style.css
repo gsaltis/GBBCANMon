@@ -187,6 +187,7 @@ div.GeneralButton
   border-radius				: 4px;
   cursor				: pointer;
   text-align				: center;
+  height					: 17px;
 }
 
 div.GeneralButton:hover
@@ -209,6 +210,35 @@ div.GeneralData
   overflow-x				: hidden;
 }
 
+div.GeneralData2
+{
+  position				: absolute;
+  left					: calc(var(--GeneralLabelWidth) + 140px);
+  right					: 10px;
+  height				: var(--DataLineHeight);
+  font-family				: Segoe UI;
+  font-size				: 10pt;
+  font-weight				: 500;
+  text-align				: left;
+  color					: var(--DataColor);
+  overflow-x				: hidden;
+}
+
+div.GeneralData3
+{
+  position				: absolute;
+  left					: calc(var(--GeneralLabelWidth) + 227px);
+  right					: 10px;
+  height				: var(--DataLineHeight);
+  font-family				: Segoe UI;
+  font-size				: 10pt;
+  font-weight				: 500;
+  text-align				: left;
+  color					: var(--DataColor);
+  overflow-x				: hidden;
+}
+
+
 .DataLine1
 {
   top					: 10px;
@@ -216,50 +246,64 @@ div.GeneralData
 
 .DataLine2
 {
-  top					: 30px;
+  top					: 35px;
 }
 
 .DataLine3
 {
-  top					: 50px;
+  top					: 60px;
 }
 
 .DataLine4
 {
-  top					: 70px;
+  top					: 85px;
 }
 
 .DataLine5
 {
-  top					: 90px;
+  top					: 110px;
 }
 
 .DataLine6
 {
-  top					: 110px;
+  top					: 135px;
 }
 
 .DataLine7
 {
-  top					: 130px;
+  top					: 160px;
 }
 
 .DataLine8
 {
-  top					: 150px;
+  top					: 185px;
 }
 
 .DataLine9
 {
-  top					: 170px;
+  top					: 210px;
 }
 
 .DataLine10
 {
-  top					: 190px;
+  top					: 235px;
 }
 
+.DataLine11
+{
+  top					: 260px;
+}
 
+select
+{
+  background			: #00000000;
+  width					: 100px;
+}
+
+input
+{
+  background			: #00000000;
+}
 
 *
 {

@@ -12,6 +12,8 @@ WebSocketIFHandleResponsePacket(InPacket)
     WebSocketIFHandleResponseMonitorInfo(InPacket.body.monitorinfo);
   } else if ( InPacket.type == "respreparedownloadfile"  ) {
     WebSocketIFHandleResponsePrepareDownloadFile(InPacket.body);
+  } else if ( InPacket.type == "resgetlimits" ) {
+	WebSocketIFHandleGetLimitsResponse(InPacket.body);
   }
 }
 

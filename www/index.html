@@ -9,37 +9,77 @@
   <body onload="MainInitialize();">
     <div class="MainArea">
       <div class="DataArea">
-       <div class="GeneralLabel DataLine1">Message Count :</div>
-       <div id="MessageCount" class="GeneralData DataLine1"></div>
-       <div class="GeneralLabel DataLine2">Start Time : </div>
-       <div id="MonitorStartTime" class="GeneralData DataLine2"></div>
-       <div class="GeneralLabel GeneralButton DataLine3" onclick="CBMonitorToggle()">Monitor CAN Bus :</div>
-       <div id="MonitorStatus" class="GeneralData DataLine3"></div>
-       <div class="GeneralLabel DataLine4">Monitor CAN File Name :</div>
-       <div id="MonitorFilename" class="GeneralData DataLine4"></div>
-       <div class="GeneralLabel GeneralButton DataLine5"  onclick="CBPrepareDownloadFilename()">Prepare Download File</div>
-       <div id="DownloadFilename" class="GeneralData DataLine5"><a href=""></a></div>
-       <div id="DownloadFilename1" class="GeneralData DataLine6"><a href=""></a></div>
-       <div id="DownloadFilename2" class="GeneralData DataLine7"><a href=""></a></div>
-       <div id="DownloadFilename3" class="GeneralData DataLine8"><a href=""></a></div>
-       <div id="DownloadFilename4" class="GeneralData DataLine9"><a href=""></a></div>
-       <div id="DownloadFilename5" class="GeneralData DataLine10"><a href=""></a></div>
+        <div class="GeneralLabel DataLine1">Message Count :</div>
+        <div id="MessageCount" class="GeneralData DataLine1"></div>
+        <div class="GeneralLabel DataLine2">Start Time : </div>
+        <div id="MonitorStartTime" class="GeneralData DataLine2"></div>
+        <div class="GeneralLabel GeneralButton DataLine3" onclick="CBMonitorToggle()">Monitor CAN Bus</div>
+        <div id="MonitorStatus" class="GeneralData DataLine3"></div>
+        <div class="GeneralLabel DataLine4">Monitor CAN File Name :</div>
+        <div id="MonitorFilename" class="GeneralData DataLine4"></div>
+  	    <div class="GeneralLabel DataLine5">Limit Data File : </div>
+        <div class="GeneralData DataLine5"> 
+ 	      <select id="LimitTypeSelect" onfocusout="CBLimitTypeSelect(event)" onfocus="CBLimitTypeSelect(event)" onchange="CBLimitTypeChange()">
+            <option value="none">None</option>
+	        <option value="days">Days</option>
+	        <option value="hours">Hours</option>
+	        <option value="size">Size</option>
+  	        <option value="count">Messages</option>
+	      </select>
+        </div>
+        <div class="GeneralData2 DataLine5" style="visibility:hidden">
+          <select id="LimitTypeDays" style="width:50px" onchange="CBLimitDaysChange()">
+		    <option value="1">1</option>
+		    <option value="2">2</option>
+		    <option value="3">3</option>
+		    <option value="4">4</option>
+		    <option value="5">5</option>
+		    <option value="6">6</option>
+		    <option value="7">7</option>
+		  </select>
+	    </div> 
+	    <div id="LimitTypeDaysLabel" class="GeneralData3 DataLine5" style="visibility:hidden">Days</div>
+
+        <div class="" style="visibility:hidden">
+          <select id="LimitTypeHours" style="width:70px">
+		  </select>
+	    </div> 
+	    <div id="LimitTypeHoursLabel" class="GeneralData3 DataLine5" style="visibility:hidden">Hours</div>
+
+        <div class="" style="visibility:hidden">
+          <select id="LimitTypeSize" style="width:70px">
+		  </select>
+	    </div> 
+	    <div id="LimitTypeSizeLabel" class="GeneralData3 DataLine5" style="visibility:hidden">MBytes</div>
+
+        <div class="">
+		  <input id="LimitTypeCount" type="text" value="0" placeholder="--None--" style="width:70px; height:14px; visibility:hidden"></input>
+	    </div> 
+	    <div id="LimitTypeCountLabel" class="GeneralData3 DataLine5" style="visibility:hidden">Messages</div>
+        <div id="SetLimitButton"      class="GeneralLabel GeneralButton DataLine5" style="left : 460px; width:40px; visibility:hidden" onclick="CBSetLimit()">Set</div>
+        <div id="ClearLimitButton"    class="GeneralLabel GeneralButton DataLine5" style="left : 510px; width:60px; visibility:hidden" onclick="CBClearLimits()">Clear</div>
+
+        <div class="GeneralLabel GeneralButton DataLine6"  onclick="CBPrepareDownloadFilename()">Prepare Download File</div>
+        <div id="DownloadFilename" class="GeneralData DataLine6"><a href=""></a></div>
+        <div id="DownloadFilename1" class="GeneralData DataLine7"><a href=""></a></div>
+        <div id="DownloadFilename2" class="GeneralData DataLine8"><a href=""></a></div>
+        <div id="DownloadFilename3" class="GeneralData DataLine9"><a href=""></a></div>
+        <div id="DownloadFilename4" class="GeneralData DataLine10"><a href=""></a></div>
+        <div id="DownloadFilename5" class="GeneralData DataLine11"><a href=""></a></div>
       </div>
     </div>
     <div class="LogoArea">
       <div class="LogoMain">
         <div class="LogoVBottom"></div>
         <div class="LogoV"></div>
- 	<div class="LogoVLeft"></div>
- 	<div class="LogoVRight"></div>
+        <div class="LogoVLeft"></div>
+ 	    <div class="LogoVRight"></div>
         <div class="LogoVMiddle"></div>
       </div>
       <div class="LogoVBottom2"></div>
     </div>
-    <div class="TopArea">
-    </div>
-    <div class="LeftArea">
-    </div> 
+    <div class="TopArea"> </div>
+    <div class="LeftArea"> </div> 
     <div id="MessageLine" class="MessageLine"></div>;
   </body>
 </html>

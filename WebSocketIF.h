@@ -42,6 +42,10 @@ WebSocketServerThreadID;
  * Exported Functions
  *****************************************************************************/
 void
+HandleGetLimitsRequest
+(struct mg_connection* InConnection, json_value* InPacket);
+
+void
 WebSocketServerInit();
 
 void

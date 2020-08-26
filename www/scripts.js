@@ -109,6 +109,15 @@ MainDisplayMessageColor
   messageArea.style.color = InColor;
   MainDisplayTimedMessage(InMessage, MAIN_DEFAULT_MESSAGE_TIME);
 }
+// FILE: ./Files/Main/MainHideLimitButtons.js
+/*****************************************************************************!
+ * Function : MainHideLimitButtons
+ *****************************************************************************/
+function MainHideLimitButtons()
+{
+  document.getElementById("SetLimitButton").style.visibility = "hidden";
+  document.getElementById("ClearLimitButton").style.visibility = "hidden";
+}
 // FILE: ./Files/Main/MainDisplayBlocker.js
 /*****************************************************************************!
  * Function : MainDisplayBlocker
@@ -119,6 +128,35 @@ MainDisplayBlocker()
   document.getElementById("MainBlocker").style.visibility = "visible";
 }
 
+// FILE: ./Files/Main/MainHideTypeElements.js
+/*****************************************************************************!
+ * Function : MainHideTypeElements
+ *****************************************************************************/
+function MainHideTypeElements()
+{
+  var                                   elementNameBases = [
+    "Days", "Hours", "Size", "Count"
+  ]
+
+  // Hide all the inputs and labels
+  for (i = 0; i < elementNameBases.length; i++) {
+    d1 = document.getElementById("LimitType" + elementNameBases[i]);
+    d2 =  document.getElementById("LimitType" + elementNameBases[i] + "Label");
+    d1.style.visibility = "hidden";
+    d2.style.visibility = "hidden";
+    d1.parentElement.className = ""
+  }
+}
+
+// FILE: ./Files/Main/MainShowLimitButtons.js
+/*****************************************************************************!
+ * Function : MainShowLimitButtons
+ *****************************************************************************/
+function MainShowLimitButtons()
+{
+  document.getElementById("SetLimitButton").style.visibility = "visible";
+  document.getElementById("ClearLimitButton").style.visibility = "visible";
+}
 // FILE: ./Files/Main/Main.js
 /*****************************************************************************
  * FILE NAME    : script.js
@@ -138,7 +176,11 @@ var MainFuseBreakerTypes		= null;
 var MainBays				= [];
 var MainDeviceDefs			= null;
 var MainMessageTimerID			= null;
-
+var MainLimitType			= "none";
+var MainLimitHours			= 0;
+var MainLimitDays			= 0;
+var MainLimitCount			= 0;
+var MainLimitSize			= 0;
 // FILE: ./Files/Main/MainInitialize.js
 /*****************************************************************************!
  * Function : MainInitialize
@@ -146,7 +188,37 @@ var MainMessageTimerID			= null;
 function
 MainInitialize()
 {
+  var                                   d, i;
+  var                                   option;
+
   WebSocketIFInitialize();
+
+  d = document.getElementById("LimitTypeHours");
+
+  for ( i = 1 ; i <= 96; i++ ) {
+    option = document.createElement("option");
+    option.value = i;
+    option.innerHTML = i;
+    d.appendChild(option);
+  }
+
+  d = document.getElementById("LimitTypeSize");
+  for ( i = 10; i <= 500; i += 10 ) {
+	option = document.createElement("option");
+	option.value = i;
+ 	option.innerHTML = i;
+	d.appendChild(option)
+  }
+}
+
+// FILE: ./Files/CallBacks/CBClearLimit.js
+/*****************************************************************************!
+ * Function : CBClearLimits
+ *****************************************************************************/
+function CBClearLimits()
+{
+  MainHideLimitButtons();
+  MainHideTypeElements();
 }
 
 // FILE: ./Files/CallBacks/CBMonitorToggle.js
@@ -158,6 +230,72 @@ CBMonitorToggle
 ()
 {
   WebSocketIFSendSimpleRequest("monitortoggle");
+}
+
+// FILE: ./Files/CallBacks/CBLimitTypeChange.js
+/*****************************************************************************!
+ * Function : CBLimitTypeChange
+ *****************************************************************************/
+function
+CBLimitTypeChange()
+{
+  var                                   selector;
+  var                                   value;
+  var                                   i;
+
+  selector = document.getElementById("LimitTypeSelect");
+  value = selector.value;
+  console.log("Change : " + value);
+
+  MainHideTypeElements();  
+
+  // Show input and label for the selected one
+  if ( value == "days" ) {
+	d1 = document.getElementById("LimitTypeDays");
+	d2 = document.getElementById("LimitTypeDaysLabel");
+  } else if ( value == "hours" ) {
+	d1 = document.getElementById("LimitTypeHours");
+	d2 = document.getElementById("LimitTypeHoursLabel");
+  } else if ( value == "size" ) {
+	d1 = document.getElementById("LimitTypeSize");
+	d2 = document.getElementById("LimitTypeSizeLabel");
+  } else if ( value == "count" ) {
+	d1 = document.getElementById("LimitTypeCount");
+	d2 = document.getElementById("LimitTypeCountLabel");
+  } else {
+	return;
+  }
+
+  d1.style.visibility = "visible";
+  d2.style.visibility = "visible";
+  d1.parentElement.className = "GeneralData2 DataLine5";
+  MainShowLimitButtons();
+}
+
+// FILE: ./Files/CallBacks/CBLimitDaysChange.js
+/*****************************************************************************!
+ * Function : CBLimitDaysChange
+ *****************************************************************************/
+function CBLimitDaysChange()
+{
+
+}
+// FILE: ./Files/CallBacks/CBLimitTypeSelect.js
+/*****************************************************************************!
+ * Function : CBLimitTypeSelect
+ *****************************************************************************/
+function CBLimitTypeSelect(event)
+{
+  CBLimitTypeChange();
+}
+// FILE: ./Files/CallBacks/CBSetLimit.js
+/*****************************************************************************!
+ * Function : CBSetLimit
+ *****************************************************************************/
+function CBSetLimit()
+{
+  MainHideLimitButtons();
+  MainHideTypeElements();
 }
 
 // FILE: ./Files/CallBacks/CBPrepareOutputFilename.js
@@ -209,7 +347,7 @@ WebSocketIFInitialize()
   WebSocketIFConnection = new WebSocket(hostAddress);
 
   WebSocketIFConnection.onopen = function () {
-    WebSocketIFRequestMonitorInfo();
+    WebSocketIFSendSimpleRequest("getlimits"); 
     MainDisplayMessage("Connected");
   };
 
@@ -397,10 +535,7 @@ WebSocketIFHandleInputPacket(InData)
   var					requestpacket;
 
   requestpacket = JSON.parse(InData);
-  console.log(requestpacket);
-
   if ( requestpacket.packettype == "response" ) {
-    console.log(requestpacket);
     WebSocketIFHandleResponsePacket(requestpacket);
   }
 }
@@ -494,6 +629,8 @@ WebSocketIFHandleResponsePacket(InPacket)
     WebSocketIFHandleResponseMonitorInfo(InPacket.body.monitorinfo);
   } else if ( InPacket.type == "respreparedownloadfile"  ) {
     WebSocketIFHandleResponsePrepareDownloadFile(InPacket.body);
+  } else if ( InPacket.type == "resgetlimits" ) {
+	WebSocketIFHandleGetLimitsResponse(InPacket.body);
   }
 }
 
@@ -617,6 +754,32 @@ WebSocketIFRequestMonitorInfo
 ()
 {
   WebSocketIFSendSimpleRequest("getmonitorinfo");
+}
+
+// FILE: ./Files/WebSocketIF/WebSocketIFHandleGetLimitsResponse.js
+/*****************************************************************************!
+ * Function : WebSocketIFHandleGetLimitsResponse
+ *****************************************************************************/
+function WebSocketIFHandleGetLimitsResponse(InPacket)
+{
+  var                                   d;
+  
+  MainLimitType = InPacket.limittype;
+  d = document.getElementById("LimitTypeSelect").value = MainLimitType;
+  if ( MainLimitType == "hours" ) {
+    MainLimitHours = InPacket.hours;
+    document.getElementById("LimitTypeHours").value = MainLimitHours;
+  } else if ( MainLimitType == "days" ) {
+    MainLimitDays = InPacket.days;
+    document.getElementById("LimitTypeDays").value = MainLimitDays;
+  } else if ( MainLimitType == "size" ) {
+	MainLimitSize = InPacket.count;
+    document.getElementById("LimitTypesSize").value = MainLimitSize;
+  } else if ( MainLimitType == "count" ) {
+	MainLimitCount = InPacket.count;
+    document.getElementById("LimitTypeCount").value = MainLimitCount;
+  }
+  WebSocketIFRequestMonitorInfo();
 }
 
 // FILE: ./Files/WebSocketIF/WebSocketIFSendGeneralRequest.js

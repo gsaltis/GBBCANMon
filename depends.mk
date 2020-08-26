@@ -19,11 +19,12 @@ CANInterfaceThread.o: CANInterfaceThread.c CANInterface.h String.h \
  BayType.h WebConnection.h CanMsg.h BytesManage.h CANMonLog.h FileUtils.h \
  DirManagement.h MemoryManager.h CANInterfaceThreadManageArchives.c \
  CANInterfaceThreadGetArchivedFilenames.c \
- CANInterfaceThreadCreateArchive.c
+ CANInterfaceThreadCreateArchive.c CANInterfaceThreadThrottleFile.c
 CANInterfaceThreadCreateArchive.o: CANInterfaceThreadCreateArchive.c
 CANInterfaceThreadGetArchivedFilenames.o: \
  CANInterfaceThreadGetArchivedFilenames.c
 CANInterfaceThreadManageArchives.o: CANInterfaceThreadManageArchives.c
+CANInterfaceThreadThrottleFile.o: CANInterfaceThreadThrottleFile.c
 CANMonLog.o: CANMonLog.c String.h FileUtils.h MemoryManager.h CANMonLog.h \
  CANMonLogInit.c CANMonLogWrite.c CANMonLogSetFilename.c
 CANMonLogInit.o: CANMonLogInit.c
@@ -54,7 +55,7 @@ DirManagementGetInstallDir.o: DirManagementGetInstallDir.c
 DirManagementSetInstallDir.o: DirManagementSetInstallDir.c
 FileUtils.o: FileUtils.c String.h MemoryManager.h DirManagement.h \
  CANMonLog.h ascii.h FileUtilsOpen.c FilenameExtractSuffix.c \
- FileUtilsCopyFile.c FileUtilsTarFile.c
+ FileUtilsCopyFile.c
 FileUtilsCopyFile.o: FileUtilsCopyFile.c
 FileUtilsOpen.o: FileUtilsOpen.c
 FileUtilsTarFile.o: FileUtilsTarFile.c
@@ -72,12 +73,17 @@ HTTPServerThread.o: HTTPServerThread.c HTTPServerThread.h String.h main.h \
  DeviceMessageDef.h FuseBreakerType.h PanelType.h BayType.h \
  WebConnection.h CANInterface.h MemoryManager.h DirManagement.h \
  CANMonLog.h FileUtils.h CANInterfaceThread.h HTTPEventHandler.c
+HandleCommandHelp.o: HandleCommandHelp.c
+HandleCommandLimit.o: HandleCommandLimit.c
+HandleCommandLimitSet.o: HandleCommandLimitSet.c
 HandleCommandLog.o: HandleCommandLog.c
+HandleGetLimitsRequest.o: HandleGetLimitsRequest.c
 HandlePrepareDownloadRequest.o: HandlePrepareDownloadRequest.c
 JSONIF.o: JSONIF.c String.h MemoryManager.h JSONIF.h
 MainDisplayHelp.o: MainDisplayHelp.c
 MainExit.o: MainExit.c
 MainInitialize.o: MainInitialize.c
+MainLimitSet.o: MainLimitSet.c
 MainProcessCommandLine.o: MainProcessCommandLine.c
 MainRemoveTarFiles.o: MainRemoveTarFiles.c
 MemoryManager.o: MemoryManager.c MemoryManager.h ThreadSafePrint.h
@@ -98,7 +104,8 @@ UserInputThread.o: UserInputThread.c UserInputThread.h linenoise.h \
  DeviceDef.h DeviceDefines.h DeviceRegDef.h NumericTypes.h JSONIF.h \
  DeviceMessageDef.h FuseBreakerType.h PanelType.h BayType.h \
  WebConnection.h CANInterface.h FileUtils.h CANMonLog.h \
- HandleCommandLog.c
+ HandleCommandLog.c HandleCommandLimit.c HandleCommandLimitSet.c \
+ HandleCommandHelp.c
 WebConnection.o: WebConnection.c WebConnection.h MemoryManager.h \
  ThreadSafePrint.h String.h
 WebSocketIF.o: WebSocketIF.c WebSocketIF.h FuseBreaker.h String.h \
@@ -108,13 +115,13 @@ WebSocketIF.o: WebSocketIF.c WebSocketIF.h FuseBreaker.h String.h \
  MemoryManager.h FileUtils.h Devices.h ThreadSafePrint.h \
  CANInterfaceThread.h CANMonLog.h HTTPServerThread.h DirManagement.h \
  WebSocketIFSetPort.c WebSocketIFCreateInfoScript.c \
- HandlePrepareDownloadRequest.c
+ HandlePrepareDownloadRequest.c HandleGetLimitsRequest.c
 WebSocketIFCreateInfoScript.o: WebSocketIFCreateInfoScript.c
 WebSocketIFSetPort.o: WebSocketIFSetPort.c
 canmoncl.o: canmoncl.c
-canmonview.o: canmonview.c String.h CanMsg.h DeviceDef.h DeviceDefines.h \
- DeviceRegDef.h NumericTypes.h JSONIF.h DeviceMessageDef.h \
- MemoryManager.h ANSIColors.h FileUtils.h
+canmonview.o: canmonview.c String.h MemoryManager.h ascii.h FileUtils.h \
+ NumericTypes.h CanMsg.h DeviceDef.h DeviceDefines.h DeviceRegDef.h \
+ JSONIF.h DeviceMessageDef.h
 jsoncanif.o: jsoncanif.c jsoncanif.h CanMsg.h DeviceDef.h DeviceDefines.h \
  DeviceRegDef.h NumericTypes.h JSONIF.h String.h DeviceMessageDef.h \
  AllCanDefinitions.h ThreadSafePrint.h Devices.h CANInterface.h \
@@ -128,4 +135,4 @@ main.o: main.c CANInterface.h String.h DeviceDef.h DeviceDefines.h \
  PanelType.h BayType.h main.h FuseBreakerType.h WebConnection.h \
  PanelConnection.h DirManagement.h CANMonLog.h FileUtils.h \
  MainProcessCommandLine.c MainDisplayHelp.c MainInitialize.c MainExit.c \
- MainRemoveTarFiles.c
+ MainRemoveTarFiles.c MainLimitSet.c

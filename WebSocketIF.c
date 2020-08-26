@@ -54,7 +54,7 @@ pthread_t
 WebSocketServerThreadID;
 
 string
-s_websocket_port = NULL; 
+s_websocket_port = NULL;
 
 string
 WebSocketIFAddress = NULL;
@@ -137,7 +137,7 @@ WebSocketServerThread
   mg_set_protocol_http_websocket(nc);
 
   for (;;) {
-    mg_mgr_poll(&mgr, 20);            
+    mg_mgr_poll(&mgr, 20);
   }
 }
 
@@ -187,9 +187,9 @@ HandleWebSocketRequest
   if ( StringEqual("request", packettype) ) {
     HandlePacketRequest(nc, jsonDoc);
   } else if ( StringEqual("response", packettype) ) {
-    
+ 
   } else if ( StringEqual("push", packettype) ) {
-    
+ 
   }
   FreeMemory(packettype);
   json_value_free(jsonDoc);
@@ -220,9 +220,11 @@ HandlePacketRequest
     HandleToggleMonitorRequest(InConnection, InPacket);
   } else if ( StringEqual("getbays", requesttype) ){
     HandleGetBaysRequest(InConnection, InPacket);
+  } else if ( StringEqual("getlimits", requesttype) ) {
+	HandleGetLimitsRequest(InConnection, InPacket);
   }
  
-  FreeMemory(requesttype);  
+  FreeMemory(requesttype);
 }
 
 /*****************************************************************************!
@@ -269,7 +271,7 @@ HandleGetMonitorInfoRequest
   int					packetid;
   char					s2[32];
   struct tm*				t;
-  
+ 
   packetid = JSONIFGetInt(InPacket, "packetid");
   s = StringCopy("{  \"monitorinfo\" :  { ");
   s = StringConcatTo(s, "    \"messagecount\" : ");
@@ -288,7 +290,7 @@ HandleGetMonitorInfoRequest
   s = StringConcatTo(s, "    \"monitorfilename\" : \"");
   s = StringConcatTo(s, CANInterfaceOutputFilename);
   s = StringConcatTo(s, "\"\n");
-  
+ 
   s = StringConcatTo(s, "  }\n");
   s = StringConcatTo(s, "}\n");
 
@@ -389,7 +391,7 @@ WebSocketFrameResponseSend
 }
 
 /*****************************************************************************!
- * Function : WebSocketFrameSend 
+ * Function : WebSocketFrameSend
  *****************************************************************************/
 void
 WebSocketFrameSend
@@ -403,3 +405,4 @@ WebSocketFrameSend
 #include "WebSocketIFCreateInfoScript.c"
 #include "HandlePrepareDownloadRequest.c"
 
+#include "HandleGetLimitsRequest.c"

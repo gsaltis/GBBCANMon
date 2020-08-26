@@ -44,9 +44,16 @@ extern
 string
 CANInterfaceOutputFilename;
 
+extern uint32_t
+CANInterfaceMessagesCount;
+
 /*****************************************************************************!
  * Exported Functions
  *****************************************************************************/
+bool
+CANInterfaceThreadThrottleFile
+();
+
 void
 CANInterfaceThreadCreateArchive
 (string InFilename);

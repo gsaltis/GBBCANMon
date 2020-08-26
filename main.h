@@ -31,6 +31,30 @@ extern bool MainVerbose;
 extern struct mg_serve_http_opts
 s_http_server_opts;
 
+extern int
+MainMinLimitCount;
+
+extern int
+MainMaxLimitCount;
+
+extern int
+MainMinLimitSize;
+
+extern int
+MainMaxLimitSize;
+
+extern int
+MainMinLimitHours;
+
+extern int
+MainMaxLimitHours;
+
+extern int
+MainMinLimitDays;
+
+extern int
+MainMaxLimitDays;
+
 extern FuseBreakerType*
 MainFuseBreakerTypes;
 
@@ -55,5 +79,39 @@ MainCANInterface;
 extern
 time_t
 MainStartTime;
+
+extern string 
+MainLimitType;
+
+extern int
+MainLimitHours;
+
+extern int
+MainLimitSize;
+
+extern int
+MainLimitCount;
+
+extern int
+MainLimitDays;
+
+extern int
+MainLimitDaysRuntime;
+
+extern int
+MainLimitHoursRuntime;
+
+extern int
+MainLimitCountRuntime;
+
+extern int
+MainLimitSizeRuntime;
+
+/*****************************************************************************!
+ * Exported Functions
+ *****************************************************************************/
+bool
+MainLimitSet
+(string InType, int InValue);
 
 #endif

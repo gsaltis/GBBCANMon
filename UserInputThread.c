@@ -1,7 +1,7 @@
 /*****************************************************************************
  * FILE NAME    : UserInputThread.c
  * DATE         : July 15 2020
- * PROJECT      : GBB CAN Monitor 
+ * PROJECT      : GBB CAN Monitor
  * COPYRIGHT    : Copyright (C) 2020 by Vertiv Company
  *****************************************************************************/
 
@@ -45,6 +45,14 @@ UserInputThreadID;
 void*
 UserInputThread
 (void* InArg);
+
+void
+HandleCommandLimitSet
+(StringList* InString);
+
+void
+HandleCommandLimit
+(StringList* InString);
 
 void
 HandleCommand
@@ -149,29 +157,10 @@ HandleCommand
     HandleCommandMonitor(InStrings);
   } else if ( StringEqualNoCase(command, "LOG") ) {
     HandleCommandLog(InStrings);
+  } else if ( StringEqualNoCase(command, "LIMIT") ) {
+	HandleCommandLimit(InStrings);
   }
 }
-
-/*****************************************************************************!
- * Function : HandleCommandHelp
- *****************************************************************************/
-void
-HandleCommandHelp
-(StringList* InStrings)
-{
-  fprintf(stdout, "COMMANDS\n");
-  fprintf(stdout, "%s  MESSAGE COUNT%s                       - Display number of messages seen\n", ColorBrightRed, ColorBrightGreen);
-  fprintf(stdout, "%s  TIME ELAPSED%s                        - Display the time application has been running\n", ColorBrightRed, ColorBrightGreen);
-  fprintf(stdout, "%s  MONITOR%s                             - Display the monitoring status\n", ColorBrightRed, ColorBrightGreen);
-  fprintf(stdout, "%s  MONITOR STOP%s                        - Stop the montitoring of CAN Data\n", ColorBrightRed, ColorBrightGreen);
-  fprintf(stdout, "%s          START%s                       - Start the montitoring of CAN Data\n", ColorBrightRed, ColorBrightGreen);
-  fprintf(stdout, "%s          CLEAR%s                       - Clear the collected of CAN Data\n", ColorBrightRed, ColorBrightGreen);
-  fprintf(stdout, "%s  HELP%s                                - Display this information\n", ColorBrightRed, ColorBrightGreen);
-  fprintf(stdout, "%s  EXIT | QUIT%s                         - Exit the application\n", ColorBrightRed, ColorBrightGreen);
-  fprintf(stdout, "%s  LOG%s                                 - Display the log\n", ColorBrightRed, ColorBrightGreen);
-  fprintf(stdout, "%s\n", ColorReset);
-}
-
 
 /*****************************************************************************!
  * Function : HandleCommandTime
@@ -262,7 +251,7 @@ HandleCommandMonitor
 {
   if ( InStrings == NULL ) {
     return;
-  } 
+  }
   if ( InStrings->stringCount == 1 ) {
     printf("Monitor CAN Traffic : %s\n", CANInterfaceMonitor ? "ON" : "FALSE");
     printf("Monitor Output file : %s\n", CANInterfaceOutputFilename);
@@ -277,7 +266,7 @@ HandleCommandMonitor
     HandleCommandMonitorStart(InStrings);
   } else if ( StringEqualNoCase(InStrings->strings[1], "CLEAR") ) {
     HandleCommandMonitorClear(InStrings);
-  } 
+  }
 }
 
 /*****************************************************************************!
@@ -345,4 +334,6 @@ CANInterfaceMonitorCountReset
 }
 
 #include "HandleCommandLog.c"
-
+#include "HandleCommandLimit.c"
+#include "HandleCommandLimitSet.c"
+#include "HandleCommandHelp.c"

@@ -42,6 +42,30 @@
 /*****************************************************************************!
  * Local Data
  *****************************************************************************/
+int
+MainMinLimitCount = 1;
+
+int
+MainMaxLimitCount = 10000000;
+
+int
+MainMinLimitSize = 1;
+
+int
+MainMaxLimitSize = 500000000;
+
+int
+MainMinLimitHours = 1;
+
+int
+MainMaxLimitHours = 96;
+
+int
+MainMinLimitDays = 1;
+
+int
+MainMaxLimitDays = 7;
+
 CANInterface*
 MainCANInterface = NULL;
 
@@ -75,6 +99,33 @@ MainProgramName = "canmon";
 void
 MainExit
 ();
+
+string
+MainLimitType;
+
+int
+MainLimitHours = 0;
+
+int
+MainLimitSize = 0;
+
+int
+MainLimitCount = 0;
+
+int
+MainLimitDays = 0;
+
+int
+MainLimitDaysRuntime = 0;
+
+int
+MainLimitHoursRuntime = 0;
+
+int
+MainLimitCountRuntime = 0;
+
+int
+MainLimitSizeRuntime = 0;
 
 /*****************************************************************************!
  * Local Functions
@@ -208,3 +259,4 @@ MainClearDatabase
 #include "MainInitialize.c"
 #include "MainExit.c"
 #include "MainRemoveTarFiles.c"
+#include "MainLimitSet.c"

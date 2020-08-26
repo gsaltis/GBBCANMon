@@ -16,4 +16,8 @@ var MainFuseBreakerTypes		= null;
 var MainBays				= [];
 var MainDeviceDefs			= null;
 var MainMessageTimerID			= null;
-
+var MainLimitType			= "none";
+var MainLimitHours			= 0;
+var MainLimitDays			= 0;
+var MainLimitCount			= 0;
+var MainLimitSize			= 0;

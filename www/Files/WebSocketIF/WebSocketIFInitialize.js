@@ -10,7 +10,7 @@ WebSocketIFInitialize()
   WebSocketIFConnection = new WebSocket(hostAddress);
 
   WebSocketIFConnection.onopen = function () {
-    WebSocketIFRequestMonitorInfo();
+    WebSocketIFSendSimpleRequest("getlimits"); 
     MainDisplayMessage("Connected");
   };
 

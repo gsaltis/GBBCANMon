@@ -132,7 +132,7 @@ main(int argc, char**argv)
   }
   stat(mainFileName, &statbuf);
   filesize = statbuf.st_size;
-
+  printf("%s read\n", mainFileName);
   
   printf(" File Size   : %11s Bytes\n", ConvertIntToCommaString(filesize, s32));
 
@@ -159,7 +159,8 @@ main(int argc, char**argv)
     }
   }
 
-  printf("Line Count     : %11s\n", ConvertIntToCommaString(lines, s32));
+  printf("Line Count   : %11s Lines   \n", ConvertIntToCommaString(lines, s32));
+  printf("%s created\n", filename);
   fclose(file);
   fclose(outFile);
   exit(EXIT_SUCCESS);
@@ -221,10 +222,10 @@ MainProcessLine
       sprintf(valueString, "%08x", data.data.Value);
     }
   } else {
-    sprintf(protocolNumberString, "%d", frame.msgbit.ProtNo);
+    sprintf(protocolNumberString, "%03X", frame.msgbit.ProtNo);
     protocolNumberP = protocolNumberString;
     regDefNameP = "";
-    sprintf(valueString, "%08x", data.data.Value);
+    sprintf(valueString, "%08X", data.data.Value);
   }
   if ( frame.msgbit.SrcAddr == 240 ) {
     sprintf(srcAddrString, " NCU");

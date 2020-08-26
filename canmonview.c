@@ -183,7 +183,6 @@ MainProcessLine
   char*                                 protocolNumberP;
   string                                t2;
   char*                                 regDefNameP;
-  char                                  regDefName[8];
   DeviceRegDef*                         deviceReg;
   char                                  valueString[16];
   ufloatbit32_t                         dataValue;
@@ -218,15 +217,13 @@ MainProcessLine
       regDefNameP = deviceReg->name;
       CANValueGetFromString(valueString, deviceReg, dataValue);
   } else {
-      sprintf(regDefName, "%04x", data.data.ValueType);
-      regDefNameP = regDefName;
+      regDefNameP = "";
       sprintf(valueString, "%08x", data.data.Value);
     }
   } else {
     sprintf(protocolNumberString, "%d", frame.msgbit.ProtNo);
     protocolNumberP = protocolNumberString;
-    sprintf(regDefName, "%04x", data.data.ValueType);
-    regDefNameP = regDefName;
+    regDefNameP = "";
     sprintf(valueString, "%08x", data.data.Value);
   }
   if ( frame.msgbit.SrcAddr == 240 ) {
@@ -243,7 +240,7 @@ MainProcessLine
     sprintf(dstAddrString, "  %02X", frame.msgbit.DstAddr);
   }
   fprintf(InFile, 
-          "%8d  %02d/%02d/%04d %02d:%02d:%02d  %*s %s %s  %d  %3X %3X %*s %s\n", 
+          "%8d  %02d/%02d/%04d %02d:%02d:%02d  %*s %s %s  %d  %3X %3X %*s[%04x] %s\n", 
           InLineNumber, 
           ts->tm_mon + 1,
           ts->tm_mday, 
@@ -260,6 +257,7 @@ MainProcessLine
           data.data.MsgType, 
           mainRegNameLen,
           regDefNameP,
+ 		  data.data.ValueType,
           valueString);
   StringListDestroy(elements);
 }

@@ -33,7 +33,7 @@ CBLimitTypeChange()
 
   d1.style.visibility = "visible";
   d2.style.visibility = "visible";
-  d1.parentElement.className = "GeneralData2 DataLine5";
+  d1.parentElement.className = "GeneralData2 DataLine6";
   MainShowLimitButtons();
 }
 

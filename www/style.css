@@ -74,7 +74,7 @@ div.DataArea
   left					: 10px;
   top					: 10px;
   width					: 600px;
-  height				: 300px;
+  height				: 350px;
   border				: var(--VertivBorder);
   border-radius				: 10px;
   background				: linear-gradient(#FFFFFF80, #FFFFFF10);
@@ -175,7 +175,7 @@ div.GeneralLabel
   height				: 20px;
   font-family				: Segoe UI;
   font-size				: 10pt;
-  font-weight				: bold;
+  font-weight				: bold !important;
   text-align				: right;
   left					: 10px;
 }
@@ -186,8 +186,8 @@ div.GeneralButton
   border				: black 1px solid;
   border-radius				: 4px;
   cursor				: pointer;
-  text-align				: center;
-  height					: 17px;
+  text-align				: center !important;
+  height					: 17px !important;
 }
 
 div.GeneralButton:hover
@@ -292,6 +292,11 @@ div.GeneralData3
 .DataLine11
 {
   top					: 260px;
+}
+
+.DataLine12
+{
+  top					: 285px;
 }
 
 select

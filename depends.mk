@@ -79,6 +79,7 @@ HandleCommandLimitSet.o: HandleCommandLimitSet.c
 HandleCommandLog.o: HandleCommandLog.c
 HandleGetLimitsRequest.o: HandleGetLimitsRequest.c
 HandlePrepareDownloadRequest.o: HandlePrepareDownloadRequest.c
+HandleSetDateRequest.o: HandleSetDateRequest.c
 JSONIF.o: JSONIF.c String.h MemoryManager.h JSONIF.h
 MainDisplayHelp.o: MainDisplayHelp.c
 MainExit.o: MainExit.c
@@ -115,7 +116,8 @@ WebSocketIF.o: WebSocketIF.c WebSocketIF.h FuseBreaker.h String.h \
  MemoryManager.h FileUtils.h Devices.h ThreadSafePrint.h \
  CANInterfaceThread.h CANMonLog.h HTTPServerThread.h DirManagement.h \
  WebSocketIFSetPort.c WebSocketIFCreateInfoScript.c \
- HandlePrepareDownloadRequest.c HandleGetLimitsRequest.c
+ HandlePrepareDownloadRequest.c HandleGetLimitsRequest.c \
+ HandleSetDateRequest.c
 WebSocketIFCreateInfoScript.o: WebSocketIFCreateInfoScript.c
 WebSocketIFSetPort.o: WebSocketIFSetPort.c
 canmoncl.o: canmoncl.c

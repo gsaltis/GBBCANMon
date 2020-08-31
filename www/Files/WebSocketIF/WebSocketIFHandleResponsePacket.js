@@ -14,6 +14,8 @@ WebSocketIFHandleResponsePacket(InPacket)
     WebSocketIFHandleResponsePrepareDownloadFile(InPacket.body);
   } else if ( InPacket.type == "resgetlimits" ) {
 	WebSocketIFHandleGetLimitsResponse(InPacket.body);
+  } else if ( InPacket.type == "ressettime" ) {
+	WebSocketIFHandleSetTimeResponse(InPacket.body);
   }
 }
 

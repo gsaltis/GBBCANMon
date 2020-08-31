@@ -1,3 +1,31 @@
+// FILE: ./Files/Main/MainDateTimeVerify.js
+/*****************************************************************************!
+ * Function : MainDateTimeVerify
+ *****************************************************************************/
+function
+MainDateTimeVerify(InString)
+{
+  var                                   a;
+  var					rvalue
+
+  a = InString.split(/\s+/);
+  if ( a.length > 2 ) {
+    return MainDateTimeInvalidFormat;
+  }
+   
+  rvalue = MainDateVerify(a[0]);
+  if ( rvalue != MainDateOK ) {
+    return rvalue;
+  }
+  if ( a.length == 2 ) {
+    rvalue = MainTimeVerify(a[1]);
+    if ( rvalue != MainTimeOK ) {
+      return rvalue;
+    }
+  }
+  return MainDateTimeOK;
+}
+
 // FILE: ./Files/Main/MainDisplayMessage.js
 /*****************************************************************************!
  * Function : MainDisplayMessage
@@ -78,6 +106,70 @@ MainResizeBody
     }
   }
 }
+// FILE: ./Files/Main/MainDateVerify.js
+/*****************************************************************************!
+ * Function : MainDateVerify
+ *****************************************************************************/
+function MainDateVerify
+(InDateString)
+{
+  var                                   a, day, month, year;
+  var                                   d;
+
+  d = new Date(Date.now());  
+
+  if ( null == InDateString ) {
+    return MainDateInvalidFormat;
+  }
+  a = InDateString.split('/');
+  if ( a.length != 2 && a.length != 3 ) {
+    return MainDateInvalidFormat;
+  }
+
+  year = d.getFullYear();
+  month = parseInt(a[0], 10);
+  day = parseInt(a[1], 10);
+  if ( a.length == 3 ) {
+    year = parseInt(a[2], 10);
+    if ( year < 100 ) {
+	  if ( year > 70 ) {
+		year += 1900;
+      } else {
+		year += 2000;
+	  }
+    } 
+  }
+  if ( month < 1 || month > 12 ) {
+	return MainDateInvalidMonth;
+  }
+  if ( day < 1 || day > 31 || day < 28 ) {
+    return MainDateInvalidDay;
+  }
+  if ( month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12 ) {
+	if ( day > 31 ) {
+	  return MainDateInvalidDay;
+    }
+  } else if ( month == 4 || month == 6 || month == 9 || month == 11 ) {
+	if ( day > 30 ) {
+	  return MainDateInvalidDay;
+	}
+  } else if ( month == 2 ) {
+    if ( year % 4 ) {
+	  if ( day > 28 ) {
+		return MainDateInvalidDay;
+	  }
+    } else if ( year % 400 == 0 ) {
+	  if ( day > 28 ) {
+		return MainDateInvalidDay;
+	  }	
+    } else if ( year % 100 == 0 ) {
+	  if ( day > 29 ) {
+		return MainDateInvalidDay;
+	  }
+	}
+  }
+  return MainDateOK;
+}
 // FILE: ./Files/Main/MainInitializeDisplay.js
 /*****************************************************************************!
  * Function : MainInitializeDisplay
@@ -109,6 +201,48 @@ MainDisplayMessageColor
   messageArea.style.color = InColor;
   MainDisplayTimedMessage(InMessage, MAIN_DEFAULT_MESSAGE_TIME);
 }
+// FILE: ./Files/Main/MainTimeVerify.js
+/*****************************************************************************!
+ * Function : MainTimeVerify
+ *****************************************************************************/
+function
+MainTimeVerify(InString)
+{
+  var                                   a;
+  var                                   hour, minute, second;
+  
+  if ( null == InString ) {
+	return MainTimeInvalidFormat;
+  }
+
+  a = InString.split(':');
+  if ( a.length != 2 && a.length != 3 ) {
+	return MainTimeInvalidFormat;
+  }
+
+  for ( i = 0 ; i < a.length; i++ ) {
+    if ( a[i] == "" ) {
+      return MainTimeInvalidFormat;
+    }
+  }
+  second = 0;
+  hour = parseInt(a[0], 10);
+  minute = parseInt(a[1], 10);
+  if ( a.length == 3 ) {
+	second = parseInt(a[2], 10);
+  }
+  if ( hour > 23 ) {
+	return MainTimeInvalidHour;
+  }
+  if ( minute > 59 ) {
+	return MainTimeInvalidMinute;
+  }
+  if ( second > 59 ) {
+	return MainTimeInvalidSecond;
+  }
+  return MainTimeOK;
+}
+
 // FILE: ./Files/Main/MainHideLimitButtons.js
 /*****************************************************************************!
  * Function : MainHideLimitButtons
@@ -181,6 +315,20 @@ var MainLimitHours			= 0;
 var MainLimitDays			= 0;
 var MainLimitCount			= 0;
 var MainLimitSize			= 0;
+
+
+var MainDateOK				= 10;
+var MainDateInvalidFormat		= 11;
+var MainDateInvalidDay			= 12;
+var MainDateInvalidMonth		= 13;
+var MainDateInvalidYear			= 14;
+var MainTimeOK				= 20;
+var MainTimeInvalidFormat		= 21;
+var MainTimeInvalidHour			= 22;
+var MainTimeInvalidMinute		= 23;
+var MainTimeInvalidSecond		= 24;
+var MainDateTimeOK			= 30;
+var MainDateTimeInvalidFormat		= 31;
 // FILE: ./Files/Main/MainInitialize.js
 /*****************************************************************************!
  * Function : MainInitialize
@@ -211,6 +359,103 @@ MainInitialize()
   }
 }
 
+// FILE: ./Files/CallBacks/CBChangeSystemDate.js
+/*****************************************************************************!
+ * Function : CBChangeSystemDate
+ *****************************************************************************/
+function
+CBChangeSystemDate()
+{
+  var                                   d, value, b;
+  var									dm;
+
+  dm = document.getElementById("SetDateMessage"); 
+  d = document.getElementById("SetDateInput"); 
+  value = d.value;
+  b = MainDateTimeVerify(value);
+  d.style.color = b ? "green" : "red";
+  if ( b == MainDateTimeOK ) {
+    document.getElementById("ClearDateButton").style.visibility = "hidden";
+    document.getElementById("ChangeDateButton").style.visibility = "hidden";
+    document.getElementById("SetDateInput").style.color = "green";
+	MainDisplayMessage("Date/Time OK");
+	dm.innerHTML = "";
+	WebSocketIFSendDate(value);
+  } else {
+
+	document.getElementById("SetDateInput").style.color = "red";
+    switch (b) {
+      case MainDateOK :
+        break;
+      case MainDateInvalidFormat :
+		dm.innerHTML = "Invalid Date Format";
+        break;
+      case MainDateInvalidDay :
+		dm.innerHTML = "Invalid Date Day";
+        break;
+      case MainDateInvalidMonth :
+		dm.innerHTML = "Invalid Date Month";
+        break;
+      case MainDateInvalidYear :
+		dm.innerHTML = "Invalid Date Year";
+        break;
+      case MainTimeOK :
+		dm.innerHTML = "Time OK";
+        break;
+      case MainTimeInvalidFormat :
+		dm.innerHTML = "Invalid Time Format";
+        break;
+      case MainTimeInvalidHour :
+		dm.innerHTML = "Invalid Time Hour";
+        break;
+      case MainTimeInvalidMinute :
+		dm.innerHTML = "Invalid Time Minute";
+        break;
+      case MainTimeInvalidSecond :
+		dm.innerHTML = "Invalid Date Second";
+        break;
+      case MainDateTimeOK :
+		dm.innerHTML = "Date/Time OK";
+        break;
+      case MainDateTimeInvalidFormat :
+		dm.innerHTML = "Invalid Date/Time Format";
+        break;
+    }
+  }
+  document.getElementById("MessageLine").value =value;
+}
+
+// FILE: ./Files/CallBacks/CBGetSystemDate.js
+/*****************************************************************************!
+ * Function : CBGetSystemDate
+ *****************************************************************************/
+function CBGetSystemDate()
+{
+  var                                   di;
+  di = document.getElementById("SetDateInput");
+  da = new Date(Date.now());
+
+  document.getElementById("ChangeDateButton").style.visibility = "visible";
+  document.getElementById("ClearDateButton").style.visibility = "visible";
+  minutes = da.getMinutes().toString();
+  hours = da.getHours().toString();
+
+  day = da.getDate().toString();
+  m = da.getMonth() + 1;
+  month = m.toString();
+  year = da.getFullYear();
+
+  if ( minutes.length < 2 ) {
+	minutes = "0" + minutes;
+  }
+  if ( hours.length < 2 ) {
+	hours = "0" + hours;
+  }
+  d = month + "/" + day + "/" + year + "  " + hours  + ":" + minutes;
+
+  di.value = d;
+}
+  
 // FILE: ./Files/CallBacks/CBClearLimit.js
 /*****************************************************************************!
  * Function : CBClearLimits
@@ -268,7 +513,7 @@ CBLimitTypeChange()
 
   d1.style.visibility = "visible";
   d2.style.visibility = "visible";
-  d1.parentElement.className = "GeneralData2 DataLine5";
+  d1.parentElement.className = "GeneralData2 DataLine6";
   MainShowLimitButtons();
 }
 
@@ -313,6 +558,26 @@ CBPrepareDownloadFilename
   aref.innerHTML = "";
   aref.href = "";
   WebSocketIFSendSimpleRequest("preparedownloadfilename");
+}
+
+// FILE: ./Files/CallBacks/CBDateInputChanged.js
+/*****************************************************************************!
+ * Function : CBDateInputChanged 
+ *****************************************************************************/
+function
+CBDateInputChanged()
+{
+} 
+// FILE: ./Files/CallBacks/CBClearSystemDate.js
+/*****************************************************************************!
+ * Function : CBClearSystemDate
+ *****************************************************************************/
+function
+CBClearSystemDate()
+{
+  document.getElementById("ChangeDateButton").style.visibility = "hidden";
+  document.getElementById("ClearDateButton").style.visibility = "hidden";
+  document.getElementById("SetDateInput").value = "";
 }
 
 // FILE: ./Files/WebSocketIF/WebSocketIFHandleRemovePanelResponse.js
@@ -401,6 +666,16 @@ WebSocketIFRequestGetBayTypes()
 }
 
 
+// FILE: ./Files/WebSocketIF/WebSocketIFHandleSetTimeResponse.js
+/*****************************************************************************!
+ * Function : WebSocketIFHandleSetTimeResponse
+ *****************************************************************************/
+function
+WebSocketIFHandleSetTimeResponse
+(InResponse)
+{
+  MainDisplayMessage(InResponse.message);
+}
 // FILE: ./Files/WebSocketIF/WebSocketIFHandleResponsePanelTypes.js
 /*****************************************************************************!
  * Function : WebSocketIFHandleResponsePanelTypes
@@ -429,6 +704,26 @@ WebSocketIFSendSimpleRequest(InRequest)
   WebSocketIFSendGeneralRequest(request);
 }
 
+// FILE: ./Files/WebSocketIF/WebSocketIFSendDate.js
+/*****************************************************************************!
+ * Function : WebSocketIFSendDate
+ *****************************************************************************/
+function
+WebSocketIFSendDate
+(InDateString)
+{
+  var                                   request;
+
+  request = {};
+  request.packettype = "request";
+  request.packetid = WebSocketIFGetNextID(); 
+  request.time = 0;
+  request.type = "setdate";
+  request.body = {};
+  request.body.datetime = InDateString;
+  
+  WebSocketIFSendGeneralRequest(request);
+}
 // FILE: ./Files/WebSocketIF/WebSocketIFHandleResponsePrepareDownloadFile.js
 /*****************************************************************************!
  * Function : WebSocketIFHandleResponsePrepareDownloadFile
@@ -534,7 +829,9 @@ WebSocketIFHandleInputPacket(InData)
 {
   var					requestpacket;
 
+  console.log(InData);
   requestpacket = JSON.parse(InData);
+  console.log(requestpacket);
   if ( requestpacket.packettype == "response" ) {
     WebSocketIFHandleResponsePacket(requestpacket);
   }
@@ -631,6 +928,8 @@ WebSocketIFHandleResponsePacket(InPacket)
     WebSocketIFHandleResponsePrepareDownloadFile(InPacket.body);
   } else if ( InPacket.type == "resgetlimits" ) {
 	WebSocketIFHandleGetLimitsResponse(InPacket.body);
+  } else if ( InPacket.type == "ressettime" ) {
+	WebSocketIFHandleSetTimeResponse(InPacket.body);
   }
 }
 
@@ -766,19 +1065,19 @@ function WebSocketIFHandleGetLimitsResponse(InPacket)
   
   MainLimitType = InPacket.limittype;
   d = document.getElementById("LimitTypeSelect").value = MainLimitType;
-  if ( MainLimitType == "hours" ) {
-    MainLimitHours = InPacket.hours;
-    document.getElementById("LimitTypeHours").value = MainLimitHours;
-  } else if ( MainLimitType == "days" ) {
-    MainLimitDays = InPacket.days;
-    document.getElementById("LimitTypeDays").value = MainLimitDays;
-  } else if ( MainLimitType == "size" ) {
-	MainLimitSize = InPacket.count;
-    document.getElementById("LimitTypesSize").value = MainLimitSize;
-  } else if ( MainLimitType == "count" ) {
-	MainLimitCount = InPacket.count;
-    document.getElementById("LimitTypeCount").value = MainLimitCount;
-  }
+
+  MainLimitHours = InPacket.hours;
+  document.getElementById("LimitTypeHours").value = MainLimitHours;
+
+  MainLimitDays = InPacket.days;
+  document.getElementById("LimitTypeDays").value = MainLimitDays;
+
+  MainLimitSize = InPacket.size;
+  document.getElementById("LimitTypeSize").value = MainLimitSize;
+
+  MainLimitCount = InPacket.count;
+  document.getElementById("LimitTypeCount").value = MainLimitCount;
+
   WebSocketIFRequestMonitorInfo();
 }
 

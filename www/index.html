@@ -13,12 +13,20 @@
         <div id="MessageCount" class="GeneralData DataLine1"></div>
         <div class="GeneralLabel DataLine2">Start Time : </div>
         <div id="MonitorStartTime" class="GeneralData DataLine2"></div>
-        <div class="GeneralLabel GeneralButton DataLine3" onclick="CBMonitorToggle()">Monitor CAN Bus</div>
-        <div id="MonitorStatus" class="GeneralData DataLine3"></div>
-        <div class="GeneralLabel DataLine4">Monitor CAN File Name :</div>
-        <div id="MonitorFilename" class="GeneralData DataLine4"></div>
-  	    <div class="GeneralLabel DataLine5">Limit Data File : </div>
-        <div class="GeneralData DataLine5"> 
+	    <div id="SetDateButton" class="GeneralLabel GeneralButton DataLine3" style="left:40px; width:140px;" onclick="CBGetSystemDate()">Get Date/Time</div>
+   		<div class="GeneralLabel DataLine3 GeneralData" style="overflow:hidden">
+		  <input id="SetDateInput" placeholder="mm/dd/yyyy hh:mm" style="position:absolute; left:0px;width:140px" value="" onkeypress="CBDateInputChanged();" onchange="CBDateInputChanged();"></input>
+		</div>
+	    <div id="ChangeDateButton" class="DataLine3 GeneralData2 GeneralLabel GeneralButton" style="left:345px; width:40px; visibility:hidden" onclick="CBChangeSystemDate()">Set</div>
+	    <div id="ClearDateButton" class="GeneralLabel GeneralButton DataLine3 GeneralData3" style="width:50px; visibility:hidden" onclick="CBClearSystemDate()">Clear</div>
+	    <div id ="SetDateMessage" class="GeneralLabel DataLine3" style="left:460px; padding-right:5px; width:130px; font-weight:normal; text-align:right"></div>
+
+        <div class="GeneralLabel GeneralButton DataLine4" onclick="CBMonitorToggle()">Monitor CAN Bus</div>
+        <div id="MonitorStatus" class="GeneralData DataLine4"></div>
+        <div class="GeneralLabel DataLine5">Monitor CAN File Name :</div>
+        <div id="MonitorFilename" class="GeneralData DataLine5"></div>
+  	    <div class="GeneralLabel DataLine6">Limit Data File : </div>
+        <div class="GeneralData DataLine6"> 
  	      <select id="LimitTypeSelect" onfocusout="CBLimitTypeSelect(event)" onfocus="CBLimitTypeSelect(event)" onchange="CBLimitTypeChange()">
             <option value="none">None</option>
 	        <option value="days">Days</option>
@@ -27,7 +35,7 @@
   	        <option value="count">Messages</option>
 	      </select>
         </div>
-        <div class="GeneralData2 DataLine5" style="visibility:hidden">
+        <div class="GeneralData2 DataLine6" style="visibility:hidden">
           <select id="LimitTypeDays" style="width:50px" onchange="CBLimitDaysChange()">
 		    <option value="1">1</option>
 		    <option value="2">2</option>
@@ -38,34 +46,34 @@
 		    <option value="7">7</option>
 		  </select>
 	    </div> 
-	    <div id="LimitTypeDaysLabel" class="GeneralData3 DataLine5" style="visibility:hidden">Days</div>
+	    <div id="LimitTypeDaysLabel" class="GeneralData3 DataLine6" style="visibility:hidden">Days</div>
 
         <div class="" style="visibility:hidden">
           <select id="LimitTypeHours" style="width:70px">
 		  </select>
 	    </div> 
-	    <div id="LimitTypeHoursLabel" class="GeneralData3 DataLine5" style="visibility:hidden">Hours</div>
+	    <div id="LimitTypeHoursLabel" class="GeneralData3 DataLine6" style="visibility:hidden">Hours</div>
 
         <div class="" style="visibility:hidden">
           <select id="LimitTypeSize" style="width:70px">
 		  </select>
 	    </div> 
-	    <div id="LimitTypeSizeLabel" class="GeneralData3 DataLine5" style="visibility:hidden">MBytes</div>
+	    <div id="LimitTypeSizeLabel" class="GeneralData3 DataLine6" style="visibility:hidden">MBytes</div>
 
         <div class="">
 		  <input id="LimitTypeCount" type="text" value="0" placeholder="--None--" style="width:70px; height:14px; visibility:hidden"></input>
 	    </div> 
-	    <div id="LimitTypeCountLabel" class="GeneralData3 DataLine5" style="visibility:hidden">Messages</div>
-        <div id="SetLimitButton"      class="GeneralLabel GeneralButton DataLine5" style="left : 460px; width:40px; visibility:hidden" onclick="CBSetLimit()">Set</div>
-        <div id="ClearLimitButton"    class="GeneralLabel GeneralButton DataLine5" style="left : 510px; width:60px; visibility:hidden" onclick="CBClearLimits()">Clear</div>
+	    <div id="LimitTypeCountLabel" class="GeneralData3 DataLine6" style="visibility:hidden">Messages</div>
+        <div id="SetLimitButton"      class="GeneralLabel GeneralButton DataLine6" style="left : 460px; width:40px; visibility:hidden" onclick="CBSetLimit()">Set</div>
+        <div id="ClearLimitButton"    class="GeneralLabel GeneralButton DataLine6" style="left : 510px; width:60px; visibility:hidden" onclick="CBClearLimits()">Clear</div>
 
-        <div class="GeneralLabel GeneralButton DataLine6"  onclick="CBPrepareDownloadFilename()">Prepare Download File</div>
-        <div id="DownloadFilename" class="GeneralData DataLine6"><a href=""></a></div>
-        <div id="DownloadFilename1" class="GeneralData DataLine7"><a href=""></a></div>
-        <div id="DownloadFilename2" class="GeneralData DataLine8"><a href=""></a></div>
-        <div id="DownloadFilename3" class="GeneralData DataLine9"><a href=""></a></div>
-        <div id="DownloadFilename4" class="GeneralData DataLine10"><a href=""></a></div>
-        <div id="DownloadFilename5" class="GeneralData DataLine11"><a href=""></a></div>
+        <div class="GeneralLabel GeneralButton DataLine7"  onclick="CBPrepareDownloadFilename()">Prepare Download File</div>
+        <div id="DownloadFilename" class="GeneralData DataLine7"><a href=""></a></div>
+        <div id="DownloadFilename1" class="GeneralData DataLine8"><a href=""></a></div>
+        <div id="DownloadFilename2" class="GeneralData DataLine9"><a href=""></a></div>
+        <div id="DownloadFilename3" class="GeneralData DataLine10"><a href=""></a></div>
+        <div id="DownloadFilename4" class="GeneralData DataLine11"><a href=""></a></div>
+        <div id="DownloadFilename5" class="GeneralData DataLine12"><a href=""></a></div>
       </div>
     </div>
     <div class="LogoArea">

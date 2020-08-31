@@ -45,6 +45,13 @@
  *****************************************************************************/
 
 /*****************************************************************************!
+ * Imported Functions
+ *****************************************************************************/
+char*
+strptime
+(char*, char*, struct tm*);
+
+/*****************************************************************************!
  * Local Data
  *****************************************************************************/
 int
@@ -62,6 +69,10 @@ WebSocketIFAddress = NULL;
 /*****************************************************************************!
  * Local Functions
  *****************************************************************************/
+void
+HandleSetDateRequest
+(struct mg_connection* InConnection, json_value* InPacket);
+
 void
 HandleWebSocketRequest
 (struct mg_connection* nc, struct mg_str InString);
@@ -222,6 +233,8 @@ HandlePacketRequest
     HandleGetBaysRequest(InConnection, InPacket);
   } else if ( StringEqual("getlimits", requesttype) ) {
 	HandleGetLimitsRequest(InConnection, InPacket);
+  } else if ( StringEqual("setdate", requesttype) ) {
+	HandleSetDateRequest(InConnection, InPacket);
   }
  
   FreeMemory(requesttype);
@@ -345,64 +358,12 @@ WebSocketFrameResponseSendError
   FreeMemory(responseString);
 }
 
-/*****************************************************************************!
- * Function : WebSocketFrameResponseSend
- *****************************************************************************/
-void
-WebSocketFrameResponseSend
-(struct mg_connection* InConnection, string InResponseType,
- string InBody, int InPacketID, uint32_t InTime,
- string InResponseMessage)
-{
-  string                                responseString;
-  char                                  s[16];
-
-  responseString = StringCopy("{\n");
-
-  responseString = StringConcatTo(responseString, "\"type\" : \"");
-  responseString = StringConcatTo(responseString, InResponseType);
-  responseString = StringConcatTo(responseString, "\",\n");
-
-  responseString = StringConcatTo(responseString, "\"body\" : ");
-  responseString = StringConcatTo(responseString, InBody);
-  responseString = StringConcatTo(responseString, ",\n");
-
-  responseString = StringConcatTo(responseString, "\"packettype\" : \"response\",\n");
-
-  sprintf(s, "%d", InPacketID);
-  responseString = StringConcatTo(responseString, "\"packetid\" : ");
-  responseString = StringConcatTo(responseString, s);
-  responseString = StringConcatTo(responseString, ",\n");
-
-  sprintf(s, "%d", InTime);
-  responseString = StringConcatTo(responseString, "\"time\" : ");
-  responseString = StringConcatTo(responseString, s);
-  responseString = StringConcatTo(responseString, ",\n");
-
-  responseString = StringConcatTo(responseString, "\"responseid\" : \"OK\",\n");
-  responseString = StringConcatTo(responseString, "\"responsemessage\" : \"");
-  responseString = StringConcatTo(responseString, InResponseMessage);
-  responseString = StringConcatTo(responseString, "\"\n");
-
-  responseString = StringConcatTo(responseString, "}\n");
-
-  WebSocketFrameSend(InConnection, responseString, strlen(responseString));
-  FreeMemory(responseString);
-}
-
-/*****************************************************************************!
- * Function : WebSocketFrameSend
- *****************************************************************************/
-void
-WebSocketFrameSend
-(struct mg_connection* InConnection, string InBuffer, uint16_t InBufferLen)
-{
-  mg_send_websocket_frame(InConnection, WEBSOCKET_OP_TEXT,
-                          InBuffer, InBufferLen);
-}
 
 #include "WebSocketIFSetPort.c"
 #include "WebSocketIFCreateInfoScript.c"
 #include "HandlePrepareDownloadRequest.c"
 
 #include "HandleGetLimitsRequest.c"
+#include "HandleSetDateRequest.c"
+#include "WebSocketFrameResponseSend.c"
+#include "WebSocketFrameSend.c"

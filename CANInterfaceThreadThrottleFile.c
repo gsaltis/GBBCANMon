@@ -5,6 +5,8 @@ bool
 CANInterfaceThreadThrottleFile
 ()
 {
+  int                                   m;
+
   if ( StringEqual(MainLimitType, "none") ) {
     return false;
   }
@@ -17,7 +19,8 @@ CANInterfaceThreadThrottleFile
   } 
 
   if ( StringEqual(MainLimitType, "size") ) {
-	if ( MainLimitSizeRuntime >= MainLimitSize ) {
+	m = MainLimitSize * 1000000;
+	if ( MainLimitSizeRuntime >= m ) {
 	  return true;
 	}
     return false;

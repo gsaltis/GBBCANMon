@@ -80,7 +80,7 @@ extern
 time_t
 MainStartTime;
 
-extern string 
+extern string
 MainLimitType;
 
 extern int

@@ -6,12 +6,12 @@ MainInitialize
 ()
 {
   atexit(MainExit);  
-  MainStartTime = time(NULL);
-  MainLimitType = StringCopy("size");
-  MainLimitDays =           3;
-  MainLimitHours =         96;
-  MainLimitCount =    50;  // 000;
-  MainLimitSize  =  5000;    // 0000000;
+  MainStartTime  = time(NULL);
+  MainLimitType  = StringCopy("size");
+  MainLimitDays  = 3;
+  MainLimitHours = 96;
+  MainLimitCount = 50000;
+  MainLimitSize  = 10;
 
   MainLimitDaysRuntime 	= 0;
   MainLimitHoursRuntime = 0;

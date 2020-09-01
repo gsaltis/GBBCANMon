@@ -42,6 +42,9 @@
 /*****************************************************************************!
  * Local Data
  *****************************************************************************/
+bool
+MainVerbose = false;
+
 int
 MainMinLimitCount = 1;
 
@@ -86,6 +89,9 @@ MainClearDatabaseSwitch = false;
 
 time_t
 MainStartTime;
+
+time_t
+MainTimeStampTime;
 
 struct mg_serve_http_opts
 s_http_server_opts;
@@ -196,10 +202,10 @@ main
 
   HTTPServerThreadInit();
   CANInterfaceThreadInit();
+  WebSocketServerInit();
   if ( MainUseUI ) {
     UserInputThreadInit();
   }
-  WebSocketServerInit();
 
   pthread_join(CANInterfaceThreadID, &retval1);
   if ( MainUseUI ) {

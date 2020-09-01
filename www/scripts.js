@@ -142,7 +142,7 @@ function MainDateVerify
   if ( month < 1 || month > 12 ) {
 	return MainDateInvalidMonth;
   }
-  if ( day < 1 || day > 31 || day < 28 ) {
+  if ( day < 1 || day > 31 ) {
     return MainDateInvalidDay;
   }
   if ( month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12 ) {
@@ -380,7 +380,7 @@ CBChangeSystemDate()
     document.getElementById("SetDateInput").style.color = "green";
 	MainDisplayMessage("Date/Time OK");
 	dm.innerHTML = "";
-	WebSocketIFSendDate(value);
+	WebSocketIFSendTimeStamp(value);
   } else {
 
 	document.getElementById("SetDateInput").style.color = "red";
@@ -513,7 +513,7 @@ CBLimitTypeChange()
 
   d1.style.visibility = "visible";
   d2.style.visibility = "visible";
-  d1.parentElement.className = "GeneralData2 DataLine6";
+  d1.parentElement.className = "GeneralData2 DataLine2";
   MainShowLimitButtons();
 }
 
@@ -539,10 +539,28 @@ function CBLimitTypeSelect(event)
  *****************************************************************************/
 function CBSetLimit()
 {
+  var                                   type;
+  var                                   value;
+ 
   MainHideLimitButtons();
   MainHideTypeElements();
-}
 
+  type = document.getElementById("LimitTypeSelect").value;
+  value = null;
+  if ( type == "days" ) {
+    value = document.getElementById("LimitTypeDays").value;
+  } else if ( type == "hours" ) {
+    value = document.getElementById("LimitTypeHours").value; 
+  } else if ( type == "size" ) {
+    value = document.getElementById("LimitTypeSize").value;
+  } else if ( type == "count" ) {
+    value = document.getElementById("LimitTypeCount").value;
+  }
+
+  WebSocketIFSendLimits(type, value);
+  
+}
+  
 // FILE: ./Files/CallBacks/CBPrepareOutputFilename.js
 /*****************************************************************************!
  * Function : CBPrepareDownloadFilename
@@ -704,26 +722,6 @@ WebSocketIFSendSimpleRequest(InRequest)
   WebSocketIFSendGeneralRequest(request);
 }
 
-// FILE: ./Files/WebSocketIF/WebSocketIFSendDate.js
-/*****************************************************************************!
- * Function : WebSocketIFSendDate
- *****************************************************************************/
-function
-WebSocketIFSendDate
-(InDateString)
-{
-  var                                   request;
-
-  request = {};
-  request.packettype = "request";
-  request.packetid = WebSocketIFGetNextID(); 
-  request.time = 0;
-  request.type = "setdate";
-  request.body = {};
-  request.body.datetime = InDateString;
-  
-  WebSocketIFSendGeneralRequest(request);
-}
 // FILE: ./Files/WebSocketIF/WebSocketIFHandleResponsePrepareDownloadFile.js
 /*****************************************************************************!
  * Function : WebSocketIFHandleResponsePrepareDownloadFile
@@ -928,8 +926,10 @@ WebSocketIFHandleResponsePacket(InPacket)
     WebSocketIFHandleResponsePrepareDownloadFile(InPacket.body);
   } else if ( InPacket.type == "resgetlimits" ) {
 	WebSocketIFHandleGetLimitsResponse(InPacket.body);
-  } else if ( InPacket.type == "ressettime" ) {
+  } else if ( InPacket.type == "ressettimestamp" ) {
 	WebSocketIFHandleSetTimeResponse(InPacket.body);
+  } else if ( InPacket.type == "ressetlimits" ) {
+	WebSocketIFHandleSetLimitsResponse(InPacket.body);
   }
 }
 
@@ -971,6 +971,28 @@ WebSocketIFSendDeviceDefRegRequestStart
 }
 
 
+// FILE: ./Files/WebSocketIF/WebSocketIFHandleResponseMonitorInfo.js
+/*****************************************************************************!
+ * Function : WebSocketIFHandleResponseMonitorInfo
+ *****************************************************************************/
+function
+WebSocketIFHandleResponseMonitorInfo
+(InMonitorInfo)
+{
+  var                                   d;
+ 
+  d = document.getElementById("MessageCount");
+  d.innerHTML = InMonitorInfo.messagecount;
+  if ( InMonitorInfo.limitstatus == "OK" ) {
+	d.className = "GeneralData DataLine1 MessageCountOK";
+  } else {
+	d.className = "GeneralData DataLine1 MessageCountAT";
+  }
+  document.getElementById("MonitorStatus").innerHTML = InMonitorInfo.monitorstatus;
+  document.getElementById("MonitorFilename").innerHTML = InMonitorInfo.monitorfilename;
+  document.getElementById("MonitorStartTime").innerHTML = InMonitorInfo.monitorstarttime;
+  setTimeout(function() { WebSocketIFRequestMonitorInfo(); }, 5000);
+}
 // FILE: ./Files/WebSocketIF/WebSocketIFSendUpdateBayRegValuesRequest.js
 /*****************************************************************************!
  * Function : WebSocketIFSendUpdateBayRegValuesRequest
@@ -990,6 +1012,28 @@ WebSocketIFSendUpdateBayRegValuesRequest
 
   WebSocketIFSendGeneralRequest(request);
 }
+// FILE: ./Files/WebSocketIF/WebSocketIFSendLimits.js
+/*****************************************************************************!
+ * Function : WebSocketIFSendLimits
+ *****************************************************************************/
+function
+WebSocketIFSendLimits
+(InType, InValue)
+{
+  var                                   request;
+
+  request = {};
+  request.packettype = "request";
+  request.packetid = WebSocketIFGetNextID(); 
+  request.time = 0;
+  request.type = "setlimits";
+  request.body = {};
+  request.body.type = InType;
+  if ( InValue ) {
+    request.body.value = InValue;
+  }
+  WebSocketIFSendGeneralRequest(request);
+} 
 // FILE: ./Files/WebSocketIF/WebSocketIFSendRemovePanelRequest.js
 /*****************************************************************************!
  * Function : WebSocketIFSendRemovePanelRequest
@@ -1081,6 +1125,26 @@ function WebSocketIFHandleGetLimitsResponse(InPacket)
   WebSocketIFRequestMonitorInfo();
 }
 
+// FILE: ./Files/WebSocketIF/WebSocketIFSendTimeStamp.js
+/*****************************************************************************!
+ * Function : WebSocketIFSendTimeStamp
+ *****************************************************************************/
+function
+WebSocketIFSendTimeStamp
+(InDateString)
+{
+  var                                   request;
+
+  request = {};
+  request.packettype = "request";
+  request.packetid = WebSocketIFGetNextID(); 
+  request.time = 0;
+  request.type = "settimestamp";
+  request.body = {};
+  request.body.datetime = InDateString;
+  
+  WebSocketIFSendGeneralRequest(request);
+}
 // FILE: ./Files/WebSocketIF/WebSocketIFSendGeneralRequest.js
 /*****************************************************************************!
  * Function : WebSocketIFSendGeneralRequest
@@ -1088,10 +1152,21 @@ function WebSocketIFHandleGetLimitsResponse(InPacket)
 function 
 WebSocketIFSendGeneralRequest(InRequest) {
   if ( WebSocketIFConnection ) {
+	console.log(InRequest);
     WebSocketIFConnection.send(JSON.stringify(InRequest));
   }
 }
 
+// FILE: ./Files/WebSocketIF/WebSocketIFHandleSetLimitsResponse.js
+/*****************************************************************************!
+ * Function : WebSocketIFHandleSetLimitsResponse
+ *****************************************************************************/
+function
+WebSocketIFHandleSetLimitsResponse
+(InResponse)
+{
+  MainDisplayMessage(InResponse.message);
+}
 // FILE: ./Files/WebSocketIF/WebSocketIFSendPanelRegValuesRequest.js
 /*****************************************************************************!
  * Function : WebSocketIFSendPanelRegValuesRequest
@@ -1123,20 +1198,6 @@ WebSocketIFHandleFuseBreakerTypes(InFuseBreakerTypes)
   MainFuseBreakerTypes = InFuseBreakerTypes;
 }
 
-// FILE: ./Files/WebSocketIF/WebSocketIFhandleResponseMonitorInfo.js
-/*****************************************************************************!
- * Function : WebSocketIFHandleResponseMonitorInfo
- *****************************************************************************/
-function
-WebSocketIFHandleResponseMonitorInfo
-(InMonitorInfo)
-{
-  document.getElementById("MessageCount").innerHTML = InMonitorInfo.messagecount;
-  document.getElementById("MonitorStatus").innerHTML = InMonitorInfo.monitorstatus;
-  document.getElementById("MonitorFilename").innerHTML = InMonitorInfo.monitorfilename;
-  document.getElementById("MonitorStartTime").innerHTML = InMonitorInfo.monitorstarttime;
-  setTimeout(function() { WebSocketIFRequestMonitorInfo(); }, 5000);
-}
 // FILE: ./Files/WebSocketIF/WebSocketIFHandleResponseBays.js
 /*****************************************************************************!
  * Function : WebSocketIFHandleResponseBayTypes

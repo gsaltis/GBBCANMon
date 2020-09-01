@@ -30,6 +30,7 @@ OBJS			= $(sort 				\
 			    JSONIF.o				\
 			    HTTPServerThread.o			\
 			    MemoryManager.o			\
+			    Messages.o				\
 			    NumericTypes.o			\
 			    SQLStatements.o			\
 			    String.o				\

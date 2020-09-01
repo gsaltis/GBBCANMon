@@ -102,6 +102,7 @@ CANInterfaceThread
     uint64_t				data;
     uint8_t				dataLength;
     uint8_t 				result;
+    time_t				t;
 
     result = CANInterfaceRead(MainCANInterface, &id, &data, &dataLength);
     switch ( result ) {
@@ -115,7 +116,8 @@ CANInterfaceThread
         df.data64 = ByteManageSwap8(data);
         if ( CANInterfaceMonitor ) {
 	  if ( !CANInterfaceThreadThrottleFile() ) {
-    	    HandleRequest(MainCANInterface, fid, df, time(NULL));
+	    t = time(NULL) - MainStartTime;
+    	    HandleRequest(MainCANInterface, fid, df, MainTimeStampTime + t);
             CANInterfaceMessagesCount++;
           }
         }

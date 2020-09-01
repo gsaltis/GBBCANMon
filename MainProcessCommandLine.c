@@ -26,6 +26,12 @@ MainProcessCommandLine
       continue;
     }
 
+    //! 
+    if ( StringEqualsOneOf(command, "-v", "--verbose", NULL) ) {
+	  MainVerbose = true;
+	  continue;
+	}
+
     //! Prevent the use of the UI (for daemon mode)
     if ( StringEqualsOneOf(command, "-n", "--noui", NULL) ) {
       MainUseUI = false;

@@ -20,15 +20,19 @@ WebSocketIFCreateInfoScript
   found = false;
   interfacesSize = sizeof(interfaces) / sizeof(char*);
 
-  printf("Create HTML WebSocket Script ");
+  if ( MainVerbose ) {
+    printf("Create HTML WebSocket Script ");
+  }
   fflush(stdout);
   //! We only want to do this when we have a value 192. address
   //  So we loop until we do or we eventually give up
   for (i = 0; i < WEBSOCKET_IF_MAX_ADDRESS_TRIES && !found; i++ ) { 
     for ( j = 0 ; j < interfacesSize && !found ; j++ ) {
       fd = socket(AF_INET, SOCK_DGRAM, 0);
-      printf(".");
-      fflush(stdout); 
+      if ( MainVerbose ) {
+        printf(".");
+        fflush(stdout); 
+      }
       /* I want to get an IPv4 IP address */
       ifr.ifr_addr.sa_family = AF_INET;
 
@@ -53,7 +57,7 @@ WebSocketIFCreateInfoScript
         fclose(file);
 		WebSocketIFAddress = StringCopy(address);
         FreeMemory(address);
-		found = true;
+	found = true;
       }
       if ( !found ) {
         //! We don't so sleep and try again
@@ -61,6 +65,8 @@ WebSocketIFCreateInfoScript
       }
     }
   }
-  printf(" %screated\n", found ? "" : "not ");
+  if ( MainVerbose ) {
+    printf(" %screated\n\n", found ? "" : "not ");
+  }
 }
 

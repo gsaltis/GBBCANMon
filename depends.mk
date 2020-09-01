@@ -79,7 +79,6 @@ HandleCommandLimitSet.o: HandleCommandLimitSet.c
 HandleCommandLog.o: HandleCommandLog.c
 HandleGetLimitsRequest.o: HandleGetLimitsRequest.c
 HandlePrepareDownloadRequest.o: HandlePrepareDownloadRequest.c
-HandleSetDateRequest.o: HandleSetDateRequest.c
 JSONIF.o: JSONIF.c String.h MemoryManager.h JSONIF.h
 MainDisplayHelp.o: MainDisplayHelp.c
 MainExit.o: MainExit.c
@@ -88,6 +87,8 @@ MainLimitSet.o: MainLimitSet.c
 MainProcessCommandLine.o: MainProcessCommandLine.c
 MainRemoveTarFiles.o: MainRemoveTarFiles.c
 MemoryManager.o: MemoryManager.c MemoryManager.h ThreadSafePrint.h
+MessageSetLimitsResponse.o: MessageSetLimitsResponse.c
+Messages.o: Messages.c Messages.h String.h MessageSetLimitsResponse.c
 NumericTypes.o: NumericTypes.c
 Panel.o: Panel.c Panel.h FuseBreaker.h String.h CanMsg.h DeviceDef.h \
  DeviceDefines.h DeviceRegDef.h NumericTypes.h JSONIF.h \
@@ -109,16 +110,27 @@ UserInputThread.o: UserInputThread.c UserInputThread.h linenoise.h \
  HandleCommandHelp.c
 WebConnection.o: WebConnection.c WebConnection.h MemoryManager.h \
  ThreadSafePrint.h String.h
+WebSocketFrameResponseSend.o: WebSocketFrameResponseSend.c
+WebSocketFrameSend.o: WebSocketFrameSend.c
 WebSocketIF.o: WebSocketIF.c WebSocketIF.h FuseBreaker.h String.h \
  CanMsg.h DeviceDef.h DeviceDefines.h DeviceRegDef.h NumericTypes.h \
  JSONIF.h DeviceMessageDef.h Bay.h Panel.h PanelType.h BayType.h main.h \
  FuseBreakerType.h WebConnection.h CANInterface.h PanelConnection.h \
- MemoryManager.h FileUtils.h Devices.h ThreadSafePrint.h \
+ Messages.h MemoryManager.h FileUtils.h Devices.h ThreadSafePrint.h \
  CANInterfaceThread.h CANMonLog.h HTTPServerThread.h DirManagement.h \
  WebSocketIFSetPort.c WebSocketIFCreateInfoScript.c \
  HandlePrepareDownloadRequest.c HandleGetLimitsRequest.c \
- HandleSetDateRequest.c
+ WebSocketIFHandleSetTimeStampRequest.c WebSocketFrameResponseSend.c \
+ WebSocketFrameSend.c WebSocketIFHandleSetLimitsRequest.c \
+ WebSocketIFHandleGetMonitorInfoRequest.c \
+ WebSocketIFHandlePacketRequest.c
 WebSocketIFCreateInfoScript.o: WebSocketIFCreateInfoScript.c
+WebSocketIFHandleGetMonitorInfoRequest.o: \
+ WebSocketIFHandleGetMonitorInfoRequest.c
+WebSocketIFHandlePacketRequest.o: WebSocketIFHandlePacketRequest.c
+WebSocketIFHandleSetLimitsRequest.o: WebSocketIFHandleSetLimitsRequest.c
+WebSocketIFHandleSetTimeStampRequest.o: \
+ WebSocketIFHandleSetTimeStampRequest.c
 WebSocketIFSetPort.o: WebSocketIFSetPort.c
 canmoncl.o: canmoncl.c
 canmonview.o: canmonview.c String.h MemoryManager.h ascii.h FileUtils.h \
@@ -135,6 +147,6 @@ main.o: main.c CANInterface.h String.h DeviceDef.h DeviceDefines.h \
  CANInterfaceThread.h MemoryManager.h UserInputThread.h \
  HTTPServerThread.h WebSocketIF.h FuseBreaker.h CanMsg.h Bay.h Panel.h \
  PanelType.h BayType.h main.h FuseBreakerType.h WebConnection.h \
- PanelConnection.h DirManagement.h CANMonLog.h FileUtils.h \
+ PanelConnection.h Messages.h DirManagement.h CANMonLog.h FileUtils.h \
  MainProcessCommandLine.c MainDisplayHelp.c MainInitialize.c MainExit.c \
  MainRemoveTarFiles.c MainLimitSet.c

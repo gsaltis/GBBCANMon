@@ -26,8 +26,12 @@
 /*******************************************************************************
  * Local Data
  *******************************************************************************/
-extern DeviceDefList* mainDeviceDefs;
-extern bool MainVerbose;
+extern DeviceDefList* 
+mainDeviceDefs;
+
+extern bool
+MainVerbose;
+
 extern struct mg_serve_http_opts
 s_http_server_opts;
 
@@ -76,9 +80,11 @@ MainDatabase;
 extern CANInterface*
 MainCANInterface;
 
-extern
-time_t
+extern time_t
 MainStartTime;
+
+extern time_t
+MainTimeStampTime;
 
 extern string
 MainLimitType;

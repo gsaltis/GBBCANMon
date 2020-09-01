@@ -19,9 +19,9 @@ HandleCommandLimitSet
 	  return;
 	}
 	if ( MainLimitSet(InStrings->strings[1], n) ) {
-	  fprintf(stdout, "Set Limit to %s %s\n", InStrings->strings[1], InStrings->strings[2]); 
+	  fprintf(stdout, "Set limit to %s %s\n", InStrings->strings[1], InStrings->strings[2]); 
     } else {
-	  fprintf(stdout, "Could not set Limit %s to %s\n", InStrings->strings[1], InStrings->strings[2]);
+	  fprintf(stdout, "Could not set limit %s to %s\n", InStrings->strings[1], InStrings->strings[2]);
     }
   }
 }

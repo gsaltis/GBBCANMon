@@ -18,7 +18,7 @@ CBChangeSystemDate()
     document.getElementById("SetDateInput").style.color = "green";
 	MainDisplayMessage("Date/Time OK");
 	dm.innerHTML = "";
-	WebSocketIFSendDate(value);
+	WebSocketIFSendTimeStamp(value);
   } else {
 
 	document.getElementById("SetDateInput").style.color = "red";

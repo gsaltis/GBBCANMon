@@ -25,6 +25,7 @@
 #include "Panel.h"
 #include "PanelConnection.h"
 #include "String.h"
+#include "Messages.h"
 
 /*****************************************************************************!
  * Exported Macros

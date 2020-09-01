@@ -70,6 +70,18 @@ WebSocketIFAddress = NULL;
  * Local Functions
  *****************************************************************************/
 void
+WebSocketIFHandlePacketRequest
+(struct mg_connection* InConnection, json_value* InPacket);
+
+void
+WebSocketIFHandleGetMonitorInfoRequest
+(struct mg_connection* InConnection, json_value* InPacket);
+
+void
+WebSocketIFHandleSetLimitsRequest
+(struct mg_connection* InConnection, json_value* InPacket);
+
+void
 HandleSetDateRequest
 (struct mg_connection* InConnection, json_value* InPacket);
 
@@ -91,14 +103,6 @@ HandleGetDeviceDefsRequest
 
 void
 HandleGetBaysRequest
-(struct mg_connection* InConnection, json_value* InPacket);
-
-void
-HandleGetMonitorInfoRequest
-(struct mg_connection* InConnection, json_value* InPacket);
-
-void
-HandlePacketRequest
 (struct mg_connection* InConnection, json_value* InPacket);
 
 void
@@ -196,7 +200,7 @@ HandleWebSocketRequest
   }
 
   if ( StringEqual("request", packettype) ) {
-    HandlePacketRequest(nc, jsonDoc);
+    WebSocketIFHandlePacketRequest(nc, jsonDoc);
   } else if ( StringEqual("response", packettype) ) {
  
   } else if ( StringEqual("push", packettype) ) {
@@ -204,40 +208,6 @@ HandleWebSocketRequest
   }
   FreeMemory(packettype);
   json_value_free(jsonDoc);
-}
-
-/*****************************************************************************!
- * Function : HandlePacketRequest
- *****************************************************************************/
-void
-HandlePacketRequest
-(struct mg_connection* InConnection, json_value* InPacket)
-{
-  string                                requesttype;
-  if ( NULL == InPacket ) {
-    return;
-  }
- 
-  requesttype = JSONIFGetString(InPacket, "type");
-  if ( NULL == requesttype ) {
-    return;
-  }
-
-  if ( StringEqual("getmonitorinfo", requesttype) ) {
-    HandleGetMonitorInfoRequest(InConnection, InPacket);
-  } else if ( StringEqual("preparedownloadfilename", requesttype) ) {
-    HandlePrepareDownloadRequest(InConnection, InPacket);
-  } else if ( StringEqual("monitortoggle", requesttype) ) {
-    HandleToggleMonitorRequest(InConnection, InPacket);
-  } else if ( StringEqual("getbays", requesttype) ){
-    HandleGetBaysRequest(InConnection, InPacket);
-  } else if ( StringEqual("getlimits", requesttype) ) {
-	HandleGetLimitsRequest(InConnection, InPacket);
-  } else if ( StringEqual("setdate", requesttype) ) {
-	HandleSetDateRequest(InConnection, InPacket);
-  }
- 
-  FreeMemory(requesttype);
 }
 
 /*****************************************************************************!
@@ -270,44 +240,6 @@ HandleToggleMonitorRequest
   s = StringConcatTo(s, CANInterfaceMonitor ? "true" : "false");
   s = StringConcatTo(s, "}\n");
   WebSocketFrameResponseSend(InConnection, "restogglemonitor", s, packetid, 0, "");
-  FreeMemory(s);
-}
-
-/*****************************************************************************!
- * Function : HandleGetMonitorInfoRequest
- *****************************************************************************/
-void
-HandleGetMonitorInfoRequest
-(struct mg_connection* InConnection, json_value* InPacket)
-{
-  string				s;
-  int					packetid;
-  char					s2[32];
-  struct tm*				t;
- 
-  packetid = JSONIFGetInt(InPacket, "packetid");
-  s = StringCopy("{  \"monitorinfo\" :  { ");
-  s = StringConcatTo(s, "    \"messagecount\" : ");
-  sprintf(s2, "%d,\n",  CANInterfaceMessagesCount);
-  s = StringConcatTo(s, s2);
-
-  s = StringConcatTo(s, "    \"monitorstatus\" : ");
-  sprintf(s2, "%s,\n", CANInterfaceMonitor ? "true" : "false");
-  s = StringConcatTo(s, s2);
-
-  s = StringConcatTo(s, "   \"monitorstarttime\" : \"");
-  t = localtime(&MainStartTime);
-  sprintf(s2, "%02d/%02d/%04d %02d:%02d:%02d\", \n", t->tm_mon + 1, t->tm_mday, t->tm_year + 1900, t->tm_hour, t->tm_min, t->tm_sec);
-  s = StringConcatTo(s, s2);
-
-  s = StringConcatTo(s, "    \"monitorfilename\" : \"");
-  s = StringConcatTo(s, CANInterfaceOutputFilename);
-  s = StringConcatTo(s, "\"\n");
- 
-  s = StringConcatTo(s, "  }\n");
-  s = StringConcatTo(s, "}\n");
-
-  WebSocketFrameResponseSend(InConnection, "resmonitorinfo", s, packetid, 0, "");
   FreeMemory(s);
 }
 
@@ -364,6 +296,9 @@ WebSocketFrameResponseSendError
 #include "HandlePrepareDownloadRequest.c"
 
 #include "HandleGetLimitsRequest.c"
-#include "HandleSetDateRequest.c"
+#include "WebSocketIFHandleSetTimeStampRequest.c"
 #include "WebSocketFrameResponseSend.c"
 #include "WebSocketFrameSend.c"
+#include "WebSocketIFHandleSetLimitsRequest.c"
+#include "WebSocketIFHandleGetMonitorInfoRequest.c"
+#include "WebSocketIFHandlePacketRequest.c"

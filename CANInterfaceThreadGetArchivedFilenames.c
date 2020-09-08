@@ -3,7 +3,7 @@
  *****************************************************************************/
 StringList*
 CANInterfaceThreadGetArchivedFilenames
-(string InFilename)
+()
 {
   DIR*									dir;
   struct dirent*						entry;

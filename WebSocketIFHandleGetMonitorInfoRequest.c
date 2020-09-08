@@ -5,13 +5,16 @@ void
 WebSocketIFHandleGetMonitorInfoRequest
 (struct mg_connection* InConnection, json_value* InPacket)
 {
-  string				s;
-  int					packetid;
-  char					s2[228];
-  char                  s3[32], s4[64], MessageCountString[32];
-  struct tm*				t;
+  string								s;
+  int									packetid;
+  char									s2[228];
+  char                  				s3[32];
+  char				 					s4[64];
+  char									s5[64];
+  char			 						MessageCountString[32];
+  struct tm*							t;
   bool                                  b;
-  time_t							 	days, minutes, hours; 
+  time_t							 	days, minutes, hours, seconds; 
   time_t                                t1 = time(NULL);
   time_t								t2;
 
@@ -114,8 +117,20 @@ WebSocketIFHandleGetMonitorInfoRequest
 
   s = StringConcatTo(s, "    \"monitorstarttime\" : \"");
   t = localtime(&MainTimeStampTime);
-  sprintf(s2, "%02d/%02d/%04d %02d:%02d:%02d\", \n", t->tm_mon + 1, t->tm_mday, t->tm_year + 1900, t->tm_hour, t->tm_min, t->tm_sec);
-  s = StringConcatTo(s, s2);
+  t2 = (int)t1 - MainStartTime;
+  minutes = t2 / 60;
+  seconds = t2 % 60;
+  hours   = minutes / 60;
+  minutes = minutes % 60;
+
+  if ( hours == 0 ) {
+    sprintf(s5, " -- %02d.%02d Elapsed\",\n", (int)minutes, (int)seconds);
+  } else {
+    sprintf(s5, " -- %d:%02d.%02d Elapsed\",\n", (int)hours, (int)minutes, (int)seconds);
+  } 
+  sprintf(s4, "%02d/%02d/%04d %02d:%02d:%02d", t->tm_mon + 1, t->tm_mday, t->tm_year + 1900, t->tm_hour, t->tm_min, t->tm_sec);
+  s = StringConcatTo(s, s4);
+  s = StringConcatTo(s, s5);
 
   b = CANInterfaceThreadThrottleFile();
   s = StringConcatTo(s, "    \"limitstatus\" : \"");

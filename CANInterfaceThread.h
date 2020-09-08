@@ -60,7 +60,7 @@ CANInterfaceThreadCreateArchive
 
 StringList*
 CANInterfaceThreadGetArchivedFilenames
-(string InFilename);
+();
 
 void
 CANInterfaceThreadManageArchives

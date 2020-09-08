@@ -67,7 +67,7 @@ $(TARGET)		: $(OBJS)
 include			  depends.mk
 
 junkclean		: 
-			  -rm -rf $(wildcard)
+			  -rm -rf $(wildcard CANMon*.txt *-bak *~)
 
 clean			: 
 			  -rm -rf $(wildcard *.o $(ALLTARGETS))

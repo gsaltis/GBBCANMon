@@ -26,8 +26,11 @@
 /*******************************************************************************
  * Local Data
  *******************************************************************************/
-extern DeviceDefList* 
+extern DeviceDefList*
 mainDeviceDefs;
+
+extern string
+MainVersionNumber;
 
 extern bool
 MainVerbose;
@@ -116,6 +119,10 @@ MainLimitSizeRuntime;
 /*****************************************************************************!
  * Exported Functions
  *****************************************************************************/
+void
+MainDisplayVersion
+();
+
 bool
 MainLimitSet
 (string InType, int InValue);

@@ -39,8 +39,7 @@ CANInterfaceThreadThrottleFile
   if ( StringEqual(MainLimitType, "hours") ) {
     time_t t = time(NULL);
     time_t t2 = t - MainStartTime;
-    t2 /= 3600;
-    if ( (int)t2 >= MainLimitHours ) {
+    if ( (int)t2 >= (int)(MainLimitHours * 3600) ) {
 	  return true;
     }
     return false;

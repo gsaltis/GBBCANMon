@@ -1,72 +1,73 @@
-	:root
-	{
-	  --VertivBorder			: solid 2px #7F2E0F;
-	  --VertivBackground			: #Fb5b1B;
-	  --VertivLogoLetterColor		: white;
-	  --VertivBackgroundLighter		: #FbAb8B;
-	  --VertivLogoAreaSize			: 75px;
-	  --VertivLogoBackground		: #FB5B1B;
-	  --GeneralLabelWidth			: 170px;
-	  --DataColor				: #212124;
-	  --MessageLineHeight			: 21px;
-	  --DataLineHeight			: 20px;
-	}
+:root
+{
+  --VertivBorder			: solid 2px #7F2E0F;
+  --VertivBorderColor			: #7F2E0F;
+  --VertivBackground			: #Fb5b1B;
+  --VertivLogoLetterColor		: white;
+  --VertivBackgroundLighter		: #FbAb8B;
+  --VertivLogoAreaSize			: 75px;
+  --VertivLogoBackground		: #FB5B1B;
+  --GeneralLabelWidth			: 170px;
+  --DataColor				: #212124;
+  --MessageLineHeight			: 21px;
+  --DataLineHeight			: 20px;
+}
 
-	div.MainArea
-	{
-	  position				: absolute;
-	  left					: var(--VertivLogoAreaSize);
-	  right					: 0px;
-	  top					: var(--VertivLogoAreaSize);
-	  bottom				: 0px;
-	  padding-left				: 10px;
-	  padding-top				: 10px;
-	  margin-top				: 0px;
-	  background				: linear-gradient(#888, #EEE);
-	}
+div.MainArea
+{
+  position				: absolute;
+  left					: var(--VertivLogoAreaSize);
+  right					: 0px;
+  top					: var(--VertivLogoAreaSize);
+  bottom				: 0px;
+  padding-left				: 10px;
+  padding-top				: 10px;
+  margin-top				: 0px;
+  background				: linear-gradient(#888, #EEE);
+}
 
-	div.TopArea
-	{
-	  position				: absolute;
-	  left					: var(--VertivLogoAreaSize);
-	  top					: 0px;
-	  right					: 0px;
-	  height				: calc(var(--VertivLogoAreaSize) - 2px);
-	  background				: linear-gradient(90deg, var(--VertivBackground), var(--VertivBackgroundLighter));
-	  border-bottom				: var(--VertivBorder);
-	  border-top				: var(--VertivBorder);
-	  border-right				: var(--VertivBorder);
-	}
+div.TopArea
+{
+  position				: absolute;
+  left					: var(--VertivLogoAreaSize);
+  top					: 0px;
+  right					: 0px;
+  height				: calc(var(--VertivLogoAreaSize) - 2px);
+  background				: linear-gradient(90deg, var(--VertivBackground), var(--VertivBackgroundLighter));
+  border-bottom				: var(--VertivBorder);
+  border-top				: var(--VertivBorder);
+  border-right				: var(--VertivBorder);
+}
 
-	div.LeftArea
-	{
-	  position				: absolute;
-	  left					: 0px;
-	  width					: var(--VertivLogoAreaSize);
-	  top					: var(--VertivLogoAreaSize);
-	  bottom				: var(--MessageLineHeight); 
-	  background				: linear-gradient(var(--VertivBackground), var(--VertivBackgroundLighter));
-	  border-right				: var(--VertivBorder);
-	  border-left				: var(--VertivBorder);
-	  border-bottom				: var(--VertivBorder);
-	}
+div.LeftArea
+{
+  position				: absolute;
+  left					: 0px;
+  width					: var(--VertivLogoAreaSize);
+  top					: var(--VertivLogoAreaSize);
+  bottom				: var(--MessageLineHeight); 
+  background				: linear-gradient(var(--VertivBackground), var(--VertivBackgroundLighter));
+  border-right				: var(--VertivBorder);
+  border-left				: var(--VertivBorder);
+  border-bottom				: var(--VertivBorder);
+}
 
-	div.MessageLine
-	{
-	  position				: absolute;
-	  height				: var(--MessageLineHeight);
-	  left					: 0px;
-	  right					: 0px;
-	  bottom				: 0px;
-	  border-top				: var(--VertivBorder); 
-	  background				: white;
-	  padding-left				: 5px;
-	  line-height				: var(--MessageLineHeight);
-	  vertical-align			: middle;
-	  font-family				: Segoe UI;
-	  font-size				: 11pt;
-	  font-weight				: 600;
-	}
+div.MessageLine
+{
+  position				: absolute;
+  height				: var(--MessageLineHeight);
+  left					: 0px;
+  right					: 0px;
+  bottom				: 0px;
+  border-top				: var(--VertivBorder); 
+  background				: white;
+  padding-left				: 5px;
+  line-height				: var(--MessageLineHeight);
+  vertical-align			: middle;
+  font-family				: Segoe UI;
+  font-size				: 11pt;
+  font-weight				: 600;
+}
 
 	div.DataArea
 	{
@@ -74,7 +75,7 @@
 	  left					: 10px;
 	  top					: 10px;
 	  width					: 600px;
-	  height				: 350px;
+	  height				: 380px;
 	  border				: var(--VertivBorder);
 	  border-radius				: 10px;
 	  background				: linear-gradient(#FFFFFF80, #FFFFFF10);
@@ -187,7 +188,7 @@ div.GeneralButton
   border-radius				: 4px;
   cursor				: pointer;
   text-align				: center !important;
-  height					: 17px !important;
+  height				: 17px !important;
 }
 
 div.GeneralButton:hover
@@ -250,6 +251,14 @@ div.GeneralData3
   background			: #800 !important;
 }
 
+.SectionDivider {
+  background				: var(--VertivBorderColor);
+  height				: 3px;
+  left					: 0px;
+  right					: 0px;
+  position				: absolute;
+}
+
 .DataLine1
 {
   top					: 10px;
@@ -277,37 +286,37 @@ div.GeneralData3
 
 .DataLine6
 {
-  top					: 165px;
+  top					: 185px;
 }
 
 .DataLine7
 {
-  top					: 190px;
+  top					: 210px;
 }
 
 .DataLine8
 {
-  top					: 215px;
+  top					: 235px;
 }
 
 .DataLine9
 {
-  top					: 240px;
+  top					: 260px;
 }
 
 .DataLine10
 {
-  top					: 235px;
+  top					: 285px;
 }
 
 .DataLine11
 {
-  top					: 260px;
+  top					: 310px;
 }
 
 .DataLine12
 {
-  top					: 285px;
+  top					: 335px;
 }
 
 select

@@ -9,9 +9,9 @@ MainInitialize
   MainStartTime  = time(NULL);
   MainTimeStampTime = MainStartTime;
   MainLimitType  = StringCopy("size");
-  MainLimitDays  = 3;
+  MainLimitDays  = 7;
   MainLimitHours = 96;
-  MainLimitCount = 50000;
+  MainLimitCount = 2000000;
   MainLimitSize  = 10;
 
   MainLimitDaysRuntime 	= 0;

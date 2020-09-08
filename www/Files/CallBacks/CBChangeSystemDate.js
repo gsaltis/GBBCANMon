@@ -15,7 +15,7 @@ CBChangeSystemDate()
   if ( b == MainDateTimeOK ) {
     document.getElementById("ClearDateButton").style.visibility = "hidden";
     document.getElementById("ChangeDateButton").style.visibility = "hidden";
-    document.getElementById("SetDateInput").style.color = "green";
+    document.getElementById("SetDateInput").value = "";
 	MainDisplayMessage("Date/Time OK");
 	dm.innerHTML = "";
 	WebSocketIFSendTimeStamp(value);

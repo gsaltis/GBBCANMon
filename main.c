@@ -42,6 +42,9 @@
 /*****************************************************************************!
  * Local Data
  *****************************************************************************/
+string
+MainVersionNumber = "1.1.0";
+
 bool
 MainVerbose = false;
 
@@ -266,3 +269,4 @@ MainClearDatabase
 #include "MainExit.c"
 #include "MainRemoveTarFiles.c"
 #include "MainLimitSet.c"
+#include "MainDisplayVersion.c"

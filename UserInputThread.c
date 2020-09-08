@@ -123,6 +123,7 @@ UserInputThread
   string				commandline;
   StringList*				strings;
 
+  MainDisplayVersion();
   while (true) {
     commandline = linenoise(prompt);
     strings = StringSplit(commandline, " ", true);

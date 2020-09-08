@@ -10,8 +10,8 @@
     <div class="MainArea">
       <div class="DataArea">
         <!-- Line 1 -->
-        <div class="GeneralLabel DataLine1">Message Count :</div>
-        <div id="MessageCount" class="GeneralData DataLine1"></div>
+        <div id="MessageLimitLabel" class="GeneralLabel DataLine1">Message Count :</div>
+        <div id="MessageLimitValue" class="GeneralData DataLine1"></div>
 
 		<!-- Line 2 -->
   	    <div class="GeneralLabel DataLine2">Limit Data File : </div>
@@ -56,7 +56,7 @@
         <div id="SetLimitButton"      class="GeneralLabel GeneralButton DataLine2" style="left : 460px; width:40px; visibility:hidden" onclick="CBSetLimit()">Set</div>
         <div id="ClearLimitButton"    class="GeneralLabel GeneralButton DataLine2" style="left : 510px; width:60px; visibility:hidden" onclick="CBClearLimits()">Clear</div>
 
-
+		<div class="SectionDivider" style="top:62px"></div>
         <!-- Line 3 --> 
         <div class="GeneralLabel DataLine3">Time Stamp: </div>
         <div id="MonitorStartTime" class="GeneralData DataLine3"></div>
@@ -70,14 +70,16 @@
 	    <div id="ClearDateButton" class="GeneralLabel GeneralButton DataLine4 GeneralData3" style="width:50px; visibility:hidden" onclick="CBClearSystemDate()">Clear</div>
 	    <div id ="SetDateMessage" class="GeneralLabel DataLine4" style="left:460px; padding-right:5px; width:130px; font-weight:normal; text-align:right"></div>
 
+		<div class="SectionDivider" style="top:127px"></div>
 		<!-- Line 5 -->
         <div class="GeneralLabel GeneralButton DataLine5" onclick="CBMonitorToggle()">Monitor CAN Bus</div>
         <div id="MonitorStatus" class="GeneralData DataLine5"></div>
   
+		<div class="SectionDivider" style="top:172px"></div>
 		<!-- Line 6 --> 
         <div class="GeneralLabel DataLine6">Monitor CAN File Name :</div>
         <div id="MonitorFilename" class="GeneralData DataLine6"></div>
-
+ 
 		<!-- Line 7 -->
         <div class="GeneralLabel GeneralButton DataLine7"  onclick="CBPrepareDownloadFilename()">Prepare Download File</div>
         <div id="DownloadFilename" class="GeneralData DataLine7"><a href=""></a></div>
@@ -86,6 +88,8 @@
         <div id="DownloadFilename3" class="GeneralData DataLine10"><a href=""></a></div>
         <div id="DownloadFilename4" class="GeneralData DataLine11"><a href=""></a></div>
         <div id="DownloadFilename5" class="GeneralData DataLine12"><a href=""></a></div>
+	    <div class="GeneralLabel" style="bottom:0px; left:0px; padding-left:5px; text-align:left; background:#00000030; width:60px; border-top:solid thin black">Version : </div>
+        <div id="VersionNumber" class="GeneralData" style="left:65px; bottom:0px; right:0px; background:#00000030; border-top:solid thin black">Hi Mom</div>
       </div>
     </div>
     <div class="LogoArea">
@@ -98,7 +102,8 @@
       </div>
       <div class="LogoVBottom2"></div>
     </div>
-    <div class="TopArea"> </div>
+    <div class="TopArea">
+    </div>
     <div class="LeftArea"> </div> 
     <div id="MessageLine" class="MessageLine"></div>;
   </body>

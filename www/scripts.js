@@ -377,7 +377,7 @@ CBChangeSystemDate()
   if ( b == MainDateTimeOK ) {
     document.getElementById("ClearDateButton").style.visibility = "hidden";
     document.getElementById("ChangeDateButton").style.visibility = "hidden";
-    document.getElementById("SetDateInput").style.color = "green";
+    document.getElementById("SetDateInput").value = "";
 	MainDisplayMessage("Date/Time OK");
 	dm.innerHTML = "";
 	WebSocketIFSendTimeStamp(value);
@@ -432,6 +432,9 @@ CBChangeSystemDate()
 function CBGetSystemDate()
 {
   var                                   di;
+  var                                   hours, minutes, seconds;
+  var                                   day, month, year, m;
+
   di = document.getElementById("SetDateInput");
   da = new Date(Date.now());
 
@@ -439,6 +442,7 @@ function CBGetSystemDate()
   document.getElementById("ClearDateButton").style.visibility = "visible";
   minutes = da.getMinutes().toString();
   hours = da.getHours().toString();
+  seconds = da.getSeconds().toString();
 
   day = da.getDate().toString();
   m = da.getMonth() + 1;
@@ -451,7 +455,10 @@ function CBGetSystemDate()
   if ( hours.length < 2 ) {
 	hours = "0" + hours;
   }
-  d = month + "/" + day + "/" + year + "  " + hours  + ":" + minutes;
+  if ( seconds.length < 2 ) {
+	seconds = "0" + seconds;
+  }
+  d = month + "/" + day + "/" + year + "  " + hours  + ":" + minutes + ":" + seconds;
 
   di.value = d;
 }
@@ -585,6 +592,8 @@ CBPrepareDownloadFilename
 function
 CBDateInputChanged()
 {
+  document.getElementById("ChangeDateButton").style.visibility = "visible";
+  document.getElementById("ClearDateButton").style.visibility = "visible";
 } 
 // FILE: ./Files/CallBacks/CBClearSystemDate.js
 /*****************************************************************************!
@@ -981,16 +990,18 @@ WebSocketIFHandleResponseMonitorInfo
 {
   var                                   d;
  
-  d = document.getElementById("MessageCount");
-  d.innerHTML = InMonitorInfo.messagecount;
+  d = document.getElementById("MessageLimitValue");
+  d.innerHTML = InMonitorInfo.messagelimitvalue;
   if ( InMonitorInfo.limitstatus == "OK" ) {
 	d.className = "GeneralData DataLine1 MessageCountOK";
   } else {
 	d.className = "GeneralData DataLine1 MessageCountAT";
   }
+  document.getElementById("MessageLimitLabel").innerHTML = InMonitorInfo.messagelimitlabel;
   document.getElementById("MonitorStatus").innerHTML = InMonitorInfo.monitorstatus;
   document.getElementById("MonitorFilename").innerHTML = InMonitorInfo.monitorfilename;
   document.getElementById("MonitorStartTime").innerHTML = InMonitorInfo.monitorstarttime;
+  document.getElementById("VersionNumber").innerHTML = InMonitorInfo.version;
   setTimeout(function() { WebSocketIFRequestMonitorInfo(); }, 5000);
 }
 // FILE: ./Files/WebSocketIF/WebSocketIFSendUpdateBayRegValuesRequest.js

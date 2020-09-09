@@ -302,3 +302,4 @@ WebSocketFrameResponseSendError
 #include "WebSocketIFHandleSetLimitsRequest.c"
 #include "WebSocketIFHandleGetMonitorInfoRequest.c"
 #include "WebSocketIFHandlePacketRequest.c"
+#include "WebSocketIFHandleRemoveArchiveFiles.c"

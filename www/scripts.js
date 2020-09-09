@@ -425,6 +425,17 @@ CBChangeSystemDate()
   document.getElementById("MessageLine").value =value;
 }
 
+// FILE: ./Files/CallBacks/CBClearArchiveFiles.js
+/*****************************************************************************!
+ * Function : CBClearArchiveFiles
+ *****************************************************************************/
+function
+CBClearArchiveFiles
+()
+{
+  WebSocketIFSendRemoveArchivedFiles();
+}
+
 // FILE: ./Files/CallBacks/CBGetSystemDate.js
 /*****************************************************************************!
  * Function : CBGetSystemDate
@@ -739,13 +750,21 @@ function
 WebSocketIFHandleResponsePrepareDownloadFile
 (InPacket)
 {
-  var					aref;
+  var									aref; 
+  var									d;
 
   aref = document.getElementById("DownloadFilename").children[0];
 
   aref.href = InPacket.linkname;
   aref.innerHTML = InPacket.filename;
 
+  d = document.getElementById("ClearArchiveButton");
+  if ( InPacket.archivedfiles.length == 0 ) {
+	d.style.visibility = "hidden";
+  } else {
+	d.style.visibility = "visible";
+  }
+    
   for (i = 0 ; i < InPacket.archivedfiles.length; i++) {
     aref = document.getElementById("DownloadFilename" + (i + 1)).children[0];
 	aref.innerHTML = InPacket.archivedfiles[i];
@@ -872,6 +891,22 @@ WebSocketIFHandleDeviceRegs
   WebSocketIFSendDeviceDefRegRequestNext();
 }
  
+// FILE: ./Files/WebSocketIF/WebSocketIFHandleRemoveArchivedFiles.js
+/*****************************************************************************!
+ * Function : WebSocketIFHandleRemoveArchivedFiles
+ *****************************************************************************/
+function
+WebSocketIFHandleRemoveArchivedFiles
+(InPacket)
+{
+  var                                   i, name;
+  MainDisplayMessage(InPacket.responsemessage);
+  for (i = 0 ; i < 5; i++ ) {
+    name = "DownloadFilename" + (i + 1);
+    document.getElementById(name).innerHTML = "";
+  }
+  document.getElementById("ClearArchiveButton").style.visibility = "hidden";
+}
 // FILE: ./Files/WebSocketIF/WebSocketIFHandleDeviceDefs.js
 /*****************************************************************************!
  * Function : WebSocketIFHandleDeviceDefs
@@ -939,6 +974,8 @@ WebSocketIFHandleResponsePacket(InPacket)
 	WebSocketIFHandleSetTimeResponse(InPacket.body);
   } else if ( InPacket.type == "ressetlimits" ) {
 	WebSocketIFHandleSetLimitsResponse(InPacket.body);
+  } else if ( InPacket.type == "resremovearchivefiles" ) {
+	WebSocketIFHandleRemoveArchivedFiles(InPacket);
   }
 }
 
@@ -980,6 +1017,23 @@ WebSocketIFSendDeviceDefRegRequestStart
 }
 
 
+// FILE: ./Files/WebSocketIF/WebSocketIFSendRemoveArchivedFiles.js
+/*****************************************************************************!
+ * Function : WebSocketIFSendRemoveArchivedFiles
+ *****************************************************************************/
+function
+WebSocketIFSendRemoveArchivedFiles
+()
+{
+  var									request;
+
+  request = {};
+  request.packettype = "request";
+  request.packetid = WebSocketIFGetNextID();
+  request.time = 0;
+  request.type = 'removearchivefiles';
+  WebSocketIFSendGeneralRequest(request); 
+}
 // FILE: ./Files/WebSocketIF/WebSocketIFHandleResponseMonitorInfo.js
 /*****************************************************************************!
  * Function : WebSocketIFHandleResponseMonitorInfo

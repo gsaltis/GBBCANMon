@@ -43,6 +43,10 @@ WebSocketServerThreadID;
  * Exported Functions
  *****************************************************************************/
 void
+WebSocketIFHandleRemoveArchiveFiles
+(struct mg_connection* InConnection, json_value* InPacket);
+
+void
 HandleGetLimitsRequest
 (struct mg_connection* InConnection, json_value* InPacket);
 

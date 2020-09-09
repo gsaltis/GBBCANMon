@@ -24,7 +24,7 @@ CANInterfaceThreadCreateArchive
   suffix = FilenameExtractSuffix(InFilename); 
 
   stat(InFilename, &statbuf);
-  filetime = statbuf.st_mtim.tv_sec;
+  filetime = statbuf.st_atim.tv_sec;
 
   n = strlen(InFilename);
 

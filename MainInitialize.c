@@ -6,7 +6,7 @@ MainInitialize
 ()
 {
   atexit(MainExit);  
-  MainStartTime  = time(NULL);
+  MainInitializeStartTime();
   MainTimeStampTime = MainStartTime;
   MainLimitType  = StringCopy("size");
   MainLimitDays  = 7;

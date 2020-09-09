@@ -27,10 +27,13 @@ WebSocketIFHandleGetMonitorInfoRequest
   s = StringConcatTo(s, "    \"messagelimitvalue\" : ");
 
   if ( StringEqual(MainLimitType, "none") ) {
-	sprintf(s2, "\"%d of %d messages\",\n", CANInterfaceMessagesCount, MainLimitCount);
-
+    ConvertIntToCommaString(CANInterfaceMessagesCount, MessageCountString);
+    ConvertIntToCommaString(MainLimitCount, s5);
+	sprintf(s2, "\"%s of %s messages\",\n", MessageCountString, s5);
   } else if ( StringEqual(MainLimitType, "count") ) {
-	sprintf(s2, "\"%d of %d messages\",\n", CANInterfaceMessagesCount, MainLimitCount);
+	ConvertIntToCommaString(CANInterfaceMessagesCount, MessageCountString);
+    ConvertIntToCommaString(MainLimitCount, s5);
+	sprintf(s2, "\"%s of %s messages\",\n", MessageCountString, s5);
   } else if ( StringEqual(MainLimitType, "days") ) {
     time_t t2 = t1- MainStartTime;
     days = t2 / (3600 * 24);

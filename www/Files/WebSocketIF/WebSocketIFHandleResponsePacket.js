@@ -18,6 +18,8 @@ WebSocketIFHandleResponsePacket(InPacket)
 	WebSocketIFHandleSetTimeResponse(InPacket.body);
   } else if ( InPacket.type == "ressetlimits" ) {
 	WebSocketIFHandleSetLimitsResponse(InPacket.body);
+  } else if ( InPacket.type == "resremovearchivefiles" ) {
+	WebSocketIFHandleRemoveArchivedFiles(InPacket);
   }
 }
 

@@ -19,10 +19,12 @@ CANInterfaceThread.o: CANInterfaceThread.c CANInterface.h String.h \
  BayType.h WebConnection.h CanMsg.h BytesManage.h CANMonLog.h FileUtils.h \
  DirManagement.h MemoryManager.h CANInterfaceThreadManageArchives.c \
  CANInterfaceThreadGetArchivedFilenames.c \
- CANInterfaceThreadCreateArchive.c CANInterfaceThreadThrottleFile.c
+ CANInterfaceThreadCreateArchive.c CANInterfaceThreadThrottleFile.c \
+ CANInterfaceThreadHandleRequest.c
 CANInterfaceThreadCreateArchive.o: CANInterfaceThreadCreateArchive.c
 CANInterfaceThreadGetArchivedFilenames.o: \
  CANInterfaceThreadGetArchivedFilenames.c
+CANInterfaceThreadHandleRequest.o: CANInterfaceThreadHandleRequest.c
 CANInterfaceThreadManageArchives.o: CANInterfaceThreadManageArchives.c
 CANInterfaceThreadThrottleFile.o: CANInterfaceThreadThrottleFile.c
 CANMonLog.o: CANMonLog.c String.h FileUtils.h MemoryManager.h CANMonLog.h \
@@ -81,8 +83,10 @@ HandleGetLimitsRequest.o: HandleGetLimitsRequest.c
 HandlePrepareDownloadRequest.o: HandlePrepareDownloadRequest.c
 JSONIF.o: JSONIF.c String.h MemoryManager.h JSONIF.h
 MainDisplayHelp.o: MainDisplayHelp.c
+MainDisplayVersion.o: MainDisplayVersion.c
 MainExit.o: MainExit.c
 MainInitialize.o: MainInitialize.c
+MainInitializeStartTime.o: MainInitializeStartTime.c
 MainLimitSet.o: MainLimitSet.c
 MainProcessCommandLine.o: MainProcessCommandLine.c
 MainRemoveTarFiles.o: MainRemoveTarFiles.c
@@ -123,11 +127,13 @@ WebSocketIF.o: WebSocketIF.c WebSocketIF.h FuseBreaker.h String.h \
  WebSocketIFHandleSetTimeStampRequest.c WebSocketFrameResponseSend.c \
  WebSocketFrameSend.c WebSocketIFHandleSetLimitsRequest.c \
  WebSocketIFHandleGetMonitorInfoRequest.c \
- WebSocketIFHandlePacketRequest.c
+ WebSocketIFHandlePacketRequest.c WebSocketIFHandleRemoveArchiveFiles.c
 WebSocketIFCreateInfoScript.o: WebSocketIFCreateInfoScript.c
 WebSocketIFHandleGetMonitorInfoRequest.o: \
  WebSocketIFHandleGetMonitorInfoRequest.c
 WebSocketIFHandlePacketRequest.o: WebSocketIFHandlePacketRequest.c
+WebSocketIFHandleRemoveArchiveFiles.o: \
+ WebSocketIFHandleRemoveArchiveFiles.c
 WebSocketIFHandleSetLimitsRequest.o: WebSocketIFHandleSetLimitsRequest.c
 WebSocketIFHandleSetTimeStampRequest.o: \
  WebSocketIFHandleSetTimeStampRequest.c
@@ -149,4 +155,5 @@ main.o: main.c CANInterface.h String.h DeviceDef.h DeviceDefines.h \
  PanelType.h BayType.h main.h FuseBreakerType.h WebConnection.h \
  PanelConnection.h Messages.h DirManagement.h CANMonLog.h FileUtils.h \
  MainProcessCommandLine.c MainDisplayHelp.c MainInitialize.c MainExit.c \
- MainRemoveTarFiles.c MainLimitSet.c
+ MainRemoveTarFiles.c MainLimitSet.c MainDisplayVersion.c \
+ MainInitializeStartTime.c

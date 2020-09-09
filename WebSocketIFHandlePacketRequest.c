@@ -29,7 +29,8 @@ WebSocketIFHandlePacketRequest
 	WebSocketIFHandleSetTimeStampRequest(InConnection, InPacket);
   } else if ( StringEqual("setlimits", requesttype) ) {
 	WebSocketIFHandleSetLimitsRequest(InConnection, InPacket);
+  } else if ( StringEqual("removearchivefiles", requesttype) ) {
+	WebSocketIFHandleRemoveArchiveFiles(InConnection, InPacket);
   }
- 
   FreeMemory(requesttype);
 }

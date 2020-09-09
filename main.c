@@ -270,3 +270,4 @@ MainClearDatabase
 #include "MainRemoveTarFiles.c"
 #include "MainLimitSet.c"
 #include "MainDisplayVersion.c"
+#include "MainInitializeStartTime.c"

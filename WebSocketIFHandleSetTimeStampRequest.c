@@ -34,8 +34,7 @@ WebSocketIFHandleSetTimeStampRequest
   responseString = StringConcatTo(responseString, "\"message\" : \"");
   responseString = StringConcatTo(responseString, returnMessage);
   responseString = StringConcatTo(responseString, "\" }");
-
-
+  MainInitializeStartTime();
   WebSocketFrameResponseSend(InConnection, "ressettimestamp", responseString, packetid, 0, "");
   FreeMemory(returnMessage);
   FreeMemory(responseString);

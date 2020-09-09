@@ -16,6 +16,9 @@
 #include <pthread.h>
 #include <sqlite3.h>
 #include <time.h>
+#include <errno.h>
+#include <sys/types.h>
+#include <utime.h>
 
 /*****************************************************************************!
  * Local Headers
@@ -64,7 +67,7 @@ CANInterfaceThread
 
 static
 void
-HandleRequest
+CANInterfaceThreadHandleRequest
 (CANInterface* InInterface, frameid InID, dataframe InData, time_t InTime);
 
 /*****************************************************************************!
@@ -83,7 +86,7 @@ CANInterfaceThreadInit
   if ( CANInterfaceOutputFile == NULL ) {
     CANMonLogWrite("Could not open %s\n", CANInterfaceOutputFilename);
   }
- 
+	 
   pthread_create(&CANInterfaceThreadID, NULL, CANInterfaceThread, NULL);
 }
 
@@ -117,7 +120,7 @@ CANInterfaceThread
         if ( CANInterfaceMonitor ) {
 	  if ( !CANInterfaceThreadThrottleFile() ) {
 	    t = time(NULL) - MainStartTime;
-    	    HandleRequest(MainCANInterface, fid, df, MainTimeStampTime + t);
+    	    CANInterfaceThreadHandleRequest(MainCANInterface, fid, df, MainTimeStampTime + t);
             CANInterfaceMessagesCount++;
           }
         }
@@ -130,19 +133,6 @@ CANInterfaceThread
 	break;
       }
     }
-  }
-}
-
-/*****************************************************************************!
- * Function HandleRequest
- *****************************************************************************/
-void
-HandleRequest
-(CANInterface* InInterface, frameid InID, dataframe InData, time_t InTime)
-{
-  if ( CANInterfaceMonitor && CANInterfaceOutputFile ) {
-    MainLimitSizeRuntime += fprintf(CANInterfaceOutputFile, "%08x %016llX %08lx\n", InID.data32, InData.data64, InTime);
-    fflush(CANInterfaceOutputFile);
   }
 }
 
@@ -216,3 +206,4 @@ CANInterfaceFileClose
 #include "CANInterfaceThreadGetArchivedFilenames.c"
 #include "CANInterfaceThreadCreateArchive.c"
 #include "CANInterfaceThreadThrottleFile.c"
+#include "CANInterfaceThreadHandleRequest.c"

@@ -44,9 +44,16 @@ $(TARGET)		: $(OBJS)
 
 include			  depends.mk
 
+stage			:
+			   strip canmonview.exe
+			   mkdir CANMONView
+			   cp canmonview.exe CANMONView
+			   cp DeviceDefs.json CANMonView
+			   cp \qt\Tools\mingw730_64\bin\libwinpthread-1.dll CANMONView
 junkclean		: 
 			  -rm -rf $(wildcard)
 
 clean			: 
 			  -rm -rf $(wildcard *.o $(ALLTARGETS))
+			  -rm -rf $(wildcard CANMONView)
 

@@ -30,6 +30,8 @@
 /*****************************************************************************!
  * Local Macros
  *****************************************************************************/
+#define DEFAULT_OUTPUT_FILENAME "CANMon.txt"
+#define DEFAULT_DEFINITION_FILENAME "DeviceDefs.json"
 
 /*****************************************************************************!
  * Local Data
@@ -46,12 +48,26 @@ mainDeviceNameLen;
 static int
 mainRegNameLen;
 
+static string
+deviceDefName;
+
+static string
+mainProgramName = "canmonview";
+
 /*****************************************************************************!
  * Local Functions
  *****************************************************************************/
 void
 MainProcessLine
 (FILE* InFile, int InLineNumber, string InLine);
+
+void
+MainProcessCommandLine
+(int argc, char** argv);
+
+void
+MainDisplayHelp
+();
 
 /*****************************************************************************!
  * Function : main
@@ -70,7 +86,6 @@ main(int argc, char**argv)
   string                                base, suffix;
   string                                filename;
   FILE*                                 outFile;
-  string                                deviceDefName;
   char*                                 jbuffer;
   int                                   bufferLen;
   json_settings                         settings;
@@ -83,10 +98,16 @@ main(int argc, char**argv)
 
   n = 0;
   lines = 0;
-  mainFileName = "CANMon.txt";
-  deviceDefName = "DeviceDefs.json";
-  
+  mainFileName = StringCopy(DEFAULT_OUTPUT_FILENAME);
+  deviceDefName = StringCopy(DEFAULT_DEFINITION_FILENAME);
+
+  MainProcessCommandLine(argc, argv);
+
   base = FilenameExtractBase(mainFileName);
+  if ( base == NULL ) {
+    fprintf(stderr, "%s is an invalid file name\n", mainFileName);
+    exit(EXIT_FAILURE);
+  }
   suffix = FilenameExtractSuffix(mainFileName);
   GetFileBuffer(deviceDefName, &jbuffer, &bufferLen);
   memset(&settings, 0x00, sizeof(json_settings));
@@ -112,22 +133,20 @@ main(int argc, char**argv)
     }
   }
 
-  if ( base && suffix ) {
+  if ( suffix ) {
     filename = StringMultiConcat(base, "Parsed.", suffix, NULL);
-  } else if ( base ) {
-    filename = StringConcat("Parsed.", suffix);
   } else {
-    filename = StringConcat(base, "Parsed");
+    filename = StringMultiConcat(base, "Parsed.txt", NULL);
   }
 
   outFile = fopen(filename, "wb");
   if ( NULL == outFile ) {
-    fprintf(stderr, "Could not open %s : %s\n", filename, strerror(errno));
+    fprintf(stderr, "Could not open output file %s : %s\n", filename, strerror(errno));
     exit(EXIT_FAILURE);
   }
   file = fopen(mainFileName, "rb");
   if ( NULL == file ) {
-    fprintf(stderr, "Could not open %s : %s\n", mainFileName, strerror(errno));
+    fprintf(stderr, "Could not open input file %s : %s\n", mainFileName, strerror(errno));
     exit(EXIT_FAILURE);
   }
   stat(mainFileName, &statbuf);
@@ -241,7 +260,7 @@ MainProcessLine
     sprintf(dstAddrString, "  %02X", frame.msgbit.DstAddr);
   }
   fprintf(InFile, 
-          "%8d  %02d/%02d/%04d %02d:%02d:%02d  %*s %s %s  %d  %3X %3X %*s[%04x] %s\n", 
+          "%8d  %02d/%02d/%04d %02d:%02d:%02d  %*s %s %s  %d  %3X %3X %*s[%04x] %s\r\n", 
           InLineNumber, 
           ts->tm_mon + 1,
           ts->tm_mday, 
@@ -261,4 +280,65 @@ MainProcessLine
  		  data.data.ValueType,
           valueString);
   StringListDestroy(elements);
+}
+
+/*****************************************************************************!
+ * Function : MainProcessCommandLine
+ *****************************************************************************/
+void
+MainProcessCommandLine
+(int argc, char** argv)
+{
+  string					command;
+
+  for ( int i = 1; i < argc; i++ ) {
+    command = argv[i];
+    if ( StringEqualsOneOf(command, "-h", "--help", NULL) ) {
+      MainDisplayHelp();
+      exit(EXIT_SUCCESS);
+    }
+
+    if ( StringEqualsOneOf(command, "-f", "--file", NULL) ) {
+      i++;
+      if ( i == argc ) {
+	fprintf(stderr, "%s requires a data file name\n", command);
+	MainDisplayHelp();
+      }
+      if ( mainFileName ) {
+	FreeMemory(mainFileName);
+      }
+      mainFileName = StringCopy(argv[i]);
+      continue;
+    }
+
+    if ( StringEqualsOneOf(command, "-d", "--deffile", NULL) ) {
+      i++;
+      if ( i == argc ) {
+	fprintf(stderr, "%s requires definition file name\n", command);
+  	exit(EXIT_FAILURE);
+      }
+      if ( deviceDefName ) {
+        FreeMemory(deviceDefName);
+      }
+      deviceDefName = StringCopy(argv[i]);
+      continue;
+    }
+    
+    fprintf(stderr, "%s is not a recognized command\n", command);
+    MainDisplayHelp();
+    exit(EXIT_FAILURE);    
+  }
+}
+
+/*****************************************************************************!
+ * Function : MainDisplayHelp
+ *****************************************************************************/
+void
+MainDisplayHelp
+()
+{
+  printf("Usage : %s options\n", mainProgramName);
+  printf("        -d, --deffile filename              : Specify a protocol definition file (default %s)\n", DEFAULT_DEFINITION_FILENAME);
+  printf("        -f, --file filename                 : Specify a data file to parse (default %s)\n", DEFAULT_OUTPUT_FILENAME);
+  printf("        -h, --help                          : Display this message\n");
 }

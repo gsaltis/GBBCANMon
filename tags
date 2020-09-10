@@ -1,0 +1,1068 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+Abbrev	CanMsg.h	/^    char Abbrev[SHORTSTRINGLEN];$/;"	m	struct:__anon2
+AddCANDevice	Devices.c	/^AddCANDevice$/;"	f
+AddDevice	Devices.c	/^bool AddDevice(char* DeviceName, int Count)$/;"	f
+AddDeviceDef	DeviceDef.c	/^AddDeviceDef$/;"	f
+AddDeviceMessageDef	DeviceMessageDef.c	/^AddDeviceMessageDef$/;"	f
+AddDeviceRegDef	DeviceRegDef.c	/^AddDeviceRegDef$/;"	f
+AddSingleDevice	Devices.c	/^CanDevice* AddSingleDevice(char* DeviceName)$/;"	f
+BACKSPACE	linenoise.c	/^	BACKSPACE =  127    \/* Backspace *\/$/;"	e	enum:KEY_ACTION	file:
+BAY_DEFAULT_IP_ADDRESS	Bay.c	32;"	d	file:
+BAY_DEFAULT_IP_PORT_NUMBER	Bay.c	33;"	d	file:
+BAY_MAX_INDEX	Bay.h	32;"	d
+BEL	ascii.h	14;"	d
+BUFFERSIZE	Devices.c	881;"	d	file:
+Bay	Bay.h	/^} Bay;$/;"	t	typeref:struct:_Bay
+BayAddPanel	Bay.c	/^BayAddPanel$/;"	f
+BayAppendPanelConnection	Bay.c	/^BayAppendPanelConnection$/;"	f
+BayCreate	Bay.c	/^BayCreate$/;"	f
+BayCreateEmptyPanel	Bay.c	/^BayCreateEmptyPanel$/;"	f
+BayCreateEmptyPanels	Bay.c	/^BayCreateEmptyPanels$/;"	f
+BayDestroy	Bay.c	/^BayDestroy$/;"	f
+BayDisplay	Bay.c	/^BayDisplay$/;"	f
+BayFindCANRegister	Bay.c	/^BayFindCANRegister$/;"	f
+BayFindPanelByIndex	Bay.c	/^BayFindPanelByIndex$/;"	f
+BayFindPanelConnectionByIndices	Bay.c	/^BayFindPanelConnectionByIndices$/;"	f
+BayFirstPanel	Bay.c	/^BayFirstPanel$/;"	f
+BayFromJSONString	Bay.c	/^BayFromJSONString$/;"	f
+BayGetIPInfo	Bay.c	/^BayGetIPInfo$/;"	f
+BayGetPanelIndexList	Bay.c	/^BayGetPanelIndexList$/;"	f
+BayNextPanel	Bay.c	/^BayNextPanel$/;"	f
+BayPanelSlotOccupied	Bay.c	/^BayPanelSlotOccupied$/;"	f
+BayRegValuesFromJSONString	Bay.c	/^BayRegValuesFromJSONString$/;"	f
+BayRegValuesToJSONString	Bay.c	/^BayRegValuesToJSONString$/;"	f
+BayRemovePanelByIndex	Bay.c	/^BayRemovePanelByIndex$/;"	f
+BayRemovePanelConnection	Bay.c	/^BayRemovePanelConnection$/;"	f
+BayRemovePanelConnectionsByIndex	Bay.c	/^BayRemovePanelConnectionsByIndex$/;"	f
+BaySaveFilename	Bay.c	/^BaySaveFilename$/;"	f
+BaySaveValuesSQL	Bay.c	/^BaySaveValuesSQL$/;"	f
+BaySet	Bay.c	/^BaySet$/;"	f
+BaySetIPInfo	Bay.c	/^BaySetIPInfo$/;"	f
+BaySetName	Bay.c	/^BaySetName$/;"	f
+BayToJSONString	Bay.c	/^BayToJSONString$/;"	f
+BayType	BayType.h	/^typedef struct _BayType BayType;$/;"	t	typeref:struct:_BayType
+BayTypeAppend	BayType.c	/^BayTypeAppend$/;"	f
+BayTypeCreate	BayType.c	/^BayTypeCreate$/;"	f
+BayTypeDestroy	BayType.c	/^BayTypeDestroy$/;"	f
+BayTypeFindByName	BayType.c	/^BayTypeFindByName$/;"	f
+BayTypeFromJSONString	BayType.c	/^BayTypeFromJSONString$/;"	f
+BayTypeFromString	Bay.c	/^BayTypeFromString$/;"	f
+BayTypeGetNamesList	BayType.c	/^BayTypeGetNamesList$/;"	f
+BayTypeToJSONString	BayType.c	/^BayTypeToJSONString$/;"	f
+BayTypeToString	Bay.c	/^BayTypeToString$/;"	f
+BayTypesDestroy	BayType.c	/^BayTypesDestroy$/;"	f
+BayTypesToJSONString	BayType.c	/^BayTypesToJSONString$/;"	f
+BayUpdateFromJSONString	Bay.c	/^BayUpdateFromJSONString$/;"	f
+BayValueFromJSONString	Bay.c	/^BayValueFromJSONString$/;"	f
+BayValueToJSONString	Bay.c	/^BayValueToJSONString$/;"	f
+BayVerifyNewPanelConnection	Bay.c	/^BayVerifyNewPanelConnection$/;"	f
+Bays	Bay.c	/^Bays[BAY_MAX_INDEX];$/;"	v
+BaysFileName	Bay.c	/^BaysFileName = NULL;$/;"	v
+BaysFirstBay	Bay.c	/^BaysFirstBay$/;"	f
+BaysFromJSONString	Bay.c	/^BaysFromJSONString$/;"	f
+BaysGetIndexList	Bay.c	/^BaysGetIndexList$/;"	f
+BaysInitialize	Bay.c	/^BaysInitialize$/;"	f
+BaysNextBay	Bay.c	/^BaysNextBay$/;"	f
+BaysRemoveAll	Bay.c	/^BaysRemoveAll$/;"	f
+BaysRemoveBayByIndex	Bay.c	/^BaysRemoveBayByIndex$/;"	f
+BaysSave	Bay.c	/^BaysSave$/;"	f
+BaysSaveValues	Bay.c	/^BaysSaveValues$/;"	f
+BaysSaveValuesSQL	Bay.c	/^BaysSaveValuesSQL$/;"	f
+BaysToJSONString	Bay.c	/^BaysToJSONString$/;"	f
+BaysValueFromJSONString	Bay.c	/^BaysValueFromJSONString$/;"	f
+BaysValueToJSONString	Bay.c	/^BaysValueToJSONString$/;"	f
+ByteManageSwap8	BytesManage.c	/^ByteManageSwap8$/;"	f
+BytesAllocated	MemoryManager.h	/^  size_t				BytesAllocated;$/;"	m	struct:_MMMemoryStats
+BytesFreed	MemoryManager.h	/^  size_t				BytesFreed;$/;"	m	struct:_MMMemoryStats
+CANInterface	CANInterface.h	/^typedef struct _CANInterface CANInterface;$/;"	t	typeref:struct:_CANInterface
+CANInterfaceClose	CANInterface.c	/^CANInterfaceClose$/;"	f
+CANInterfaceFileClose	CANInterfaceThread.c	/^CANInterfaceFileClose$/;"	f
+CANInterfaceFileOpen	CANInterfaceThread.c	/^CANInterfaceFileOpen$/;"	f
+CANInterfaceInit	CANInterface.c	/^CANInterfaceInit$/;"	f
+CANInterfaceMessagesCount	CANInterfaceThread.c	/^CANInterfaceMessagesCount = 0;$/;"	v
+CANInterfaceMonitor	CANInterfaceThread.c	/^CANInterfaceMonitor = true;$/;"	v
+CANInterfaceMonitorCountReset	UserInputThread.c	/^CANInterfaceMonitorCountReset$/;"	f
+CANInterfaceMonitorStart	CANInterfaceThread.c	/^CANInterfaceMonitorStart$/;"	f
+CANInterfaceMonitorStop	CANInterfaceThread.c	/^CANInterfaceMonitorStop$/;"	f
+CANInterfaceOutputFile	CANInterfaceThread.c	/^CANInterfaceOutputFile = NULL;$/;"	v
+CANInterfaceOutputFilename	CANInterfaceThread.c	/^CANInterfaceOutputFilename = "CANMon.txt";$/;"	v
+CANInterfaceRead	CANInterface.c	/^CANInterfaceRead$/;"	f
+CANInterfaceReadTimeout	CANInterface.c	/^CANInterfaceReadTimeout$/;"	f
+CANInterfaceReset	CANInterface.c	/^CANInterfaceReset$/;"	f
+CANInterfaceThread	CANInterfaceThread.c	/^CANInterfaceThread$/;"	f
+CANInterfaceThreadCreateArchive	CANInterfaceThreadCreateArchive.c	/^CANInterfaceThreadCreateArchive$/;"	f
+CANInterfaceThreadGetArchivedFilenames	CANInterfaceThreadGetArchivedFilenames.c	/^CANInterfaceThreadGetArchivedFilenames$/;"	f
+CANInterfaceThreadHandleRequest	CANInterfaceThreadHandleRequest.c	/^CANInterfaceThreadHandleRequest$/;"	f
+CANInterfaceThreadID	CANInterfaceThread.c	/^CANInterfaceThreadID;$/;"	v
+CANInterfaceThreadInit	CANInterfaceThread.c	/^CANInterfaceThreadInit$/;"	f
+CANInterfaceThreadManageArchives	CANInterfaceThreadManageArchives.c	/^CANInterfaceThreadManageArchives$/;"	f
+CANInterfaceThreadMaxArchiveFiles	CANInterfaceThread.c	/^CANInterfaceThreadMaxArchiveFiles = 4;$/;"	v
+CANInterfaceThreadThrottleFile	CANInterfaceThreadThrottleFile.c	/^CANInterfaceThreadThrottleFile$/;"	f
+CANInterfaceTransaction	CANInterface.c	/^CANInterfaceTransaction$/;"	f
+CANInterfaceWrite	CANInterface.c	/^CANInterfaceWrite$/;"	f
+CANMONLOG_DEFAULT_FILENAME	CANMonLog.h	22;"	d
+CANMonLogFile	CANMonLog.c	/^CANMonLogFile;$/;"	v
+CANMonLogFilename	CANMonLog.c	/^CANMonLogFilename = NULL;$/;"	v
+CANMonLogInit	CANMonLogInit.c	/^CANMonLogInit$/;"	f
+CANMonLogMutex	CANMonLog.c	/^CANMonLogMutex;$/;"	v
+CANMonLogSetFilename	CANMonLogSetFilename.c	/^CANMonLogSetFilename$/;"	f
+CANMonLogWrite	CANMonLogWrite.c	/^CANMonLogWrite$/;"	f
+CANMonitorInput	CANInterface.c	/^CANMonitorInput = false;$/;"	v
+CANRegisterDef	CANRegisterDef.h	/^} CANRegisterDef;$/;"	t	typeref:struct:__anon12
+CANValueGetFromString	CanMsg.c	/^CANValueGetFromString$/;"	f
+CAN_DEFAULT_TIMEOUT	CANInterface.c	49;"	d	file:
+CAN_MAX_DLEN	CanMsg.h	37;"	d
+CAN_READ_ERROR	CANInterface.h	24;"	d
+CAN_READ_OK	CANInterface.h	23;"	d
+CAN_READ_TIMEOUT	CANInterface.h	25;"	d
+CAN_READ_UNKNOWN	CANInterface.h	26;"	d
+CNT	CanMsg.h	/^        unsigned CNT : 1;               \/* 1:continuous frame *\/$/;"	m	struct:__anon8::__anon9
+COMMANDSIZE	CanMsg.h	34;"	d
+CR	ascii.h	19;"	d
+CTRL_A	linenoise.c	/^	CTRL_A = 1,         \/* Ctrl+a *\/$/;"	e	enum:KEY_ACTION	file:
+CTRL_B	linenoise.c	/^	CTRL_B = 2,         \/* Ctrl-b *\/$/;"	e	enum:KEY_ACTION	file:
+CTRL_C	linenoise.c	/^	CTRL_C = 3,         \/* Ctrl-c *\/$/;"	e	enum:KEY_ACTION	file:
+CTRL_D	linenoise.c	/^	CTRL_D = 4,         \/* Ctrl-d *\/$/;"	e	enum:KEY_ACTION	file:
+CTRL_E	linenoise.c	/^	CTRL_E = 5,         \/* Ctrl-e *\/$/;"	e	enum:KEY_ACTION	file:
+CTRL_F	linenoise.c	/^	CTRL_F = 6,         \/* Ctrl-f *\/$/;"	e	enum:KEY_ACTION	file:
+CTRL_H	linenoise.c	/^	CTRL_H = 8,         \/* Ctrl-h *\/$/;"	e	enum:KEY_ACTION	file:
+CTRL_K	linenoise.c	/^	CTRL_K = 11,        \/* Ctrl+k *\/$/;"	e	enum:KEY_ACTION	file:
+CTRL_L	linenoise.c	/^	CTRL_L = 12,        \/* Ctrl+l *\/$/;"	e	enum:KEY_ACTION	file:
+CTRL_N	linenoise.c	/^	CTRL_N = 14,        \/* Ctrl-n *\/$/;"	e	enum:KEY_ACTION	file:
+CTRL_P	linenoise.c	/^	CTRL_P = 16,        \/* Ctrl-p *\/$/;"	e	enum:KEY_ACTION	file:
+CTRL_T	linenoise.c	/^	CTRL_T = 20,        \/* Ctrl-t *\/$/;"	e	enum:KEY_ACTION	file:
+CTRL_U	linenoise.c	/^	CTRL_U = 21,        \/* Ctrl+u *\/$/;"	e	enum:KEY_ACTION	file:
+CTRL_W	linenoise.c	/^	CTRL_W = 23,        \/* Ctrl+w *\/$/;"	e	enum:KEY_ACTION	file:
+CanAddress	CanMsg.h	/^    int                                 CanAddress;$/;"	m	struct:__anon6
+CanAddressStart	CanMsg.h	/^    int CanAddressStart;$/;"	m	struct:__anon5
+CanDefinitionsInitialize	AllCanDefinitions.c	/^CanDefinitionsInitialize()$/;"	f
+CanDevice	CanMsg.h	/^} CanDevice;$/;"	t	typeref:struct:__anon6
+CanDeviceDef	CanMsg.h	/^} CanDeviceDef;$/;"	t	typeref:struct:__anon5
+CanDeviceDefList	AllCanDefinitions.c	/^CanDeviceDef CanDeviceDefList[] =$/;"	v
+CanDeviceList	Devices.c	/^CanDevice CanDeviceList[MAXDEVICES];$/;"	v
+CanMessage	CanMsg.c	/^} CanMessage;$/;"	t	typeref:struct:__anon1	file:
+CanMsgDef	CanMsg.h	/^} CanMsgDef;$/;"	t	typeref:struct:__anon4
+CanReg	CanMsg.h	/^} CanReg;$/;"	t	typeref:struct:__anon3
+CanRegDef	CanMsg.h	/^} CanRegDef;$/;"	t	typeref:struct:__anon2
+CanRegGetFromString	CanMsg.c	/^CanRegGetFromString$/;"	f
+CanRegSetFromString	CanMsg.c	/^CanRegSetFromString$/;"	f
+ClearDevice	Devices.c	/^ClearDevice$/;"	f
+ClearDeviceRegisters	Devices.c	/^ClearDeviceRegisters$/;"	f
+ColorBlue	ANSIColors.h	40;"	d
+ColorBoldBlue	ANSIColors.h	41;"	d
+ColorBoldGreen	ANSIColors.h	30;"	d
+ColorBoldRed	ANSIColors.h	27;"	d
+ColorBoldYellow	ANSIColors.h	36;"	d
+ColorBoldYellow	CLIThread.h	32;"	d
+ColorBrightGreen	ANSIColors.h	32;"	d
+ColorBrightRed	ANSIColors.h	28;"	d
+ColorBrightYellow	ANSIColors.h	35;"	d
+ColorGreen	ANSIColors.h	31;"	d
+ColorGreen	CLIThread.h	30;"	d
+ColorGreen	Devices.c	45;"	d	file:
+ColorRed	ANSIColors.h	26;"	d
+ColorRed	CLIThread.h	27;"	d
+ColorRed	Devices.c	43;"	d	file:
+ColorReset	ANSIColors.h	43;"	d
+ColorWhite	ANSIColors.h	38;"	d
+ColorWhite	CLIThread.h	28;"	d
+ColorWhite	Devices.c	44;"	d	file:
+ColorYellow	ANSIColors.h	34;"	d
+ColorYellow	CLIThread.h	31;"	d
+ConvertIntToCommaString	NumericTypes.c	/^ConvertIntToCommaString$/;"	f
+ConvertIntToCommaString2R	NumericTypes.c	/^ConvertIntToCommaString2R$/;"	f
+CopyDevice	Devices.c	/^CopyDevice$/;"	f
+CreateDevice	Devices.c	/^CreateDevice$/;"	f
+CreateDeviceDef	DeviceDef.c	/^CreateDeviceDef$/;"	f
+CreateDeviceDefList	DeviceDef.c	/^CreateDeviceDefList$/;"	f
+CreateDeviceMessageDef	DeviceMessageDef.c	/^CreateDeviceMessageDef$/;"	f
+CreateDeviceMessageDefList	DeviceMessageDef.c	/^CreateDeviceMessageDefList$/;"	f
+CreateDeviceRegDef	DeviceRegDef.c	/^CreateDeviceRegDef$/;"	f
+CreateDeviceRegDefList	DeviceRegDef.c	/^CreateDeviceRegDefList$/;"	f
+CreateNewDeviceDef	DeviceDef.c	/^CreateNewDeviceDef$/;"	f
+DEF_FILE_TOKEN_MAX_LENGTH	DefFileToken.h	20;"	d
+DEF_FILE_TOKEN_MAX_LINE_LENGTH	DefFileToken.h	19;"	d
+DEVICE_DEF_DUPLICATE_DEVICE	DeviceDef.h	33;"	d
+DEVICE_DEF_GENERAL_ERROR	DeviceDef.h	41;"	d
+DEVICE_DEF_MISSING_CAN_ADDRESS	DeviceDef.h	36;"	d
+DEVICE_DEF_MISSING_DESC	DeviceDef.h	35;"	d
+DEVICE_DEF_MISSING_NAME	DeviceDef.h	34;"	d
+DEVICE_DEF_MISSING_PROTOCOL	DeviceDef.h	37;"	d
+DEVICE_DEF_NULL_DEVICE_LIST	DeviceDef.h	40;"	d
+DEVICE_DEF_OK	DeviceDef.h	32;"	d
+DEVICE_ERROR_DEVICE_NOT_FOUND	Devices.h	25;"	d
+DEVICE_ERROR_NONE	Devices.h	24;"	d
+DEVICE_ERROR_REGISTER_NOT_FOUND	Devices.h	26;"	d
+DEVICE_REG_SORT_GROUP	DeviceRegDef.h	28;"	d
+DEVICE_REG_SORT_NAME	DeviceRegDef.h	30;"	d
+DEVICE_REG_SORT_NONE	DeviceRegDef.h	27;"	d
+DEVICE_REG_SORT_NUMBER	DeviceRegDef.h	29;"	d
+DISPLAY_TYPE_COLLAPSE	CanMsg.h	31;"	d
+DISPLAY_TYPE_FIXED	CanMsg.h	30;"	d
+DMBaseDirectoryName	DirManagement.c	/^DMBaseDirectoryName; $/;"	v
+DMDeviceDataFileName	DirManagement.c	/^DMDeviceDataFileName = "devices.db";$/;"	v	file:
+DMDeviceDefsFileName	DirManagement.c	/^DMDeviceDefsFileName = "devicedefs.txt";$/;"	v	file:
+DMDeviceProtocolFileName	DirManagement.c	/^DMDeviceProtocolFileName = "protocols.txt";$/;"	v	file:
+DMGetFileName	DirManagement.c	/^DMGetFileName$/;"	f
+DMMinFileLength	DirManagement.c	/^DMMinFileLength;$/;"	v
+Desc	CanMsg.h	/^    char Desc[STRINGLEN];$/;"	m	struct:__anon5
+DestAddr	CanMsg.c	/^        int DestAddr;$/;"	m	struct:__anon1	file:
+DestroyDeviceDef	DeviceDef.c	/^DestroyDeviceDef$/;"	f
+DestroyDeviceDefList	DeviceDef.c	/^DestroyDeviceDefList$/;"	f
+DestroyDeviceMessageDef	DeviceMessageDef.c	/^DestroyDeviceMessageDef$/;"	f
+DestroyDeviceMessageDefList	DeviceMessageDef.c	/^DestroyDeviceMessageDefList$/;"	f
+DestroyDeviceRegDef	DeviceRegDef.c	/^DestroyDeviceRegDef$/;"	f
+DestroyDeviceRegList	DeviceRegDef.c	/^DestroyDeviceRegList$/;"	f
+DeviceDef	DeviceDef.h	/^typedef struct _DeviceDef               DeviceDef;$/;"	t	typeref:struct:_DeviceDef
+DeviceDefErrorCodeToString	DeviceDef.c	/^DeviceDefErrorCodeToString$/;"	f
+DeviceDefFindMessageByType	DeviceDef.c	/^DeviceDefFindMessageByType$/;"	f
+DeviceDefFindRegByValueType	DeviceDef.c	/^DeviceDefFindRegByValueType$/;"	f
+DeviceDefFromJSON	DeviceDef.c	/^DeviceDefFromJSON$/;"	f
+DeviceDefGetMessageCount	DeviceDef.c	/^DeviceDefGetMessageCount$/;"	f
+DeviceDefGetRegCount	DeviceDef.c	/^DeviceDefGetRegCount$/;"	f
+DeviceDefList	DeviceDef.h	/^typedef struct _DeviceDefList           DeviceDefList;$/;"	t	typeref:struct:_DeviceDefList
+DeviceDefListAppendDef	DeviceDef.c	/^DeviceDefListAppendDef$/;"	f
+DeviceDefListFromJSON	DeviceDef.c	/^DeviceDefListFromJSON$/;"	f
+DeviceDefListToJSON	DeviceDef.c	/^DeviceDefListToJSON$/;"	f
+DeviceDefResolveResponseDefs	DeviceDef.c	/^DeviceDefResolveResponseDefs$/;"	f
+DeviceDefToJSON	DeviceDef.c	/^DeviceDefToJSON$/;"	f
+DeviceFindRegister	Devices.c	/^DeviceFindRegister$/;"	f
+DeviceMessageDef	DeviceMessageDef.h	/^typedef struct _DeviceMessageDef        DeviceMessageDef;$/;"	t	typeref:struct:_DeviceMessageDef
+DeviceMessageDefAddResponseType	DeviceMessageDef.c	/^DeviceMessageDefAddResponseType$/;"	f
+DeviceMessageDefFromJSON	DeviceMessageDef.c	/^DeviceMessageDefFromJSON$/;"	f
+DeviceMessageDefList	DeviceMessageDef.h	/^typedef struct _DeviceMessageDefList    DeviceMessageDefList;$/;"	t	typeref:struct:_DeviceMessageDefList
+DeviceMessageDefListToJSON	DeviceMessageDef.c	/^DeviceMessageDefListToJSON$/;"	f
+DeviceMessageDefToJSON	DeviceMessageDef.c	/^DeviceMessageDefToJSON$/;"	f
+DeviceMessageResponse	DeviceMessageDef.h	/^typedef struct _DeviceMessageResponse DeviceMessageResponse;$/;"	t	typeref:struct:_DeviceMessageResponse
+DeviceMessageResponseSetFromJSON	DeviceMessageDef.c	/^DeviceMessageResponseSetFromJSON$/;"	f
+DeviceRegDef	DeviceRegDef.h	/^typedef struct _DeviceRegDef            DeviceRegDef;$/;"	t	typeref:struct:_DeviceRegDef
+DeviceRegDefCompareByGroupName	DeviceRegDef.c	/^DeviceRegDefCompareByGroupName$/;"	f	file:
+DeviceRegDefCompareByName	DeviceRegDef.c	/^DeviceRegDefCompareByName$/;"	f	file:
+DeviceRegDefCompareByNumber	DeviceRegDef.c	/^DeviceRegDefCompareByNumber$/;"	f	file:
+DeviceRegDefFromJSON	DeviceRegDef.c	/^DeviceRegDefFromJSON$/;"	f
+DeviceRegDefList	DeviceRegDef.h	/^typedef struct _DeviceRegDefList        DeviceRegDefList;$/;"	t	typeref:struct:_DeviceRegDefList
+DeviceRegDefListToJSON	DeviceRegDef.c	/^DeviceRegDefListToJSON$/;"	f
+DeviceRegDefToJSON	DeviceRegDef.c	/^DeviceRegDefToJSON$/;"	f
+DirManagementDirSepChar	DirManagement.c	/^DirManagementDirSepChar = '\/';$/;"	v
+DirManagementDirSepString	DirManagement.c	/^DirManagementDirSepString = "\/";$/;"	v
+DirManagementGetInstallDir	DirManagementGetInstallDir.c	/^DirManagementGetInstallDir$/;"	f
+DirManagementInitialize	DirManagement.c	/^DirManagementInitialize$/;"	f
+DirManagementSetInstallDir	DirManagementSetInstallDir.c	/^DirManagementSetInstallDir$/;"	f
+DisableDevice	Devices.c	/^bool DisableDevice(char* DeviceName, int Num)$/;"	f
+DisplayColumns	CanMsg.h	/^    int DisplayColumns;$/;"	m	struct:__anon5
+DisplayDeviceDefMessages	Devices.c	/^DisplayDeviceDefMessages$/;"	f
+DisplayDeviceDefsMessages	Devices.c	/^DisplayDeviceDefsMessages$/;"	f
+DisplayLabel	CanMsg.h	/^    char DisplayLabel[STRINGLEN];$/;"	m	struct:__anon2
+DisplayType	CanMsg.h	/^    int DisplayType;$/;"	m	struct:__anon5
+DisplayType	DeviceDef.h	/^    int                                 DisplayType;$/;"	m	struct:_DeviceDef
+DstAddr	CanMsg.h	/^        unsigned DstAddr : 8;           \/* destination\/group address low bits*\/$/;"	m	struct:__anon8::__anon9
+DumpDefs	Devices.c	/^void DumpDefs()$/;"	f
+DumpDevice	Devices.c	/^void DumpDevice(char* DeviceName, int Count)$/;"	f
+DumpDeviceDef	DeviceDef.c	/^DumpDeviceDef$/;"	f
+DumpDeviceDefList	DeviceDef.c	/^DumpDeviceDefList$/;"	f
+DumpDeviceDefShort	DeviceDef.c	/^DumpDeviceDefShort$/;"	f
+DumpDeviceMessageDef	DeviceMessageDef.c	/^DumpDeviceMessageDef$/;"	f
+DumpDeviceMessageDefList	DeviceMessageDef.c	/^DumpDeviceMessageDefList$/;"	f
+DumpDeviceMessageDefListShort	DeviceMessageDef.c	/^DumpDeviceMessageDefListShort$/;"	f
+DumpDeviceMessageDefShort	DeviceMessageDef.c	/^DumpDeviceMessageDefShort$/;"	f
+DumpDeviceRegDef	DeviceRegDef.c	/^DumpDeviceRegDef$/;"	f
+DumpDeviceRegDefList	DeviceRegDef.c	/^DumpDeviceRegDefList$/;"	f
+DumpDeviceRegDefListShort	DeviceRegDef.c	/^DumpDeviceRegDefListShort$/;"	f
+DumpDeviceRegDefShort	DeviceRegDef.c	/^DumpDeviceRegDefShort$/;"	f
+DumpGroup	Devices.c	/^void DumpGroup(char* DeviceName, int Count, char* GroupName)$/;"	f
+ENTER	linenoise.c	/^	ENTER = 13,         \/* Enter *\/$/;"	e	enum:KEY_ACTION	file:
+ESC	linenoise.c	/^	ESC = 27,           \/* Escape *\/$/;"	e	enum:KEY_ACTION	file:
+EnableDevice	Devices.c	/^bool EnableDevice(char* DeviceName, int Num)$/;"	f
+ErrType	CanMsg.h	/^        uint8_t ErrType;$/;"	m	struct:__anon10::__anon11
+FileCreateEmptyFile	FileUtils.c	/^FileCreateEmptyFile$/;"	f
+FileExists	FileUtils.c	/^FileExists$/;"	f
+FileUtilsCopyFile	FileUtilsCopyFile.c	/^FileUtilsCopyFile$/;"	f
+FileUtilsOpen	FileUtilsOpen.c	/^FileUtilsOpen$/;"	f
+FileUtilsTarFile	FileUtilsTarFile.c	/^FileUtilsTarFile$/;"	f
+FilenameExtractBase	FileUtils.c	/^FilenameExtractBase$/;"	f
+FilenameExtractSuffix	FilenameExtractSuffix.c	/^FilenameExtractSuffix$/;"	f
+FindBayByIndex	Bay.c	/^FindBayByIndex$/;"	f
+FindCANDeviceByDefNameAddress	Devices.c	/^FindCANDeviceByDefNameAddress$/;"	f
+FindDevice	Devices.c	/^CanDevice* FindDevice(char* DeviceName, int Count)$/;"	f
+FindDeviceDef	DeviceDef.c	/^FindDeviceDef$/;"	f
+FindDeviceDefByProtocol	DeviceDef.c	/^FindDeviceDefByProtocol$/;"	f
+FindMessageDefByMessageType	DeviceMessageDef.c	/^FindMessageDefByMessageType$/;"	f
+FindRegDefByName	DeviceRegDef.c	/^FindRegDefByName$/;"	f
+FindRegDefByValue	DeviceRegDef.c	/^FindRegDefByValue$/;"	f
+FindRegDefByValueType	DeviceDef.c	/^FindRegDefByValueType$/;"	f
+FindRegisterByIndexGroup	Devices.c	/^FindRegisterByIndexGroup$/;"	f
+FreeMemory	MemoryManager.c	/^FreeMemory$/;"	f
+FuseBreaker	FuseBreaker.h	/^} FuseBreaker;$/;"	t	typeref:struct:_FuseBreaker
+FuseBreakerCreate	FuseBreaker.c	/^FuseBreakerCreate$/;"	f
+FuseBreakerDestroy	FuseBreaker.c	/^FuseBreakerDestroy$/;"	f
+FuseBreakerDisplay	FuseBreaker.c	/^FuseBreakerDisplay$/;"	f
+FuseBreakerFromJSONString	FuseBreaker.c	/^FuseBreakerFromJSONString$/;"	f
+FuseBreakerSetCurrent	FuseBreaker.c	/^FuseBreakerSetCurrent$/;"	f
+FuseBreakerState	FuseBreaker.h	/^} FuseBreakerState;$/;"	t	typeref:enum:_FuseBreakerState
+FuseBreakerStateClosed	FuseBreaker.h	/^  FuseBreakerStateClosed$/;"	e	enum:_FuseBreakerState
+FuseBreakerStateFromString	FuseBreaker.c	/^FuseBreakerStateFromString$/;"	f
+FuseBreakerStateNone	FuseBreaker.h	/^  FuseBreakerStateNone                  = 0,$/;"	e	enum:_FuseBreakerState
+FuseBreakerStateOpen	FuseBreaker.h	/^  FuseBreakerStateOpen,$/;"	e	enum:_FuseBreakerState
+FuseBreakerStateToString	FuseBreaker.c	/^FuseBreakerStateToString$/;"	f
+FuseBreakerToJSONString	FuseBreaker.c	/^FuseBreakerToJSONString$/;"	f
+FuseBreakerType	FuseBreakerType.h	/^typedef struct _FuseBreakerType FuseBreakerType;$/;"	t	typeref:struct:_FuseBreakerType
+FuseBreakerTypeAppend	FuseBreakerType.c	/^FuseBreakerTypeAppend$/;"	f
+FuseBreakerTypeCreate	FuseBreakerType.c	/^FuseBreakerTypeCreate$/;"	f
+FuseBreakerTypeDestroy	FuseBreakerType.c	/^FuseBreakerTypeDestroy$/;"	f
+FuseBreakerTypeFindByID	FuseBreakerType.c	/^FuseBreakerTypeFindByID$/;"	f
+FuseBreakerTypeFindByName	FuseBreakerType.c	/^FuseBreakerTypeFindByName$/;"	f
+FuseBreakerTypeFindBySerialNumber	FuseBreakerType.c	/^FuseBreakerTypeFindBySerialNumber$/;"	f
+FuseBreakerTypeFromJSONString	FuseBreakerType.c	/^FuseBreakerTypeFromJSONString$/;"	f
+FuseBreakerTypeGetBreakersForPanel	FuseBreakerType.c	/^FuseBreakerTypeGetBreakersForPanel$/;"	f
+FuseBreakerTypeGetFusesForPanel	FuseBreakerType.c	/^FuseBreakerTypeGetFusesForPanel$/;"	f
+FuseBreakerTypeGetTypeForPanel	FuseBreakerType.c	/^FuseBreakerTypeGetTypeForPanel$/;"	f
+FuseBreakerTypeListDestroy	FuseBreakerType.c	/^FuseBreakerTypeListDestroy$/;"	f
+FuseBreakerUpdateFromJSONString	FuseBreaker.c	/^FuseBreakerUpdateFromJSONString$/;"	f
+FuseBreakerValueFromJSONString	FuseBreaker.c	/^FuseBreakerValueFromJSONString$/;"	f
+FuseBreakerValueToJSONString	FuseBreaker.c	/^FuseBreakerValueToJSONString$/;"	f
+GetAbbrevList	Devices.c	/^void GetAbbrevList(char* AbbrevList, char* GroupName, DeviceDef* MyDeviceDef)$/;"	f
+GetBits	CanMsg.c	/^uint64_t GetBits(uint64_t InNum, int InMSB, int InLSB)$/;"	f
+GetBitsI	CanMsg.c	/^int GetBitsI(int InNum, int InMSB, int InLSB)$/;"	f
+GetBoolFromString	StringUtils.c	/^GetBoolFromString$/;"	f
+GetCanDevice	Devices.c	/^CanDevice* GetCanDevice() { return &CanDeviceList[0]; }$/;"	f
+GetCanDeviceDefByName	Devices.c	/^GetCanDeviceDefByName$/;"	f
+GetContBits	CanMsg.c	/^uint64_t GetContBits( uint64_t Address) { return GetBits(Address, 2, 2); }$/;"	f
+GetDataFrame	CanMsg.c	/^dataframe GetDataFrame(int ErrType, int MsgType, int ValueType, ufloatbit32_t Value)$/;"	f
+GetDestBits	CanMsg.c	/^uint64_t GetDestBits( uint64_t Address) { return GetBits(Address, 18, 11); }$/;"	f
+GetDeviceCount	Devices.c	/^void GetDeviceCount(char* CountList, DeviceDef* MyDeviceDef)$/;"	f
+GetDeviceDataFileName	DirManagement.c	/^GetDeviceDataFileName$/;"	f
+GetDeviceDefsFileName	DirManagement.c	/^GetDeviceDefsFileName$/;"	f
+GetDeviceList	Devices.c	/^GetDeviceList()$/;"	f
+GetDeviceMessageCount	DeviceMessageDef.c	/^GetDeviceMessageCount$/;"	f
+GetDeviceNumbersString	Devices.c	/^GetDeviceNumbersString$/;"	f
+GetDeviceProtocolFileName	DirManagement.c	/^GetDeviceProtocolFileName$/;"	f
+GetDeviceRegCount	DeviceRegDef.c	/^GetDeviceRegCount$/;"	f
+GetDeviceRegisterFloat	Devices.c	/^GetDeviceRegisterFloat$/;"	f
+GetDeviceTypeCount	Devices.c	/^GetDeviceTypeCount$/;"	f
+GetErrTypeBits	CanMsg.c	/^uint64_t GetErrTypeBits( uint64_t Data) { return GetBits(Data, 55, 48); }$/;"	f
+GetFileBuffer	FileUtils.c	/^GetFileBuffer$/;"	f
+GetFileLines	FileUtils.c	/^GetFileLines$/;"	f
+GetFirstDevice	Devices.c	/^GetFirstDevice$/;"	f
+GetFloatValueFromString	NumericTypes.c	/^GetFloatValueFromString$/;"	f
+GetFrameId	CanMsg.c	/^frameid GetFrameId(int Protocol, int SrcAddr, int DestAddr, int Continue )$/;"	f
+GetGroupAndAbbrev	Devices.c	/^void GetGroupAndAbbrev(int Protocol, int ValueType, char* MyGroup, char* MyAbbrev)$/;"	f
+GetGroupArray	Devices.c	/^void GetGroupArray(int* FullGroupList, DeviceDef* InDeviceDef)$/;"	f
+GetGroupList	Devices.c	/^string GetGroupList(DeviceDef* MyDeviceDef)$/;"	f
+GetHex32ValueFromString	NumericTypes.c	/^GetHex32ValueFromString$/;"	f
+GetHex64ValueFromString	NumericTypes.c	/^GetHex64ValueFromString$/;"	f
+GetIntValueFromString	NumericTypes.c	/^GetIntValueFromString$/;"	f
+GetMemory	MemoryManager.c	/^GetMemory$/;"	f
+GetMemoryStats	MemoryManager.c	/^GetMemoryStats$/;"	f
+GetMsgTypeBits	CanMsg.c	/^uint64_t GetMsgTypeBits( uint64_t Data) { return GetBits(Data, 63, 56); }$/;"	f
+GetNextDevice	Devices.c	/^GetNextDevice$/;"	f
+GetNumDevice	Devices.c	/^int GetNumDevice() { return NumDevices; }$/;"	f
+GetPIPBits	CanMsg.c	/^uint64_t GetPIPBits( uint64_t Address) { return GetBits(Address, 19, 19); }$/;"	f
+GetProtocolBits	CanMsg.c	/^uint64_t GetProtocolBits( uint64_t Address) { return GetBits(Address, 28, 20); }$/;"	f
+GetRegisterByDef	Devices.c	/^GetRegisterByDef$/;"	f
+GetRegisterByGroup	Devices.c	/^int GetRegisterByGroup(char* MyGroup, char* MyAbbrev, DeviceDef* MyDeviceDef)$/;"	f
+GetRegisterByName	Devices.c	/^GetRegisterByName$/;"	f
+GetRequestBreakdown	Devices.c	/^void GetRequestBreakdown(frameid Id, dataframe Data, int* Protocol, int* SrcAddr, int* DestAddr, int* IncomingMsgType, int* IncomingErrType, int* IncomingValueType, ufloatbit32_t* IncomingValue)$/;"	f
+GetSrcBits	CanMsg.c	/^uint64_t GetSrcBits( uint64_t Address) { return GetBits(Address, 10, 3); }$/;"	f
+GetValBits	CanMsg.c	/^uint64_t GetValBits( uint64_t Data) { return GetBits(Data, 31, 0); } $/;"	f
+GetValTypeBits	CanMsg.c	/^uint64_t GetValTypeBits( uint64_t Data) { return GetBits(Data, 47, 32); }$/;"	f
+Group	CanMsg.h	/^    char Group[SHORTSTRINGLEN];$/;"	m	struct:__anon2
+HEX_TO_DEC	NumericTypes.c	21;"	d	file:
+HTTPEventHandler	HTTPEventHandler.c	/^HTTPEventHandler$/;"	f
+HTTPServerThread	HTTPServerThread.c	/^HTTPServerThread$/;"	f
+HTTPServerThreadID	HTTPServerThread.c	/^HTTPServerThreadID;$/;"	v
+HTTPServerThreadInit	HTTPServerThread.c	/^HTTPServerThreadInit$/;"	f
+HTTPWWWBaseDir	HTTPServerThread.c	/^HTTPWWWBaseDir = "www";$/;"	v
+HandleCanTraffic	Devices.c	/^void* HandleCanTraffic()$/;"	f
+HandleCommand	UserInputThread.c	/^HandleCommand$/;"	f
+HandleCommandExit	UserInputThread.c	/^HandleCommandExit$/;"	f
+HandleCommandHelp	HandleCommandHelp.c	/^HandleCommandHelp$/;"	f
+HandleCommandLimit	HandleCommandLimit.c	/^HandleCommandLimit$/;"	f
+HandleCommandLimitSet	HandleCommandLimitSet.c	/^HandleCommandLimitSet$/;"	f
+HandleCommandLog	HandleCommandLog.c	/^HandleCommandLog$/;"	f
+HandleCommandMessage	UserInputThread.c	/^HandleCommandMessage$/;"	f
+HandleCommandMessageCount	UserInputThread.c	/^HandleCommandMessageCount$/;"	f
+HandleCommandMonitor	UserInputThread.c	/^HandleCommandMonitor$/;"	f
+HandleCommandMonitorClear	UserInputThread.c	/^HandleCommandMonitorClear$/;"	f
+HandleCommandMonitorStart	UserInputThread.c	/^HandleCommandMonitorStart$/;"	f
+HandleCommandMonitorStop	UserInputThread.c	/^HandleCommandMonitorStop$/;"	f
+HandleCommandTime	UserInputThread.c	/^HandleCommandTime$/;"	f
+HandleCommandTimeElapsed	UserInputThread.c	/^HandleCommandTimeElapsed$/;"	f
+HandleGetBaysRequest	WebSocketIF.c	/^HandleGetBaysRequest$/;"	f
+HandleGetLimitsRequest	HandleGetLimitsRequest.c	/^HandleGetLimitsRequest$/;"	f
+HandlePrepareDownloadRequest	HandlePrepareDownloadRequest.c	/^HandlePrepareDownloadRequest$/;"	f
+HandleRequest	Devices.c	/^void HandleRequest(CANInterface* InInterface, frameid Id, dataframe Data, time_t InTime)$/;"	f
+HandleToggleMonitorRequest	WebSocketIF.c	/^HandleToggleMonitorRequest$/;"	f
+HandleWebSocketRequest	WebSocketIF.c	/^HandleWebSocketRequest$/;"	f
+HeadingStyle	ANSIColors.h	45;"	d
+HeadingStyle	CLIThread.h	29;"	d
+InitSafePrint	ThreadSafePrint.c	/^void InitSafePrint()$/;"	f
+InitialValue	CanMsg.h	/^    ufloatbit32_t InitialValue;$/;"	m	struct:__anon2
+JICOMMAND_TYPE_CREATE	jsoncanif.h	/^  JICOMMAND_TYPE_CREATE,$/;"	e	enum:__anon13
+JICOMMAND_TYPE_NONE	jsoncanif.h	/^  JICOMMAND_TYPE_NONE			= 0,$/;"	e	enum:__anon13
+JICOMMAND_TYPE_READ	jsoncanif.h	/^  JICOMMAND_TYPE_READ,$/;"	e	enum:__anon13
+JICOMMAND_TYPE_REMOVE	jsoncanif.h	/^  JICOMMAND_TYPE_REMOVE$/;"	e	enum:__anon13
+JICOMMAND_TYPE_WRITE	jsoncanif.h	/^  JICOMMAND_TYPE_WRITE,$/;"	e	enum:__anon13
+JICommand	jsoncanif.h	/^} JICommand;$/;"	t	typeref:struct:__anon20
+JICommandDump	jsoncanif.c	/^JICommandDump$/;"	f
+JICommandType	jsoncanif.h	/^} JICommandType;$/;"	t	typeref:enum:__anon13
+JICreateCommand	jsoncanif.c	/^JICreateCommand$/;"	f
+JIDEVICE_NAME_SIZE_MAX	jsoncanif.h	28;"	d
+JIDEVICE_TYPE_BAY	jsoncanif.h	/^  JIDEVICE_TYPE_BAY,$/;"	e	enum:__anon15
+JIDEVICE_TYPE_BBU	jsoncanif.h	/^  JIDEVICE_TYPE_BBU,$/;"	e	enum:__anon15
+JIDEVICE_TYPE_CONFIG	jsoncanif.h	/^  JIDEVICE_TYPE_CONFIG$/;"	e	enum:__anon15
+JIDEVICE_TYPE_NONE	jsoncanif.h	/^  JIDEVICE_TYPE_NONE			= 0,$/;"	e	enum:__anon15
+JIDEVICE_TYPE_PANEL	jsoncanif.h	/^  JIDEVICE_TYPE_PANEL,$/;"	e	enum:__anon15
+JIDEVICE_TYPE_RECTIFIER	jsoncanif.h	/^  JIDEVICE_TYPE_RECTIFIER,$/;"	e	enum:__anon15
+JIDEVICE_TYPE_RECTIFIER_12	jsoncanif.h	/^  JIDEVICE_TYPE_RECTIFIER_12,$/;"	e	enum:__anon15
+JIDEVICE_TYPE_SMTEMP	jsoncanif.h	/^  JIDEVICE_TYPE_SMTEMP,$/;"	e	enum:__anon15
+JIDeviceType	jsoncanif.h	/^} JIDeviceType;$/;"	t	typeref:enum:__anon15
+JIDeviceTypeToString	jsoncanif.c	/^JIDeviceTypeToString$/;"	f
+JIDumpJSONValue	jsoncanif.c	/^JIDumpJSONValue$/;"	f
+JIFindJSONValue	jsoncanif.c	/^JIFindJSONValue$/;"	f
+JIFreeCommand	jsoncanif.c	/^JIFreeCommand$/;"	f
+JIFreeResponse	jsoncanif.c	/^JIFreeResponse$/;"	f
+JIGetAllDevicesResponse	jsoncanif.c	/^JIGetAllDevicesResponse$/;"	f
+JIGetConfigReadResponse	jsoncanif.c	/^JIGetConfigReadResponse$/;"	f
+JIGetCreateResponse	jsoncanif.c	/^JIGetCreateResponse$/;"	f
+JIGetDeviceCreateResponse	jsoncanif.c	/^JIGetDeviceCreateResponse$/;"	f
+JIGetDeviceDataResponse	jsoncanif.c	/^JIGetDeviceDataResponse$/;"	f
+JIGetDeviceRemoveResponse	jsoncanif.c	/^JIGetDeviceRemoveResponse$/;"	f
+JIGetDeviceWriteResponse	jsoncanif.c	/^JIGetDeviceWriteResponse$/;"	f
+JIGetIDsResponse	jsoncanif.c	/^JIGetIDsResponse$/;"	f
+JIGetJSONCommand	jsoncanif.c	/^JIGetJSONCommand$/;"	f
+JIGetJSONDevice	jsoncanif.c	/^JIGetJSONDevice$/;"	f
+JIGetMessagesResponse	jsoncanif.c	/^JIGetMessagesResponse$/;"	f
+JIGetReadResponse	jsoncanif.c	/^JIGetReadResponse$/;"	f
+JIGetRegNamesResponse	jsoncanif.c	/^JIGetRegNamesResponse$/;"	f
+JIGetRemoveResponse	jsoncanif.c	/^JIGetRemoveResponse$/;"	f
+JIGetResponse	jsoncanif.c	/^JIGetResponse$/;"	f
+JIGetWriteResponse	jsoncanif.c	/^JIGetWriteResponse$/;"	f
+JIIDResponse	jsoncanif.h	/^} JIIDResponse;$/;"	t	typeref:struct:_JIIDResponse
+JIProcessDeviceDefAdd	jsoncanif.c	/^JIProcessDeviceDefAdd$/;"	f
+JIProcessDeviceWrite	jsoncanif.c	/^JIProcessDeviceWrite$/;"	f
+JIProcessMessageDefAdd	jsoncanif.c	/^JIProcessMessageDefAdd$/;"	f
+JIProcessRead	jsoncanif.c	/^JIProcessRead$/;"	f
+JIProcessRegisterDefAdd	jsoncanif.c	/^JIProcessRegisterDefAdd$/;"	f
+JIProcessRemove	jsoncanif.c	/^JIProcessRemove$/;"	f
+JIProcessRequest	jsoncanif.c	/^JIProcessRequest$/;"	f
+JIProcessWrite	jsoncanif.c	/^JIProcessWrite$/;"	f
+JIREAD_TYPE_ALL_DATA	jsoncanif.h	/^  JIREAD_TYPE_ALL_DATA,$/;"	e	enum:__anon16
+JIREAD_TYPE_COUNTS	jsoncanif.h	/^  JIREAD_TYPE_COUNTS,$/;"	e	enum:__anon16
+JIREAD_TYPE_DEVICES	jsoncanif.h	/^  JIREAD_TYPE_DEVICES$/;"	e	enum:__anon16
+JIREAD_TYPE_IDS	jsoncanif.h	/^  JIREAD_TYPE_IDS,$/;"	e	enum:__anon16
+JIREAD_TYPE_MESSAGES	jsoncanif.h	/^  JIREAD_TYPE_MESSAGES,$/;"	e	enum:__anon16
+JIREAD_TYPE_NONE	jsoncanif.h	/^  JIREAD_TYPE_NONE			= 0,$/;"	e	enum:__anon16
+JIREAD_TYPE_REGNAMES	jsoncanif.h	/^  JIREAD_TYPE_REGNAMES,$/;"	e	enum:__anon16
+JIRESPONSE_BUFFER_SIZE_MAX	jsoncanif.c	33;"	d	file:
+JIRESPONSE_STATUS_TYPE_ERROR	jsoncanif.h	/^  JIRESPONSE_STATUS_TYPE_ERROR$/;"	e	enum:__anon18
+JIRESPONSE_STATUS_TYPE_NONE	jsoncanif.h	/^  JIRESPONSE_STATUS_TYPE_NONE		= 0,$/;"	e	enum:__anon18
+JIRESPONSE_STATUS_TYPE_OK	jsoncanif.h	/^  JIRESPONSE_STATUS_TYPE_OK,$/;"	e	enum:__anon18
+JIRESPONSE_TYPE_COUNT	jsoncanif.h	/^  JIRESPONSE_TYPE_COUNT,$/;"	e	enum:__anon17
+JIRESPONSE_TYPE_IDS	jsoncanif.h	/^  JIRESPONSE_TYPE_IDS,$/;"	e	enum:__anon17
+JIRESPONSE_TYPE_NONE	jsoncanif.h	/^  JIRESPONSE_TYPE_NONE			= 0,$/;"	e	enum:__anon17
+JIRESPONSE_TYPE_VALUES	jsoncanif.h	/^  JIRESPONSE_TYPE_VALUES$/;"	e	enum:__anon17
+JIReadType	jsoncanif.h	/^} JIReadType;$/;"	t	typeref:enum:__anon16
+JIRegisterResponseValue	jsoncanif.h	/^} JIRegisterResponseValue;$/;"	t	typeref:struct:_JIRegisterResponseValue
+JIResponse	jsoncanif.h	/^} JIResponse;$/;"	t	typeref:struct:__anon28
+JIResponseBuffer	jsoncanif.c	/^char JIResponseBuffer[JIRESPONSE_BUFFER_SIZE_MAX+1];$/;"	v
+JIResponseStatusToString	jsoncanif.c	/^JIResponseStatusToString$/;"	f
+JIResponseStatusType	jsoncanif.h	/^} JIResponseStatusType;$/;"	t	typeref:enum:__anon18
+JIResponseType	jsoncanif.h	/^} JIResponseType;$/;"	t	typeref:enum:__anon17
+JIResponseValue	jsoncanif.h	/^} JIResponseValue;$/;"	t	typeref:struct:_JIResponseValue
+JIResponseValueCreate	jsoncanif.c	/^JIResponseValueCreate$/;"	f
+JISUBCOMMAND_TYPE_ADD	jsoncanif.h	/^  JISUBCOMMAND_TYPE_ADD,$/;"	e	enum:__anon14
+JISUBCOMMAND_TYPE_NONE	jsoncanif.h	/^  JISUBCOMMAND_TYPE_NONE                = 0,$/;"	e	enum:__anon14
+JISUBCOMMAND_TYPE_REMOVE	jsoncanif.h	/^  JISUBCOMMAND_TYPE_REMOVE,$/;"	e	enum:__anon14
+JISUBCOMMAND_TYPE_UPDATE	jsoncanif.h	/^  JISUBCOMMAND_TYPE_UPDATE$/;"	e	enum:__anon14
+JISubCommandType	jsoncanif.h	/^} JISubCommandType;$/;"	t	typeref:enum:__anon14
+JIWriteValue	jsoncanif.h	/^} JIWriteValue;$/;"	t	typeref:struct:_JIWriteValue
+JI_READ_REQUEST_SIZE_MAX	jsoncanif.h	25;"	d
+JI_RECTNAME_SIZE_MAX	jsoncanif.h	26;"	d
+JI_RESPONSE_MESSAGE_SIZE	jsoncanif.h	27;"	d
+JSONIFGetArray	JSONIF.c	/^JSONIFGetArray$/;"	f
+JSONIFGetBool	JSONIF.c	/^JSONIFGetBool$/;"	f
+JSONIFGetFloat	JSONIF.c	/^JSONIFGetFloat$/;"	f
+JSONIFGetInt	JSONIF.c	/^JSONIFGetInt$/;"	f
+JSONIFGetObject	JSONIF.c	/^JSONIFGetObject$/;"	f
+JSONIFGetString	JSONIF.c	/^JSONIFGetString$/;"	f
+JSONIFGetStringList	JSONIF.c	/^JSONIFGetStringList$/;"	f
+KEY_ACTION	linenoise.c	/^enum KEY_ACTION{$/;"	g	file:
+KEY_NULL	linenoise.c	/^	KEY_NULL = 0,	    \/* NULL *\/$/;"	e	enum:KEY_ACTION	file:
+LF	ascii.h	18;"	d
+LINENOISE_DEFAULT_HISTORY_MAX_LEN	linenoise.c	120;"	d	file:
+LINENOISE_HISTORY_NEXT	linenoise.c	726;"	d	file:
+LINENOISE_HISTORY_PREV	linenoise.c	727;"	d	file:
+LINENOISE_MAX_LINE	linenoise.c	121;"	d	file:
+LOGSTRING	CanMsg.h	23;"	d
+LOGSTRING	DeviceDefines.h	13;"	d
+MAXDEVICES	CanMsg.h	27;"	d
+MAXDEVICES	DeviceDefines.h	17;"	d
+MAXGROUPS	CanMsg.h	28;"	d
+MAXGROUPS	DeviceDefines.h	18;"	d
+MAXRESP	CanMsg.h	26;"	d
+MAXRESP	DeviceDefines.h	16;"	d
+MMMemoryStats	MemoryManager.h	/^} MMMemoryStats;$/;"	t	typeref:struct:_MMMemoryStats
+MMStats	MemoryManager.c	/^static MMMemoryStats MMStats = { 0 };$/;"	v	file:
+MainCANInterface	main.c	/^MainCANInterface = NULL;$/;"	v
+MainCANInterfaceName	main.c	/^MainCANInterfaceName = NULL;$/;"	v
+MainClearDatabase	main.c	/^MainClearDatabase$/;"	f
+MainClearDatabaseSwitch	main.c	/^MainClearDatabaseSwitch = false;$/;"	v
+MainDatabase	main.c	/^MainDatabase;$/;"	v
+MainDatabaseName	main.c	/^MainDatabaseName = NULL;$/;"	v
+MainDefaultWebSocketPort	main.c	/^MainDefaultWebSocketPort = "8011";$/;"	v
+MainDisplayHelp	MainDisplayHelp.c	/^MainDisplayHelp$/;"	f
+MainDisplayVersion	MainDisplayVersion.c	/^MainDisplayVersion$/;"	f
+MainExit	MainExit.c	/^MainExit$/;"	f
+MainInitialize	MainInitialize.c	/^MainInitialize$/;"	f
+MainInitializeStartTime	MainInitializeStartTime.c	/^MainInitializeStartTime$/;"	f
+MainLimitCount	main.c	/^MainLimitCount = 0;$/;"	v
+MainLimitCountRuntime	main.c	/^MainLimitCountRuntime = 0;$/;"	v
+MainLimitDays	main.c	/^MainLimitDays = 0;$/;"	v
+MainLimitDaysRuntime	main.c	/^MainLimitDaysRuntime = 0;$/;"	v
+MainLimitHours	main.c	/^MainLimitHours = 0;$/;"	v
+MainLimitHoursRuntime	main.c	/^MainLimitHoursRuntime = 0;$/;"	v
+MainLimitSet	MainLimitSet.c	/^MainLimitSet$/;"	f
+MainLimitSize	main.c	/^MainLimitSize = 0;$/;"	v
+MainLimitSizeRuntime	main.c	/^MainLimitSizeRuntime = 0;$/;"	v
+MainLimitType	main.c	/^MainLimitType;$/;"	v
+MainMaxLimitCount	main.c	/^MainMaxLimitCount = 10000000;$/;"	v
+MainMaxLimitDays	main.c	/^MainMaxLimitDays = 7;$/;"	v
+MainMaxLimitHours	main.c	/^MainMaxLimitHours = 96;$/;"	v
+MainMaxLimitSize	main.c	/^MainMaxLimitSize = 500000000;$/;"	v
+MainMinLimitCount	main.c	/^MainMinLimitCount = 1;$/;"	v
+MainMinLimitDays	main.c	/^MainMinLimitDays = 1;$/;"	v
+MainMinLimitHours	main.c	/^MainMinLimitHours = 1;$/;"	v
+MainMinLimitSize	main.c	/^MainMinLimitSize = 1;$/;"	v
+MainOpenDatabase	main.c	/^MainOpenDatabase$/;"	f
+MainProcessCommandLine	MainProcessCommandLine.c	/^MainProcessCommandLine$/;"	f
+MainProcessLine	canmonview.c	/^MainProcessLine$/;"	f
+MainProgramName	main.c	/^MainProgramName = "canmon";$/;"	v
+MainRemoveTarFiles	MainRemoveTarFiles.c	/^MainRemoveTarFiles$/;"	f
+MainStartTime	main.c	/^MainStartTime;$/;"	v
+MainTimeStampTime	main.c	/^MainTimeStampTime;$/;"	v
+MainUseUI	main.c	/^MainUseUI = true;$/;"	v
+MainVerbose	main.c	/^MainVerbose = false;$/;"	v
+MainVersionNumber	main.c	/^MainVersionNumber = "1.1.0";$/;"	v
+MessageSetLimitsResponse	MessageSetLimitsResponse.c	/^MessageSetLimitsResponse$/;"	f
+MsgDefList	CanMsg.h	/^    CanMsgDef* MsgDefList;$/;"	m	struct:__anon5
+MsgDefList_BBU	AllCanDefinitions.c	/^CanMsgDef MsgDefList_BBU[] =$/;"	v
+MsgDefList_Rect	AllCanDefinitions.c	/^CanMsgDef MsgDefList_Rect[] =$/;"	v
+MsgDefList_Rect12	AllCanDefinitions.c	/^CanMsgDef MsgDefList_Rect12[] =$/;"	v
+MsgDefList_SMDUE	AllCanDefinitions.c	/^CanMsgDef MsgDefList_SMDUE[] =$/;"	v
+MsgDefList_SMDUH2	AllCanDefinitions.c	/^CanMsgDef MsgDefList_SMDUH2[] =$/;"	v
+MsgDefList_SMTEMP	AllCanDefinitions.c	/^CanMsgDef MsgDefList_SMTEMP[] =$/;"	v
+MsgType	CanMsg.c	/^        int MsgType;$/;"	m	struct:__anon1	file:
+MsgType	CanMsg.h	/^        uint8_t MsgType;$/;"	m	struct:__anon10::__anon11
+MsgType	CanMsg.h	/^    int MsgType;$/;"	m	struct:__anon2
+MsgType	CanMsg.h	/^    int MsgType;$/;"	m	struct:__anon4
+NUL	ascii.h	13;"	d
+Name	CanMsg.h	/^    char Name[STRINGLEN];$/;"	m	struct:__anon2
+Name	CanMsg.h	/^    char Name[STRINGLEN];$/;"	m	struct:__anon5
+NumDeviceDefs	AllCanDefinitions.c	/^int NumDeviceDefs;$/;"	v
+NumDevices	Devices.c	/^int NumDevices = 0;$/;"	v
+NumMsgDefList_BBU	AllCanDefinitions.c	/^int NumMsgDefList_BBU;$/;"	v
+NumMsgDefList_Rect	AllCanDefinitions.c	/^int NumMsgDefList_Rect;$/;"	v
+NumMsgDefList_Rect12	AllCanDefinitions.c	/^int NumMsgDefList_Rect12;$/;"	v
+NumMsgDefList_SMDUE	AllCanDefinitions.c	/^int NumMsgDefList_SMDUE;$/;"	v
+NumMsgDefList_SMDUH2	AllCanDefinitions.c	/^int NumMsgDefList_SMDUH2;$/;"	v
+NumMsgDefList_SMTEMP	AllCanDefinitions.c	/^int NumMsgDefList_SMTEMP;$/;"	v
+NumRegDefList_BBU	AllCanDefinitions.c	/^int NumRegDefList_BBU;$/;"	v
+NumRegDefList_Rect	AllCanDefinitions.c	/^int NumRegDefList_Rect;$/;"	v
+NumRegDefList_Rect12	AllCanDefinitions.c	/^int NumRegDefList_Rect12;$/;"	v
+NumRegDefList_SMDUE	AllCanDefinitions.c	/^int NumRegDefList_SMDUE;$/;"	v
+NumRegDefList_SMDUH2	AllCanDefinitions.c	/^int NumRegDefList_SMDUH2;$/;"	v
+NumRegDefList_SMTEMP	AllCanDefinitions.c	/^int NumRegDefList_SMTEMP;$/;"	v
+PTP	CanMsg.h	/^        unsigned PTP : 1;               \/* 0:broadcast, 1:point to point *\/$/;"	m	struct:__anon8::__anon9
+Panel	Panel.h	/^} Panel;$/;"	t	typeref:struct:_Panel
+PanelAddFuseBreaker	Panel.c	/^PanelAddFuseBreaker$/;"	f
+PanelConnection	PanelConnection.h	/^typedef struct _PanelConnection PanelConnection;$/;"	t	typeref:struct:_PanelConnection
+PanelCreate	Panel.c	/^PanelCreate$/;"	f
+PanelDestroy	Panel.c	/^PanelDestroy$/;"	f
+PanelDisplay	Panel.c	/^PanelDisplay$/;"	f
+PanelFindCANRegister	Panel.c	/^PanelFindCANRegister$/;"	f
+PanelFindFuseBreaker	Panel.c	/^PanelFindFuseBreaker$/;"	f
+PanelFirstFuseBreaker	Panel.c	/^PanelFirstFuseBreaker$/;"	f
+PanelFromJSONString	Panel.c	/^PanelFromJSONString$/;"	f
+PanelFuseBreakerSlotOccupied	Panel.c	/^PanelFuseBreakerSlotOccupied$/;"	f
+PanelGetFuseBreakerList	Panel.c	/^PanelGetFuseBreakerList$/;"	f
+PanelNextFuseBreaker	Panel.c	/^PanelNextFuseBreaker$/;"	f
+PanelRegValuesToJSONString	Panel.c	/^PanelRegValuesToJSONString$/;"	f
+PanelRemoveFuseBreakerByIndex	Panel.c	/^PanelRemoveFuseBreakerByIndex$/;"	f
+PanelSaveCANRegister	Panel.c	/^PanelSaveCANRegister$/;"	f
+PanelSaveRegisterValueSQL	Panel.c	/^PanelSaveRegisterValueSQL$/;"	f
+PanelSaveValuesSQL	Panel.c	/^PanelSaveValuesSQL$/;"	f
+PanelSetEmpty	Panel.c	/^PanelSetEmpty$/;"	f
+PanelToJSONString	Panel.c	/^PanelToJSONString$/;"	f
+PanelType	PanelType.h	/^typedef struct _PanelType PanelType;$/;"	t	typeref:struct:_PanelType
+PanelTypeAppend	PanelType.c	/^PanelTypeAppend$/;"	f
+PanelTypeCreate	PanelType.c	/^PanelTypeCreate$/;"	f
+PanelTypeDestroy	PanelType.c	/^PanelTypeDestroy$/;"	f
+PanelTypeFindByListNumber	PanelType.c	/^PanelTypeFindByListNumber$/;"	f
+PanelTypeFindByName	PanelType.c	/^PanelTypeFindByName$/;"	f
+PanelTypeFromJSONString	PanelType.c	/^PanelTypeFromJSONString$/;"	f
+PanelTypeGetNamesList	PanelType.c	/^PanelTypeGetNamesList$/;"	f
+PanelTypeToJSONString	PanelType.c	/^PanelTypeToJSONString$/;"	f
+PanelTypesDestroy	PanelType.c	/^PanelTypesDestroy$/;"	f
+PanelTypesToJSONString	PanelType.c	/^PanelTypesToJSONString$/;"	f
+PanelValueFromJSONString	Panel.c	/^PanelValueFromJSONString$/;"	f
+PanelValuesFromJSONString	Panel.c	/^PanelValuesFromJSONString$/;"	f
+PanelValuesToJSONString	Panel.c	/^PanelValuesToJSONString$/;"	f
+ParseData	CanMsg.c	/^void ParseData(dataframe Data, int* IncomingMsgType, int* IncomingValueType, int* IncomingErrType, ufloatbit32_t* IncomingValue)$/;"	f
+ParseId	CanMsg.c	/^void ParseId(frameid Id, int* Protocol, int* SrcAddr, int* DestAddr)$/;"	f
+PortOpened	Devices.c	/^bool PortOpened = false;$/;"	v
+ProtNo	CanMsg.h	/^        unsigned ProtNo : 9;            \/* protocol number *\/$/;"	m	struct:__anon8::__anon9
+Protocol	CanMsg.c	/^        int Protocol;$/;"	m	struct:__anon1	file:
+ProtocolNumber	CanMsg.h	/^    int ProtocolNumber;$/;"	m	struct:__anon5
+REG_DEF_READ_END_STATE	DeviceRegDef.c	30;"	d	file:
+RES1	CanMsg.h	/^        unsigned RES1 : 1;              \/* reserved *\/$/;"	m	struct:__anon8::__anon9
+RES2	CanMsg.h	/^        unsigned RES2 : 1;              \/* reserved *\/$/;"	m	struct:__anon8::__anon9
+ReadDefToken	DefFileToken.c	/^ReadDefToken$/;"	f
+ReadDefTokenFromFile	DefFileToken.c	/^ReadDefTokenFromFile$/;"	f
+ReadDeviceReg	DeviceRegDef.c	/^ReadDeviceReg$/;"	f
+ReadDeviceRegList	DeviceRegDef.c	/^ReadDeviceRegList$/;"	f
+RegDefList	CanMsg.h	/^    CanRegDef* RegDefList;$/;"	m	struct:__anon5
+RegDefList_BBU	AllCanDefinitions.c	/^CanRegDef RegDefList_BBU[] =$/;"	v
+RegDefList_Rect	AllCanDefinitions.c	/^CanRegDef RegDefList_Rect[] =$/;"	v
+RegDefList_Rect12	AllCanDefinitions.c	/^CanRegDef RegDefList_Rect12[] =$/;"	v
+RegDefList_SMDUE	AllCanDefinitions.c	/^const CanRegDef RegDefList_SMDUE[] =$/;"	v
+RegDefList_SMDUH2	AllCanDefinitions.c	/^CanRegDef RegDefList_SMDUH2[] =$/;"	v
+RegDefList_SMTEMP	AllCanDefinitions.c	/^CanRegDef RegDefList_SMTEMP[] =$/;"	v
+Registers	CanMsg.h	/^    CanReg*                             Registers;$/;"	m	struct:__anon6
+RemoveDevice	Devices.c	/^RemoveDevice$/;"	f
+RemoveDeviceDef	DeviceDef.c	/^RemoveDeviceDef$/;"	f
+RemoveDeviceDefByName	DeviceDef.c	/^RemoveDeviceDefByName$/;"	f
+ResponseData	jsoncanif.h	/^  } ResponseData;$/;"	m	struct:_JIResponseValue	typeref:union:_JIResponseValue::__anon19
+Responses	CanMsg.h	/^    int Responses[MAXRESP];$/;"	m	struct:__anon4
+SHORTSTRINGLEN	CanMsg.h	25;"	d
+SHORTSTRINGLEN	DeviceDefines.h	15;"	d
+SQLStatementUpdateRegister	SQLStatements.c	/^SQLStatementUpdateRegister = $/;"	v
+STRINGLEN	CanMsg.h	24;"	d
+STRINGLEN	DeviceDefines.h	14;"	d
+SendResponses	Devices.c	/^void SendResponses(CANInterface* InInterface, int Protocol, int SrcAddr, int DestAddr, int IncomingMsgType, int IncomingValueType, ufloatbit32_t IncomingValue, time_t InTime)$/;"	f
+SetDeviceRegister	Devices.c	/^SetDeviceRegister$/;"	f
+SetRegisterValue	Devices.c	/^void SetRegisterValue(char* DeviceName, int Count, int RegisterNum, ufloatbit32_t NewValue)$/;"	f
+SetRegisterValueByName	Devices.c	/^int SetRegisterValueByName(char* DeviceName, int Count, char* AbbrevName, char* Group, float NewValue)$/;"	f
+SetRegisterValueFloat	Devices.c	/^void SetRegisterValueFloat(char* DeviceName, int Count, int RegisterNum, float NewValue)$/;"	f
+SetRegisterValueHex	Devices.c	/^void SetRegisterValueHex(char* DeviceName, int Count, int RegisterNum, uint32_t NewValue)$/;"	f
+SrcAddr	CanMsg.c	/^        int SrcAddr;$/;"	m	struct:__anon1	file:
+SrcAddr	CanMsg.h	/^        unsigned SrcAddr : 8;           \/* source address *\/$/;"	m	struct:__anon8::__anon9
+StartingSNLow	CanMsg.h	/^    ufloatbit32_t StartingSNLow;$/;"	m	struct:__anon5
+StartingSNLow	DeviceDef.h	/^    ufloatbit32_t                       StartingSNLow;$/;"	m	struct:_DeviceDef
+State	CanMsg.h	/^    enum                                { normal = 0xf0, error = 0xF2, offline = 0xFF, addressing = 0xf4 } State;$/;"	m	struct:__anon6	typeref:enum:__anon6::__anon7
+StringBeginsWith	String.c	/^StringBeginsWith$/;"	f
+StringCapitalize	String.c	/^StringCapitalize$/;"	f
+StringConcat	String.c	/^StringConcat$/;"	f
+StringConcatTo	String.c	/^StringConcatTo$/;"	f
+StringContainsChar	String.c	/^StringContainsChar$/;"	f
+StringCopy	String.c	/^StringCopy$/;"	f
+StringEqual	String.c	/^StringEqual$/;"	f
+StringEqualNoCase	String.c	/^StringEqualNoCase$/;"	f
+StringEqualsOneOf	String.c	/^StringEqualsOneOf$/;"	f
+StringFill	String.c	/^StringFill$/;"	f
+StringIsInteger	String.c	/^StringIsInteger$/;"	f
+StringList	String.h	/^} StringList;$/;"	t	typeref:struct:_StringList
+StringListAppend	String.c	/^StringListAppend$/;"	f
+StringListCompare	String.c	/^StringListCompare$/;"	f
+StringListCompareReverse	String.c	/^StringListCompareReverse$/;"	f
+StringListConcat	String.c	/^StringListConcat$/;"	f
+StringListContains	String.c	/^StringListContains$/;"	f
+StringListCreate	String.c	/^StringListCreate$/;"	f
+StringListDestroy	String.c	/^StringListDestroy$/;"	f
+StringListGet	String.c	/^StringListGet$/;"	f
+StringListGetCount	String.c	/^StringListGetCount$/;"	f
+StringListReverseSort	String.c	/^StringListReverseSort$/;"	f
+StringListSort	String.c	/^StringListSort$/;"	f
+StringMultiConcat	String.c	/^StringMultiConcat$/;"	f
+StringNCopy	String.c	/^StringNCopy$/;"	f
+StringReplaceChar	String.c	/^StringReplaceChar$/;"	f
+StringSizedToInteger	String.c	/^StringSizedToInteger$/;"	f
+StringSplit	String.c	/^StringSplit$/;"	f
+StringToFloat	StringUtils.c	/^StringToFloat$/;"	f
+StringToU16	String.c	/^StringToU16$/;"	f
+StringToU32	String.c	/^StringToU32$/;"	f
+StringToU8	String.c	/^StringToU8$/;"	f
+StringTrim	String.c	/^StringTrim$/;"	f
+TAB	ascii.h	16;"	d
+TAB	linenoise.c	/^	TAB = 9,            \/* Tab *\/$/;"	e	enum:KEY_ACTION	file:
+TrimEndOfLine	StringUtils.c	/^TrimEndOfLine$/;"	f
+TrimLine	StringUtils.c	/^TrimLine$/;"	f
+TrimStartOfLine	StringUtils.c	/^TrimStartOfLine$/;"	f
+UniqueSNLow	CanMsg.h	/^    bool UniqueSNLow;$/;"	m	struct:__anon5
+UniqueSNLow	DeviceDef.h	/^    bool                                UniqueSNLow;$/;"	m	struct:_DeviceDef
+Upcase	Devices.c	42;"	d	file:
+UserInputThread	UserInputThread.c	/^UserInputThread$/;"	f
+UserInputThreadID	UserInputThread.c	/^UserInputThreadID;$/;"	v
+UserInputThreadInit	UserInputThread.c	/^UserInputThreadInit$/;"	f
+Value	CanMsg.c	/^        ufloatbit32_t Value;$/;"	m	struct:__anon1	file:
+Value	CanMsg.h	/^        uint32_t Value;$/;"	m	struct:__anon10::__anon11
+Value	CanMsg.h	/^    ufloatbit32_t Value;$/;"	m	struct:__anon3
+ValueType	CanMsg.c	/^        int ValueType;$/;"	m	struct:__anon1	file:
+ValueType	CanMsg.h	/^        uint16_t ValueType;$/;"	m	struct:__anon10::__anon11
+ValueType	CanMsg.h	/^    int ValueType;$/;"	m	struct:__anon2
+VerifyCommandLine	main.c	/^VerifyCommandLine$/;"	f
+WEBSOCKET_IF_ADDRESS_WAIT_PERIOD	WebSocketIF.h	34;"	d
+WEBSOCKET_IF_MAX_ADDRESS_TRIES	WebSocketIF.h	33;"	d
+WebConnection	WebConnection.h	/^typedef struct _WebConnection WebConnection;$/;"	t	typeref:struct:_WebConnection
+WebConnectionClose	WebConnection.c	/^WebConnectionClose$/;"	f
+WebConnectionCreate	WebConnection.c	/^WebConnectionCreate$/;"	f
+WebConnectionDestroy	WebConnection.c	/^WebConnectionDestroy$/;"	f
+WebConnectionList	WebConnection.h	/^typedef struct _WebConnectionList WebConnectionList;$/;"	t	typeref:struct:_WebConnectionList
+WebConnectionListAppend	WebConnection.c	/^WebConnectionListAppend$/;"	f
+WebConnectionListCount	WebConnection.c	/^WebConnectionListCount$/;"	f
+WebConnectionListCreate	WebConnection.c	/^WebConnectionListCreate$/;"	f
+WebConnectionListDisplay	WebConnection.c	/^WebConnectionListDisplay$/;"	f
+WebConnectionListFind	WebConnection.c	/^WebConnectionListFind$/;"	f
+WebConnectionListGetByIndex	WebConnection.c	/^WebConnectionListGetByIndex$/;"	f
+WebConnectionListRemove	WebConnection.c	/^WebConnectionListRemove$/;"	f
+WebConnectionTimeUpdate	WebConnection.c	/^WebConnectionTimeUpdate$/;"	f
+WebSocketEventHandler	WebSocketIF.c	/^WebSocketEventHandler$/;"	f
+WebSocketFrameResponseSend	WebSocketFrameResponseSend.c	/^WebSocketFrameResponseSend$/;"	f
+WebSocketFrameResponseSendError	WebSocketIF.c	/^WebSocketFrameResponseSendError$/;"	f
+WebSocketFrameSend	WebSocketFrameSend.c	/^WebSocketFrameSend$/;"	f
+WebSocketIFAddress	WebSocketIF.c	/^WebSocketIFAddress = NULL;$/;"	v
+WebSocketIFCreateInfoScript	WebSocketIFCreateInfoScript.c	/^WebSocketIFCreateInfoScript$/;"	f
+WebSocketIFHandleGetMonitorInfoRequest	WebSocketIFHandleGetMonitorInfoRequest.c	/^WebSocketIFHandleGetMonitorInfoRequest$/;"	f
+WebSocketIFHandlePacketRequest	WebSocketIFHandlePacketRequest.c	/^WebSocketIFHandlePacketRequest$/;"	f
+WebSocketIFHandleRemoveArchiveFiles	WebSocketIFHandleRemoveArchiveFiles.c	/^WebSocketIFHandleRemoveArchiveFiles$/;"	f
+WebSocketIFHandleSetLimitsRequest	WebSocketIFHandleSetLimitsRequest.c	/^WebSocketIFHandleSetLimitsRequest$/;"	f
+WebSocketIFHandleSetTimeStampRequest	WebSocketIFHandleSetTimeStampRequest.c	/^WebSocketIFHandleSetTimeStampRequest$/;"	f
+WebSocketIFPacketID	WebSocketIF.c	/^WebSocketIFPacketID = 0;$/;"	v
+WebSocketIFSetPort	WebSocketIFSetPort.c	/^WebSocketIFSetPort$/;"	f
+WebSocketServerInit	WebSocketIF.c	/^WebSocketServerInit()$/;"	f
+WebSocketServerThread	WebSocketIF.c	/^WebSocketServerThread$/;"	f
+WebSocketServerThreadID	WebSocketIF.c	/^WebSocketServerThreadID;$/;"	v
+_Bay	Bay.h	/^typedef struct _Bay$/;"	s
+_BayType	BayType.h	/^struct _BayType$/;"	s
+_CANInterface	CANInterface.h	/^struct _CANInterface$/;"	s
+_DeviceDef	DeviceDef.h	/^struct _DeviceDef {$/;"	s
+_DeviceDefList	DeviceDef.h	/^struct _DeviceDefList {$/;"	s
+_DeviceMessageDef	DeviceMessageDef.h	/^struct  _DeviceMessageDef {$/;"	s
+_DeviceMessageDefList	DeviceMessageDef.h	/^struct _DeviceMessageDefList {$/;"	s
+_DeviceMessageResponse	DeviceMessageDef.h	/^struct _DeviceMessageResponse {$/;"	s
+_DeviceRegDef	DeviceRegDef.h	/^struct  _DeviceRegDef {$/;"	s
+_DeviceRegDefList	DeviceRegDef.h	/^struct _DeviceRegDefList {$/;"	s
+_FuseBreaker	FuseBreaker.h	/^typedef struct _FuseBreaker$/;"	s
+_FuseBreakerState	FuseBreaker.h	/^typedef enum _FuseBreakerState$/;"	g
+_FuseBreakerType	FuseBreakerType.h	/^struct _FuseBreakerType$/;"	s
+_GNU_SOURCE	Devices.c	11;"	d	file:
+_GNU_SOURCE	FileUtils.c	7;"	d	file:
+_GNU_SOURCE	main.c	7;"	d	file:
+_JIIDResponse	jsoncanif.h	/^typedef struct _JIIDResponse $/;"	s
+_JIRegisterResponseValue	jsoncanif.h	/^typedef struct _JIRegisterResponseValue {$/;"	s
+_JIResponseValue	jsoncanif.h	/^typedef struct _JIResponseValue$/;"	s
+_JIWriteValue	jsoncanif.h	/^typedef struct _JIWriteValue {$/;"	s
+_MMMemoryStats	MemoryManager.h	/^typedef struct _MMMemoryStats {$/;"	s
+_Panel	Panel.h	/^typedef struct _Panel$/;"	s
+_PanelConnection	PanelConnection.h	/^struct _PanelConnection$/;"	s
+_PanelType	PanelType.h	/^struct _PanelType$/;"	s
+_StringList	String.h	/^typedef struct _StringList$/;"	s
+_WebConnection	WebConnection.h	/^struct _WebConnection$/;"	s
+_WebConnectionList	WebConnection.h	/^struct _WebConnectionList$/;"	s
+__LINENOISE_H	linenoise.h	40;"	d
+_allcandefinitions_h_	AllCanDefinitions.h	8;"	d
+_ansicolors_h_	ANSIColors.h	8;"	d
+_ascii_h_	ascii.h	8;"	d
+_bay_h_	Bay.h	8;"	d
+_baytype_h_	BayType.h	8;"	d
+_bytesmanage_h_	BytesManage.h	8;"	d
+_caninterface_h_	CANInterface.h	7;"	d
+_caninterfacethread_h_	CANInterfaceThread.h	8;"	d
+_canmonlog_h_	CANMonLog.h	8;"	d
+_canmsg_h_	CanMsg.h	2;"	d
+_canregisterdef_h_	CANRegisterDef.h	8;"	d
+_clithread_h_	CLIThread.h	8;"	d
+_deffiletoken_h_	DefFileToken.h	8;"	d
+_devicedef_h_	DeviceDef.h	8;"	d
+_devicedefines_h_	DeviceDefines.h	8;"	d
+_devicemessagedef_h_	DeviceMessageDef.h	8;"	d
+_deviceregdef_h_	DeviceRegDef.h	8;"	d
+_devices_h_	Devices.h	7;"	d
+_dirmanagement_h_	DirManagement.h	8;"	d
+_fileutils_h_	FileUtils.h	9;"	d
+_fusebreaker_h_	FuseBreaker.h	8;"	d
+_fusebreakertype_h_	FuseBreakerType.h	8;"	d
+_httpserverthread_h_	HTTPServerThread.h	8;"	d
+_jsoncanif_h_	jsoncanif.h	8;"	d
+_jsonif_h_	JSONIF.h	8;"	d
+_main_h_	main.h	7;"	d
+_memorymanager_h_	MemoryManager.h	7;"	d
+_messages_h_	Messages.h	8;"	d
+_numerictypes_h_	NumericTypes.h	8;"	d
+_panel_h_	Panel.h	8;"	d
+_panelconnection_h_	PanelConnection.h	8;"	d
+_paneltype_h_	PanelType.h	8;"	d
+_sqlstatements_h_	SQLStatements.h	8;"	d
+_string_h_	String.h	8;"	d
+_stringutils_h_	StringUtils.h	9;"	d
+_threadsafeprint_h_	ThreadSafePrint.h	5;"	d
+_userinputthread_h_	UserInputThread.h	8;"	d
+_webconnection_h_	WebConnection.h	8;"	d
+_websocketif_h_	WebSocketIF.h	8;"	d
+abAppend	linenoise.c	/^static void abAppend(struct abuf *ab, const char *s, int len) {$/;"	f	file:
+abFree	linenoise.c	/^static void abFree(struct abuf *ab) {$/;"	f	file:
+abInit	linenoise.c	/^static void abInit(struct abuf *ab) {$/;"	f	file:
+abbrev	CANRegisterDef.h	/^    string 			abbrev;$/;"	m	struct:__anon12
+abuf	linenoise.c	/^struct abuf {$/;"	s	file:
+addressing	CanMsg.h	/^    enum                                { normal = 0xf0, error = 0xF2, offline = 0xFF, addressing = 0xf4 } State;$/;"	e	enum:__anon6::__anon7
+atexit_registered	linenoise.c	/^static int atexit_registered = 0; \/* Register atexit just 1 time. *\/$/;"	v	file:
+b	linenoise.c	/^    char *b;$/;"	m	struct:abuf	file:
+bay	Panel.h	/^  struct _Bay*                          bay;$/;"	m	struct:_Panel	typeref:struct:_Panel::_Bay
+bay	PanelConnection.h	/^  struct _Bay*			bay;$/;"	m	struct:_PanelConnection	typeref:struct:_PanelConnection::_Bay
+bitdata1	NumericTypes.h	/^    } bitdata1;$/;"	m	union:__anon29	typeref:struct:__anon29::__anon30
+buf	linenoise.c	/^    char *buf;          \/* Edited line buffer. *\/$/;"	m	struct:linenoiseState	file:
+buflen	linenoise.c	/^    size_t buflen;      \/* Edited line buffer size. *\/$/;"	m	struct:linenoiseState	file:
+canAddressStart	DeviceDef.h	/^    int                                 canAddressStart;$/;"	m	struct:_DeviceDef
+canDevice	Bay.h	/^  CanDevice*				canDevice;$/;"	m	struct:_Bay
+canRegister	FuseBreaker.h	/^  CanReg*				canRegister;$/;"	m	struct:_FuseBreaker
+canRegisters	Bay.h	/^  CanReg**				canRegisters;$/;"	m	struct:_Bay
+cols	linenoise.c	/^    size_t cols;        \/* Number of columns in terminal. *\/$/;"	m	struct:linenoiseState	file:
+command	jsoncanif.h	/^  JICommandType				                 command;$/;"	m	struct:__anon20
+command	jsoncanif.h	/^  JICommandType				command;$/;"	m	struct:__anon28
+completeLine	linenoise.c	/^static int completeLine(struct linenoiseState *ls) {$/;"	f	file:
+completionCallback	linenoise.c	/^static linenoiseCompletionCallback *completionCallback = NULL;$/;"	v	file:
+configRequest	jsoncanif.h	/^    } configRequest;$/;"	m	union:__anon20::__anon21	typeref:struct:__anon20::__anon21::__anon23
+connection	WebConnection.h	/^  struct mg_connection*			connection;$/;"	m	struct:_WebConnection	typeref:struct:_WebConnection::mg_connection
+createRequest	jsoncanif.h	/^    } createRequest;$/;"	m	union:__anon20::__anon21	typeref:struct:__anon20::__anon21::__anon25
+current	FuseBreaker.h	/^  ufloatbit32_t                         current;$/;"	m	struct:_FuseBreaker
+cvec	linenoise.h	/^  char **cvec;$/;"	m	struct:linenoiseCompletions
+data	CanMsg.h	/^    } data;$/;"	m	union:__anon10	typeref:struct:__anon10::__anon11
+data32	CanMsg.h	/^    uint32_t data32;$/;"	m	union:__anon8
+data32	NumericTypes.h	/^    uint32_t                            data32;$/;"	m	union:__anon31
+data64	CanMsg.h	/^    uint64_t data64;$/;"	m	union:__anon10
+data8	CanMsg.h	/^    uint8_t data8[CAN_MAX_DLEN];$/;"	m	union:__anon10
+data8	NumericTypes.h	/^    uint8_t				data8[4];$/;"	m	union:__anon31
+dataframe	CanMsg.h	/^} dataframe;$/;"	t	typeref:union:__anon10
+definition	jsoncanif.h	/^  CanMsgDef*				definition;$/;"	m	struct:_JIWriteValue
+definitions	DeviceMessageDef.h	/^    DeviceMessageDef*                   definitions;$/;"	m	struct:_DeviceMessageDefList
+definitions	DeviceRegDef.h	/^    DeviceRegDef*                       definitions;$/;"	m	struct:_DeviceRegDefList
+defs	DeviceDef.h	/^    DeviceDef*                          defs;$/;"	m	struct:_DeviceDefList
+delim	CanMsg.h	35;"	d
+desc	DeviceDef.h	/^    string                              desc;$/;"	m	struct:_DeviceDef
+device	jsoncanif.h	/^      char*     			                  device;$/;"	m	struct:__anon20::__anon21::__anon23
+deviceDefParent	DeviceMessageDef.h	/^    struct _DeviceDef*			deviceDefParent;$/;"	m	struct:_DeviceMessageDef	typeref:struct:_DeviceMessageDef::_DeviceDef
+deviceDefinition	CanMsg.h	/^    DeviceDef*                          deviceDefinition;$/;"	m	struct:__anon6
+deviceID	jsoncanif.h	/^  int					deviceID;$/;"	m	struct:_JIIDResponse
+deviceName	jsoncanif.h	/^  char					                       deviceName[STRINGLEN+1];$/;"	m	struct:__anon20
+deviceName	jsoncanif.h	/^  char					deviceName[JIDEVICE_NAME_SIZE_MAX+1];$/;"	m	struct:_JIIDResponse
+deviceType	jsoncanif.h	/^  JIDeviceType				deviceType;$/;"	m	struct:_JIIDResponse
+deviceType	jsoncanif.h	/^  JIDeviceType			                   deviceType;$/;"	m	struct:__anon20
+deviceType	jsoncanif.h	/^  JIReadType				deviceType;$/;"	m	struct:__anon28
+disableRawMode	linenoise.c	/^static void disableRawMode(int fd) {$/;"	f	file:
+displayColumns	DeviceDef.h	/^    int                                 displayColumns;$/;"	m	struct:_DeviceDef
+displayLabel	CANRegisterDef.h	/^    string 			displayLabel;$/;"	m	struct:__anon12
+displayLabel	DeviceRegDef.h	/^    char                                displayLabel[STRINGLEN];$/;"	m	struct:_DeviceRegDef
+element	jsoncanif.h	/^      JIWriteValue*			                element;$/;"	m	struct:__anon20::__anon21::__anon27
+enableRawMode	linenoise.c	/^static int enableRawMode(int fd) {$/;"	f	file:
+error	CanMsg.h	/^    enum                                { normal = 0xf0, error = 0xF2, offline = 0xFF, addressing = 0xf4 } State;$/;"	e	enum:__anon6::__anon7
+fd	NumericTypes.h	/^    float                               fd;$/;"	m	union:__anon31
+first	WebConnection.h	/^  WebConnection*			first;$/;"	m	struct:_WebConnectionList
+formatType	DeviceRegDef.h	/^    int					formatType;$/;"	m	struct:_DeviceRegDef
+frameid	CanMsg.h	/^}frameid;$/;"	t	typeref:union:__anon8
+freeCompletions	linenoise.c	/^static void freeCompletions(linenoiseCompletions *lc) {$/;"	f	file:
+freeHintsCallback	linenoise.c	/^static linenoiseFreeHintsCallback *freeHintsCallback = NULL;$/;"	v	file:
+freeHistory	linenoise.c	/^static void freeHistory(void) {$/;"	f	file:
+fromPanel	PanelConnection.h	/^  int				fromPanel;$/;"	m	struct:_PanelConnection
+fuseBreaker	FuseBreakerType.h	/^  string				fuseBreaker;$/;"	m	struct:_FuseBreakerType
+getColumns	linenoise.c	/^static int getColumns(int ifd, int ofd) {$/;"	f	file:
+getCursorPosition	linenoise.c	/^static int getCursorPosition(int ifd, int ofd) {$/;"	f	file:
+group	CANRegisterDef.h	/^    string 			group;$/;"	m	struct:__anon12
+group	DeviceRegDef.h	/^    char                                group[SHORTSTRINGLEN];$/;"	m	struct:_DeviceRegDef
+groupsort	DeviceRegDef.h	/^    char                                groupsort[SHORTSTRINGLEN];$/;"	m	struct:_DeviceRegDef
+highchar1	NumericTypes.h	/^	unsigned                        highchar1 : 8;$/;"	m	struct:__anon29::__anon30
+hintsCallback	linenoise.c	/^static linenoiseHintsCallback *hintsCallback = NULL;$/;"	v	file:
+history	linenoise.c	/^static char **history = NULL;$/;"	v	file:
+history_index	linenoise.c	/^    int history_index;  \/* The history index we are currently editing. *\/$/;"	m	struct:linenoiseState	file:
+history_len	linenoise.c	/^static int history_len = 0;$/;"	v	file:
+history_max_len	linenoise.c	/^static int history_max_len = LINENOISE_DEFAULT_HISTORY_MAX_LEN;$/;"	v	file:
+id	FuseBreakerType.h	/^  int                                   id;$/;"	m	struct:_FuseBreakerType
+id1	NumericTypes.h	/^    uint16_t                            id1;$/;"	m	union:__anon29
+ids	jsoncanif.h	/^    JIIDResponse*			ids;$/;"	m	union:_JIResponseValue::__anon19
+ifd	linenoise.c	/^    int ifd;            \/* Terminal stdin file descriptor. *\/$/;"	m	struct:linenoiseState	file:
+index	Bay.h	/^  int                                   index;$/;"	m	struct:_Bay
+index	FuseBreaker.h	/^  uint32_t                              index;$/;"	m	struct:_FuseBreaker
+index	Panel.h	/^  uint32_t                              index;$/;"	m	struct:_Panel
+index	jsoncanif.h	/^      int				                        index;$/;"	m	struct:__anon20::__anon21::__anon22
+index	jsoncanif.h	/^      int				                        index;$/;"	m	struct:__anon20::__anon21::__anon24
+index	jsoncanif.h	/^      int				                        index;$/;"	m	struct:__anon20::__anon21::__anon25
+index	jsoncanif.h	/^      int				                        index;$/;"	m	struct:__anon20::__anon21::__anon27
+index	jsoncanif.h	/^      int                               index;$/;"	m	struct:__anon20::__anon21::__anon26
+initialValue	CANRegisterDef.h	/^    ufloatbit32_t 		initialValue;$/;"	m	struct:__anon12
+initialValue	DeviceRegDef.h	/^    ufloatbit32_t                       initialValue;$/;"	m	struct:_DeviceRegDef
+intdata	NumericTypes.h	/^    uint16bit_t                         intdata[2];$/;"	m	union:__anon31
+ipaddress	Bay.h	/^  string                                ipaddress;$/;"	m	struct:_Bay
+isUnsupportedTerm	linenoise.c	/^static int isUnsupportedTerm(void) {$/;"	f	file:
+last	WebConnection.h	/^  WebConnection*			last;$/;"	m	struct:_WebConnectionList
+lastContactTime	CanMsg.h	/^    time_t                              lastContactTime;$/;"	m	struct:__anon6
+lastDef	DeviceDef.h	/^    DeviceDef*                          lastDef;$/;"	m	struct:_DeviceDefList
+lastDefinition	DeviceMessageDef.h	/^    DeviceMessageDef*                   lastDefinition;$/;"	m	struct:_DeviceMessageDefList
+lastDefinition	DeviceRegDef.h	/^    DeviceRegDef*                       lastDefinition;$/;"	m	struct:_DeviceRegDefList
+lastReceiveTime	WebConnection.h	/^  time_t				lastReceiveTime;$/;"	m	struct:_WebConnection
+len	linenoise.c	/^    int len;$/;"	m	struct:abuf	file:
+len	linenoise.c	/^    size_t len;         \/* Current edited line length. *\/$/;"	m	struct:linenoiseState	file:
+len	linenoise.h	/^  size_t len;$/;"	m	struct:linenoiseCompletions
+linenoise	linenoise.c	/^char *linenoise(const char *prompt) {$/;"	f
+linenoiseAddCompletion	linenoise.c	/^void linenoiseAddCompletion(linenoiseCompletions *lc, const char *str) {$/;"	f
+linenoiseAtExit	linenoise.c	/^static void linenoiseAtExit(void) {$/;"	f	file:
+linenoiseBeep	linenoise.c	/^static void linenoiseBeep(void) {$/;"	f	file:
+linenoiseClearScreen	linenoise.c	/^void linenoiseClearScreen(void) {$/;"	f
+linenoiseCompletionCallback	linenoise.h	/^typedef void(linenoiseCompletionCallback)(const char *, linenoiseCompletions *);$/;"	t
+linenoiseCompletions	linenoise.h	/^typedef struct linenoiseCompletions {$/;"	s
+linenoiseCompletions	linenoise.h	/^} linenoiseCompletions;$/;"	t	typeref:struct:linenoiseCompletions
+linenoiseEdit	linenoise.c	/^static int linenoiseEdit(int stdin_fd, int stdout_fd, char *buf, size_t buflen, const char *prompt)$/;"	f	file:
+linenoiseEditBackspace	linenoise.c	/^void linenoiseEditBackspace(struct linenoiseState *l) {$/;"	f
+linenoiseEditDelete	linenoise.c	/^void linenoiseEditDelete(struct linenoiseState *l) {$/;"	f
+linenoiseEditDeletePrevWord	linenoise.c	/^void linenoiseEditDeletePrevWord(struct linenoiseState *l) {$/;"	f
+linenoiseEditHistoryNext	linenoise.c	/^void linenoiseEditHistoryNext(struct linenoiseState *l, int dir) {$/;"	f
+linenoiseEditInsert	linenoise.c	/^int linenoiseEditInsert(struct linenoiseState *l, char c) {$/;"	f
+linenoiseEditMoveEnd	linenoise.c	/^void linenoiseEditMoveEnd(struct linenoiseState *l) {$/;"	f
+linenoiseEditMoveHome	linenoise.c	/^void linenoiseEditMoveHome(struct linenoiseState *l) {$/;"	f
+linenoiseEditMoveLeft	linenoise.c	/^void linenoiseEditMoveLeft(struct linenoiseState *l) {$/;"	f
+linenoiseEditMoveRight	linenoise.c	/^void linenoiseEditMoveRight(struct linenoiseState *l) {$/;"	f
+linenoiseFree	linenoise.c	/^void linenoiseFree(void *ptr) {$/;"	f
+linenoiseFreeHintsCallback	linenoise.h	/^typedef void(linenoiseFreeHintsCallback)(void *);$/;"	t
+linenoiseHintsCallback	linenoise.h	/^typedef char*(linenoiseHintsCallback)(const char *, int *color, int *bold);$/;"	t
+linenoiseHistoryAdd	linenoise.c	/^int linenoiseHistoryAdd(const char *line) {$/;"	f
+linenoiseHistoryLoad	linenoise.c	/^int linenoiseHistoryLoad(const char *filename) {$/;"	f
+linenoiseHistorySave	linenoise.c	/^int linenoiseHistorySave(const char *filename) {$/;"	f
+linenoiseHistorySetMaxLen	linenoise.c	/^int linenoiseHistorySetMaxLen(int len) {$/;"	f
+linenoiseMaskModeDisable	linenoise.c	/^void linenoiseMaskModeDisable(void) {$/;"	f
+linenoiseMaskModeEnable	linenoise.c	/^void linenoiseMaskModeEnable(void) {$/;"	f
+linenoiseNoTTY	linenoise.c	/^static char *linenoiseNoTTY(void) {$/;"	f	file:
+linenoisePrintKeyCodes	linenoise.c	/^void linenoisePrintKeyCodes(void) {$/;"	f
+linenoiseRaw	linenoise.c	/^static int linenoiseRaw(char *buf, size_t buflen, const char *prompt) {$/;"	f	file:
+linenoiseSetCompletionCallback	linenoise.c	/^void linenoiseSetCompletionCallback(linenoiseCompletionCallback *fn) {$/;"	f
+linenoiseSetFreeHintsCallback	linenoise.c	/^void linenoiseSetFreeHintsCallback(linenoiseFreeHintsCallback *fn) {$/;"	f
+linenoiseSetHintsCallback	linenoise.c	/^void linenoiseSetHintsCallback(linenoiseHintsCallback *fn) {$/;"	f
+linenoiseSetMultiLine	linenoise.c	/^void linenoiseSetMultiLine(int ml) {$/;"	f
+linenoiseState	linenoise.c	/^struct linenoiseState {$/;"	s	file:
+linenoise_abort_input	linenoise.c	/^int linenoise_abort_input = 0;$/;"	v
+listNumber	Bay.h	/^  string 				listNumber;$/;"	m	struct:_Bay
+listNumber	BayType.h	/^  string                                listNumber;$/;"	m	struct:_BayType
+listNumber	PanelType.h	/^  string                                listNumber;$/;"	m	struct:_PanelType
+lndebug	linenoise.c	198;"	d	file:
+lock	WebConnection.h	/^  pthread_mutex_t			lock;$/;"	m	struct:_WebConnectionList
+lowchar1	NumericTypes.h	/^	unsigned                        lowchar1  : 8;$/;"	m	struct:__anon29::__anon30
+main	canmoncl.c	/^main$/;"	f
+main	canmonview.c	/^main(int argc, char**argv)$/;"	f
+main	main.c	/^main$/;"	f
+mainDeviceDefs	main.c	/^mainDeviceDefs;$/;"	v
+mainDeviceNameLen	canmonview.c	/^mainDeviceNameLen;$/;"	v	file:
+mainDevices	canmonview.c	/^mainDevices;$/;"	v	file:
+mainFileName	canmonview.c	/^mainFileName;$/;"	v	file:
+mainRegNameLen	canmonview.c	/^mainRegNameLen;$/;"	v	file:
+maskmode	linenoise.c	/^static int maskmode = 0; \/* Show "***" instead of input. For passwords. *\/$/;"	v	file:
+max	CanMsg.h	33;"	d
+maxPositions	PanelType.h	/^  int                                   maxPositions;$/;"	m	struct:_PanelType
+maxrows	linenoise.c	/^    size_t maxrows;     \/* Maximum num of rows used so far (multiline mode) *\/$/;"	m	struct:linenoiseState	file:
+message	jsoncanif.h	/^  char					message[JI_RESPONSE_MESSAGE_SIZE+1];$/;"	m	struct:__anon28
+messageDefs	DeviceDef.h	/^    DeviceMessageDefList*               messageDefs;$/;"	m	struct:_DeviceDef
+messageName	DeviceMessageDef.h	/^    string                              messageName;$/;"	m	struct:_DeviceMessageDef
+messageType	CANRegisterDef.h	/^    uint16_t			messageType;$/;"	m	struct:__anon12
+messageType	DeviceDef.h	/^    int                                 messageType;$/;"	m	struct:_DeviceDef
+messageType	DeviceRegDef.h	/^    int                                 messageType;$/;"	m	struct:_DeviceRegDef
+mlmode	linenoise.c	/^static int mlmode = 0;  \/* Multi line mode. Default is single line. *\/$/;"	v	file:
+msgType	DeviceMessageDef.h	/^    int                                 msgType;$/;"	m	struct:_DeviceMessageDef
+msgbit	CanMsg.h	/^    }msgbit;$/;"	m	union:__anon8	typeref:struct:__anon8::__anon9
+msgid	CanMsg.h	/^    int16_t msgid[4];$/;"	m	union:__anon10
+msgid	CanMsg.h	/^    uint16_t msgid[2];$/;"	m	union:__anon8
+name	Bay.h	/^  string                                name;$/;"	m	struct:_Bay
+name	BayType.h	/^  string                                name;$/;"	m	struct:_BayType
+name	CANRegisterDef.h	/^    string 			name;$/;"	m	struct:__anon12
+name	DeviceDef.h	/^    string                              name;$/;"	m	struct:_DeviceDef
+name	DeviceRegDef.h	/^    char                                name[STRINGLEN];$/;"	m	struct:_DeviceRegDef
+name	FuseBreakerType.h	/^  string                                name;$/;"	m	struct:_FuseBreakerType
+name	PanelType.h	/^  string                                name;$/;"	m	struct:_PanelType
+next	BayType.h	/^  struct _BayType*                      next;$/;"	m	struct:_BayType	typeref:struct:_BayType::_BayType
+next	DeviceDef.h	/^    struct _DeviceDef*                  next;$/;"	m	struct:_DeviceDef	typeref:struct:_DeviceDef::_DeviceDef
+next	DeviceMessageDef.h	/^    struct _DeviceMessageDef*           next;$/;"	m	struct:_DeviceMessageDef	typeref:struct:_DeviceMessageDef::_DeviceMessageDef
+next	DeviceRegDef.h	/^    struct _DeviceRegDef*               next;$/;"	m	struct:_DeviceRegDef	typeref:struct:_DeviceRegDef::_DeviceRegDef
+next	FuseBreakerType.h	/^  struct _FuseBreakerType*              next;$/;"	m	struct:_FuseBreakerType	typeref:struct:_FuseBreakerType::_FuseBreakerType
+next	PanelConnection.h	/^  struct _PanelConnection*	next;$/;"	m	struct:_PanelConnection	typeref:struct:_PanelConnection::_PanelConnection
+next	PanelType.h	/^  struct _PanelType*                    next;$/;"	m	struct:_PanelType	typeref:struct:_PanelType::_PanelType
+next	WebConnection.h	/^  struct _WebConnection*		next;$/;"	m	struct:_WebConnection	typeref:struct:_WebConnection::_WebConnection
+next	jsoncanif.h	/^  struct JIRegisterResponseValue*	next; $/;"	m	struct:_JIRegisterResponseValue	typeref:struct:_JIRegisterResponseValue::JIRegisterResponseValue
+next	jsoncanif.h	/^  struct _JIIDResponse*			next;$/;"	m	struct:_JIIDResponse	typeref:struct:_JIIDResponse::_JIIDResponse
+next	jsoncanif.h	/^  struct _JIWriteValue*			next;$/;"	m	struct:_JIWriteValue	typeref:struct:_JIWriteValue::_JIWriteValue
+normal	CanMsg.h	/^    enum                                { normal = 0xf0, error = 0xF2, offline = 0xFF, addressing = 0xf4 } State;$/;"	e	enum:__anon6::__anon7
+ofd	linenoise.c	/^    int ofd;            \/* Terminal stdout file descriptor. *\/$/;"	m	struct:linenoiseState	file:
+offline	CanMsg.h	/^    enum                                { normal = 0xf0, error = 0xF2, offline = 0xFF, addressing = 0xf4 } State;$/;"	e	enum:__anon6::__anon7
+oldpos	linenoise.c	/^    size_t oldpos;      \/* Previous refresh cursor position. *\/$/;"	m	struct:linenoiseState	file:
+opened	CANInterface.h	/^  bool                                  opened;$/;"	m	struct:_CANInterface
+orig_termios	linenoise.c	/^static struct termios orig_termios; \/* In order to restore at exit.*\/$/;"	v	typeref:struct:termios	file:
+panel	FuseBreaker.h	/^  struct _Panel*                        panel;$/;"	m	struct:_FuseBreaker	typeref:struct:_FuseBreaker::_Panel
+panelConnections	Bay.h	/^  PanelConnection*			panelConnections;$/;"	m	struct:_Bay
+panelCount	Bay.h	/^  int                                   panelCount;$/;"	m	struct:_Bay
+panelCount	BayType.h	/^  int                                   panelCount;$/;"	m	struct:_BayType
+panelType	Panel.h	/^  PanelType*				panelType;$/;"	m	struct:_Panel
+panels	Bay.h	/^  Panel**                               panels;$/;"	m	struct:_Bay
+plen	linenoise.c	/^    size_t plen;        \/* Prompt length. *\/$/;"	m	struct:linenoiseState	file:
+portName	CANInterface.h	/^  string                                portName;$/;"	m	struct:_CANInterface
+portNumber	Bay.h	/^  uint32_t                              portNumber;$/;"	m	struct:_Bay
+pos	linenoise.c	/^    size_t pos;         \/* Current cursor position. *\/$/;"	m	struct:linenoiseState	file:
+prev	WebConnection.h	/^  struct _WebConnection*		prev;	$/;"	m	struct:_WebConnection	typeref:struct:_WebConnection::_WebConnection
+printf_mutex	ThreadSafePrint.c	/^static pthread_mutex_t printf_mutex;$/;"	v	file:
+printf_safe	ThreadSafePrint.c	/^int printf_safe(const char *format, ...)$/;"	f
+prompt	linenoise.c	/^    const char *prompt; \/* Prompt to display. *\/$/;"	m	struct:linenoiseState	file:
+protocolNumber	DeviceDef.h	/^    int                                 protocolNumber;$/;"	m	struct:_DeviceDef
+rating	FuseBreaker.h	/^  int                                   rating;$/;"	m	struct:_FuseBreaker
+rating	FuseBreakerType.h	/^  int                                   rating;$/;"	m	struct:_FuseBreakerType
+rawmode	linenoise.c	/^static int rawmode = 0; \/* For atexit() function to check if restore is needed*\/$/;"	v	file:
+readRequest	jsoncanif.h	/^      char				                      readRequest[JI_READ_REQUEST_SIZE_MAX+1];$/;"	m	struct:__anon20::__anon21::__anon22
+readRequest	jsoncanif.h	/^    } readRequest;$/;"	m	union:__anon20::__anon21	typeref:struct:__anon20::__anon21::__anon22
+readType	jsoncanif.h	/^      JIReadType			                  readType;$/;"	m	struct:__anon20::__anon21::__anon22
+readType	jsoncanif.h	/^      JIReadType			                  readType;$/;"	m	struct:__anon20::__anon21::__anon23
+rectifierCounts	jsoncanif.h	/^    int					rectifierCounts;$/;"	m	union:_JIResponseValue::__anon19
+refreshLine	linenoise.c	/^static void refreshLine(struct linenoiseState *l) {$/;"	f	file:
+refreshMultiLine	linenoise.c	/^static void refreshMultiLine(struct linenoiseState *l) {$/;"	f	file:
+refreshShowHints	linenoise.c	/^void refreshShowHints(struct abuf *ab, struct linenoiseState *l, int plen) {$/;"	f
+refreshSingleLine	linenoise.c	/^static void refreshSingleLine(struct linenoiseState *l) {$/;"	f	file:
+regDefs	DeviceDef.h	/^    DeviceRegDefList*                   regDefs;$/;"	m	struct:_DeviceDef
+registerDef	CanMsg.h	/^    DeviceRegDef* registerDef;$/;"	m	struct:__anon3
+registersCount	CanMsg.h	/^    int                                 registersCount;$/;"	m	struct:__anon6
+removeRequest	jsoncanif.h	/^    } removeRequest;$/;"	m	union:__anon20::__anon21	typeref:struct:__anon20::__anon21::__anon26
+requests	jsoncanif.h	/^  } requests;$/;"	m	struct:__anon20	typeref:union:__anon20::__anon21
+requiredPositions	FuseBreakerType.h	/^  int                                   requiredPositions;$/;"	m	struct:_FuseBreakerType
+responseDef	DeviceMessageDef.h	/^   DeviceRegDef*                        responseDef;$/;"	m	struct:_DeviceMessageResponse
+responseType	DeviceMessageDef.h	/^   int                                  responseType;$/;"	m	struct:_DeviceMessageResponse
+responses	DeviceMessageDef.h	/^    DeviceMessageResponse               responses[MAXRESP];$/;"	m	struct:_DeviceMessageDef
+responsesCount	DeviceMessageDef.h	/^    int                                 responsesCount;$/;"	m	struct:_DeviceMessageDef
+s_http_port	HTTPServerThread.c	/^s_http_port = "8001";$/;"	v	file:
+s_http_server_opts	main.c	/^s_http_server_opts;$/;"	v	typeref:struct:mg_serve_http_opts
+s_websocket_port	WebSocketIF.c	/^s_websocket_port = NULL;$/;"	v
+serialNumber	FuseBreakerType.h	/^  int                                   serialNumber;$/;"	m	struct:_FuseBreakerType
+shortName	DeviceRegDef.h	/^    char                                shortName[SHORTSTRINGLEN];$/;"	m	struct:_DeviceRegDef
+smduh2	Panel.h	/^  CanDevice*				smduh2;$/;"	m	struct:_Panel
+socket	CANInterface.h	/^  int                                   socket;$/;"	m	struct:_CANInterface
+state	FuseBreaker.h	/^  FuseBreakerState                      state;$/;"	m	struct:_FuseBreaker
+status	jsoncanif.h	/^  JIResponseStatusType			status;$/;"	m	struct:__anon28
+status	jsoncanif.h	/^  int					status;$/;"	m	struct:_JIRegisterResponseValue
+string	String.h	/^typedef char* string;$/;"	t
+stringCount	String.h	/^    uint32_t                    stringCount;$/;"	m	struct:_StringList
+stringResponse	jsoncanif.h	/^  char*					stringResponse;$/;"	m	struct:__anon28
+strings	String.h	/^    string*                     strings;$/;"	m	struct:_StringList
+subCommnad	jsoncanif.h	/^  JISubCommandType                      subCommnad;$/;"	m	struct:__anon28
+toPanel	PanelConnection.h	/^  int				toPanel;$/;"	m	struct:_PanelConnection
+type	Bay.h	/^  BayType*                              type;$/;"	m	struct:_Bay
+type	FuseBreaker.h	/^  string                                type;$/;"	m	struct:_FuseBreaker
+type	FuseBreakerType.h	/^  string                                type;$/;"	m	struct:_FuseBreakerType
+type	jsoncanif.h	/^  JIResponseType			type;$/;"	m	struct:_JIResponseValue
+typeClass	FuseBreaker.h	/^  string				typeClass;$/;"	m	struct:_FuseBreaker
+ufloatbit32_t	NumericTypes.h	/^} ufloatbit32_t;$/;"	t	typeref:union:__anon31
+uint16bit_t	NumericTypes.h	/^} uint16bit_t;$/;"	t	typeref:union:__anon29
+unsupported_term	linenoise.c	/^static char *unsupported_term[] = {"dumb","cons25","emacs",NULL};$/;"	v	file:
+usedInBays	FuseBreakerType.h	/^  StringList*                           usedInBays;$/;"	m	struct:_FuseBreakerType
+usedin	PanelType.h	/^  string				usedin;$/;"	m	struct:_PanelType
+usesSMDUH2	PanelType.h	/^  bool					usesSMDUH2;$/;"	m	struct:_PanelType
+value	jsoncanif.h	/^  float					value; $/;"	m	struct:_JIWriteValue
+valueStruct	jsoncanif.h	/^      json_value*			                  valueStruct;$/;"	m	struct:__anon20::__anon21::__anon24
+valueType	CANRegisterDef.h	/^    uint16_t 			valueType;$/;"	m	struct:__anon12
+valueType	DeviceRegDef.h	/^    int                                 valueType;$/;"	m	struct:_DeviceRegDef
+values	jsoncanif.h	/^  JIResponseValue*			values;$/;"	m	struct:__anon28
+writeRequest	jsoncanif.h	/^    } writeRequest;$/;"	m	union:__anon20::__anon21	typeref:struct:__anon20::__anon21::__anon24
+writeValue	jsoncanif.h	/^  JIWriteValue*				writeValue;$/;"	m	struct:_JIRegisterResponseValue
+writeValues	jsoncanif.h	/^    JIRegisterResponseValue*		writeValues;$/;"	m	union:_JIResponseValue::__anon19

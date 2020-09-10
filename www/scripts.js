@@ -50,6 +50,24 @@ MainDisplayTimedMessage(InMessage, InTimeout)
   messageArea.innerHTML = InMessage;
 }
 
+// FILE: ./Files/Main/MainSetTypeLimitValue.js
+/*****************************************************************************!
+ * Function : MainSetTypeLimitValue
+ *****************************************************************************/
+function
+MainSetTypeLimitValue
+(InType, InValue)
+{
+  if ( InType == "days" ) {
+    document.getElementById("LimitTypeDays").value = InValue;
+  } else if ( InType == "hours" ) {
+    document.getElementById("LimitTypeHours").value = InValue; 
+  } else if ( InType == "size" ) {
+    document.getElementById("LimitTypeSize").value = InValue;
+  } else if ( InType == "count" ) {
+    document.getElementById("LimitTypeCount").value = InValue;
+  }
+}
 // FILE: ./Files/Main/MainHideBlocker.js
 /*****************************************************************************!
  * Function : MainHideBlocker
@@ -87,8 +105,6 @@ MainResizeBody
 
   clientWidth = mainArea.clientWidth;
   clientHeight = mainArea.clientHeight;
-
-  console.log(clientWidth, clientHeight);
 
   for (i = 0; i < mainArea.children.length; i++) {
     bay = mainArea.children[i];
@@ -508,8 +524,6 @@ CBLimitTypeChange()
 
   selector = document.getElementById("LimitTypeSelect");
   value = selector.value;
-  console.log("Change : " + value);
-
   MainHideTypeElements();  
 
   // Show input and label for the selected one
@@ -646,7 +660,6 @@ WebSocketIFInitialize()
 {
   var hostAddress = "ws://" + WebSocketIFAddress + ":" + WebSocketIFPort; 
 
-  console.log(hostAddress);
   WebSocketIFConnection = new WebSocket(hostAddress);
 
   WebSocketIFConnection.onopen = function () {
@@ -855,9 +868,7 @@ WebSocketIFHandleInputPacket(InData)
 {
   var					requestpacket;
 
-  console.log(InData);
   requestpacket = JSON.parse(InData);
-  console.log(requestpacket);
   if ( requestpacket.packettype == "response" ) {
     WebSocketIFHandleResponsePacket(requestpacket);
   }
@@ -1217,7 +1228,6 @@ WebSocketIFSendTimeStamp
 function 
 WebSocketIFSendGeneralRequest(InRequest) {
   if ( WebSocketIFConnection ) {
-	console.log(InRequest);
     WebSocketIFConnection.send(JSON.stringify(InRequest));
   }
 }
@@ -1230,7 +1240,10 @@ function
 WebSocketIFHandleSetLimitsResponse
 (InResponse)
 {
+  console.log(InResponse);
   MainDisplayMessage(InResponse.message);
+  document.getElementById("LimitTypeSelect").value = InResponse.type;
+  MainSetTypeLimitValue(InResponse.type, InResponse.value);
 }
 // FILE: ./Files/WebSocketIF/WebSocketIFSendPanelRegValuesRequest.js
 /*****************************************************************************!

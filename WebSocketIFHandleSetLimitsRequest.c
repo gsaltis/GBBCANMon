@@ -12,6 +12,7 @@ WebSocketIFHandleSetLimitsRequest
   json_value*							body;
   int                                   value;
   bool									b;
+  char									s[32];
 
   packetid = JSONIFGetInt(InPacket, "packetid");
   body = JSONIFGetObject(InPacket, "body");
@@ -34,8 +35,24 @@ WebSocketIFHandleSetLimitsRequest
   responseString = StringCopy("{ ");
   responseString = StringConcatTo(responseString, "\"message\" : \"");
   responseString = StringConcatTo(responseString, returnMessage);
-  responseString = StringConcatTo(responseString, "\" }");
-
+  responseString = StringConcatTo(responseString, "\",\n");
+  responseString = StringConcatTo(responseString, "  \"type\" : \"");
+  responseString = StringConcatTo(responseString, MainLimitType);
+  responseString = StringConcatTo(responseString, "\",\n");
+  responseString = StringConcatTo(responseString, "  \"value\" : ");
+  sprintf(s, "0");
+  if ( StringEqual(MainLimitType, "count") ) {
+    sprintf(s, "%d", MainLimitCount);
+  } else if ( StringEqual(MainLimitType, "hours") ){
+    sprintf(s, "%d", MainLimitHours);
+  } else if ( StringEqual(MainLimitType, "days") ) {
+    sprintf(s, "%d", MainLimitDays);
+  } else if ( StringEqual(MainLimitType, "size") ) {
+    sprintf(s, "%d", MainLimitSize);
+  }
+  responseString = StringConcatTo(responseString, s);
+  responseString = StringConcatTo(responseString, "  }");
+  
   WebSocketFrameResponseSend(InConnection, "ressetlimits", responseString, packetid, 0, "");
   FreeMemory(returnMessage);
   FreeMemory(responseString);

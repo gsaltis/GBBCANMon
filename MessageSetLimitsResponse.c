@@ -31,7 +31,7 @@ MessageSetLimitsResponse
 	  if ( InValue == 1 ) { 
 		return StringCopy("Limit set to 1 Message");	
 	  }
-	  sprintf(s, "%d", InValue);
+      ConvertIntToCommaString(InValue, s);
 	  return StringMultiConcat("Limit set to ", s, " Messages", NULL);
 	}
 
@@ -66,7 +66,7 @@ MessageSetLimitsResponse
 	  if ( InValue == 1 ) { 
 		return StringCopy("Cannot set limit to 1 Message");	
 	  }
-	  sprintf(s, "%d", InValue);
+      ConvertIntToCommaString(InValue, s);
 	  return StringMultiConcat("Cannot set limit to ", s, " Messages", NULL);
 	}
 

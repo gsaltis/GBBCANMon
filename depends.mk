@@ -92,7 +92,8 @@ MainProcessCommandLine.o: MainProcessCommandLine.c
 MainRemoveTarFiles.o: MainRemoveTarFiles.c
 MemoryManager.o: MemoryManager.c MemoryManager.h ThreadSafePrint.h
 MessageSetLimitsResponse.o: MessageSetLimitsResponse.c
-Messages.o: Messages.c Messages.h String.h MessageSetLimitsResponse.c
+Messages.o: Messages.c Messages.h String.h NumericTypes.h \
+ MessageSetLimitsResponse.c
 NumericTypes.o: NumericTypes.c
 Panel.o: Panel.c Panel.h FuseBreaker.h String.h CanMsg.h DeviceDef.h \
  DeviceDefines.h DeviceRegDef.h NumericTypes.h JSONIF.h \

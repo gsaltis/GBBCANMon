@@ -10,8 +10,6 @@ CBLimitTypeChange()
 
   selector = document.getElementById("LimitTypeSelect");
   value = selector.value;
-  console.log("Change : " + value);
-
   MainHideTypeElements();  
 
   // Show input and label for the selected one

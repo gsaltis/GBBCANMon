@@ -6,7 +6,6 @@ WebSocketIFInitialize()
 {
   var hostAddress = "ws://" + WebSocketIFAddress + ":" + WebSocketIFPort; 
 
-  console.log(hostAddress);
   WebSocketIFConnection = new WebSocket(hostAddress);
 
   WebSocketIFConnection.onopen = function () {

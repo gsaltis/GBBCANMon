@@ -1,2 +1,2 @@
 #!/bin/sh
-gcc -MM *.c > depends.mk
+gcc -MM -Ilib/include *.c > depends.mk

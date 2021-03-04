@@ -28,7 +28,6 @@
  * Local Headers
  *****************************************************************************/
 #include "CanMsg.h"
-#include "AllCanDefinitions.h"
 #include "CANInterface.h"
 #include "ThreadSafePrint.h"
 #include "UserInputThread.h"

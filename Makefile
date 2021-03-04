@@ -11,10 +11,8 @@ TARGET			= canmon
 ALLTARGETS		= $(TARGET)
 
 OBJS			= $(sort 				\
-			    AllCanDefinitions.o			\
 			    CANInterface.o			\
 			    CANInterfaceThread.o		\
-			    CANRegisterDef.o			\
 			    CANMonLog.o				\
 			    CanMsg.o				\
 			    DefFileToken.o			\

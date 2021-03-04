@@ -38,7 +38,8 @@
  * Local Headers
  ******************************************************************************/
 #include "CANInterface.h"
-#include "CLIThread.h"
+// #include "CLIThread.h"
+
 #include "ThreadSafePrint.h"
 #include "Devices.h"
 #include "main.h"

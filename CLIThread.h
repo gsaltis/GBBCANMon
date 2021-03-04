@@ -15,21 +15,16 @@
 #include <stdbool.h>
 #include <stdint.h>
 #include <string.h>
+#include <StringUtils.h>
+#include <ANSIColors.h>
 
 /*****************************************************************************!
  * Local Headers
  *****************************************************************************/
-#include "String.h"
 
 /*****************************************************************************!
  * Exported Macros
  *****************************************************************************/
-#define ColorRed                        "\e[1;31m"
-#define ColorWhite                      "\e[0;37m"
-#define HeadingStyle                  "\e[1;7;37m"
-#define ColorGreen                      "\e[32m"
-#define ColorYellow                     "\e[33m"
-#define ColorBoldYellow                 "\e[1;33m"
 
 /*****************************************************************************!
  * Exported Data

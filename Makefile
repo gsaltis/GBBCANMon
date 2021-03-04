@@ -1,10 +1,10 @@
 CC			= gcc
 LINK			= gcc
 
-CC_FLAGS		= -g -c -Wall -Ilib/include  -DDEVELOPMENT
+CC_FLAGS		= -g -c -Wall  -DDEVELOPMENT
 TARGET_FLAGS		= -DNEED_NET_IF_H -DNEED_SYS_IOCTL_H -DNEED_LINUX_CAN_H -DNEED_LINUX_CAN_RAW_H -DNNED_TERMIO_H -DNEED_FILE_UTILS_TAR_FILE_C
 
-LINK_FLAGS		= -g -Llib
+LINK_FLAGS		= -g 
 
 TARGET			= canmon
 
@@ -12,7 +12,6 @@ ALLTARGETS		= $(TARGET)
 
 OBJS			= $(sort 				\
 			    AllCanDefinitions.o			\
-			    BytesManage.o			\
 			    CANInterface.o			\
 			    CANInterfaceThread.o		\
 			    CANRegisterDef.o			\
@@ -21,36 +20,23 @@ OBJS			= $(sort 				\
 			    DefFileToken.o			\
 			    DeviceDef.o                         \
 			    DeviceMessageDef.o			\
-			    DeviceMessageDef.o			\
-			    DeviceRegDef.o			\
 			    DeviceRegDef.o			\
 			    Devices.o				\
 			    DirManagement.o			\
-			    FileUtils.o				\
-			    JSONIF.o				\
 			    HTTPServerThread.o			\
-			    MemoryManager.o			\
 			    Messages.o				\
-			    NumericTypes.o			\
 			    SQLStatements.o			\
-			    String.o				\
-			    StringUtils.o			\
 			    ThreadSafePrint.o			\
 			    UserInputThread.o			\
 			    WebSocketIF.o			\
-			    jsoncanif.o				\
 			    main.o				\
-			    linenoise.o				\
 			   )
 
-LIBS			= -ldl -ljson -lmongoose -lm -lpthread -lsqlite3 -lrt
+ LIBS			= -ldl -lutils -lmongoose -lm -lpthread -lsqlite3 -lrt -llinenoise
 
-.PHONY			: all clean veryclean locallibs
+.PHONY			: all clean veryclean
 
-all			: locallibs $(ALLTARGETS)
-
-locallibs		: 
-			  @cd lib && make
+all			: $(ALLTARGETS)
 
 $(TARGET)		: $(OBJS)
 			  @echo [LD] $(TARGET)
@@ -71,5 +57,4 @@ junkclean		:
 
 clean			: 
 			  -rm -rf $(wildcard *.o $(ALLTARGETS))
-			  cd lib && make clean
 

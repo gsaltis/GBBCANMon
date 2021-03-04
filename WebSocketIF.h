@@ -15,16 +15,12 @@
 #include <stdbool.h>
 #include <stdint.h>
 #include <string.h>
+#include <mongoose.h>
+#include <StringUtils.h>
 
 /*****************************************************************************!
  * Local Headers
  *****************************************************************************/
-#include "mongoose.h"
-#include "FuseBreaker.h"
-#include "Bay.h"
-#include "Panel.h"
-#include "PanelConnection.h"
-#include "String.h"
 #include "Messages.h"
 
 /*****************************************************************************!
@@ -53,41 +49,11 @@ HandleGetLimitsRequest
 void
 WebSocketServerInit();
 
-void
-WebSocketIFSendFuseBreaker
-(FuseBreaker* InFuseBreaker);
-
-void
-WebSocketIFSendBay
-(Bay* InBay);
-
-void
-WebSocketIFSendPanel
-(Panel* InPanel);
 
 void
 WebSocketIFRemoveBay
 (int InBayIndex);
 
-void
-WebSocketIFRemovePanel
-(int InBayIndex, int InPanelIndex);
-
-void
-WebSocketIFRemoveFuseBreaker
-(int InBayIndex, int InPanelIndex, int InFuseBreakerIndex);
-
-void
-WebSocketIFAddPanelConnection
-(int InBayIndex, int InFromIndex, int InToIndex);
-
-void
-WebSocketIFSendRemovePanelConnect
-(PanelConnection* InConnection);
-
-void
-WebSocketIFSendPanelConnect
-(PanelConnection* InConnection);
 
 void
 WebSocketIFCreateInfoScript

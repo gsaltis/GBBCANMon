@@ -14,17 +14,17 @@
 #include <stdint.h>
 #include <string.h>
 #include <mongoose.h>
+#include <StringUtils.h>
+#include <MemoryManager.h>
+#include <FileUtils.h>
 
 /*****************************************************************************!
  * Local Headers
  *****************************************************************************/
 #include "HTTPServerThread.h"
 #include "main.h"
-#include "String.h"
-#include "MemoryManager.h"
 #include "DirManagement.h"
 #include "CANMonLog.h"
-#include "FileUtils.h"
 #include "CANInterfaceThread.h"
 
 /*****************************************************************************!

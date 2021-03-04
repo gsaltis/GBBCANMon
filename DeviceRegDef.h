@@ -13,21 +13,21 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
+#include <NumericTypes.h>
+#include <JSONIF.h>
 
 /*******************************************************************************!
  * Local Headers
  *******************************************************************************/
 #include "DeviceDefines.h"
-#include "NumericTypes.h"
-#include "JSONIF.h"
 
 /*****************************************************************************!
  * Exported Macros
  *****************************************************************************/
-#define DEVICE_REG_SORT_NONE		0
-#define DEVICE_REG_SORT_GROUP		1
-#define DEVICE_REG_SORT_NUMBER		2
-#define DEVICE_REG_SORT_NAME		4
+#define DEVICE_REG_SORT_NONE            0
+#define DEVICE_REG_SORT_GROUP           1
+#define DEVICE_REG_SORT_NUMBER          2
+#define DEVICE_REG_SORT_NAME            4
 
 /*******************************************************************************!
  * Exported Type : DeviceRegDef
@@ -41,7 +41,7 @@ struct  _DeviceRegDef {
     char                                group[SHORTSTRINGLEN];
     char                                name[STRINGLEN];
     char                                displayLabel[STRINGLEN];
-    int					formatType;
+    int                                 formatType;
     struct _DeviceRegDef*               next;
 };
 typedef struct _DeviceRegDef            DeviceRegDef;

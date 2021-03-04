@@ -6,24 +6,20 @@
 #ifndef _main_h_
 #define _main_h_
 
-/*******************************************************************************
+/*******************************************************************************!
  * Global Headers
  *******************************************************************************/
 #include <stdbool.h>
 #include <mongoose.h>
 #include <sqlite3.h>
 
-/*******************************************************************************
+/*******************************************************************************!
  * Local Headers
  *******************************************************************************/
 #include "DeviceDef.h"
-#include "FuseBreakerType.h"
-#include "PanelType.h"
-#include "BayType.h"
-#include "WebConnection.h"
 #include "CANInterface.h"
 
-/*******************************************************************************
+/*******************************************************************************!
  * Local Data
  *******************************************************************************/
 extern bool
@@ -64,18 +60,6 @@ MainMinLimitDays;
 
 extern int
 MainMaxLimitDays;
-
-extern FuseBreakerType*
-MainFuseBreakerTypes;
-
-extern PanelType*
-MainPanelTypes;
-
-extern BayType*
-MainBayTypes;
-
-extern WebConnectionList*
-mainWebConnections;
 
 extern bool
 MainMonitorWebRequest;

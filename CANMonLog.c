@@ -18,13 +18,13 @@
 #include <unistd.h>
 #include <pthread.h>
 #include <errno.h>
+#include <StringUtils.h>
+#include <FileUtils.h>
+#include <MemoryManager.h>
 
 /*****************************************************************************!
  * Local Headers
  *****************************************************************************/
-#include "String.h"
-#include "FileUtils.h"
-#include "MemoryManager.h"
 #include "CANMonLog.h"
 
 /*****************************************************************************!
@@ -47,6 +47,6 @@ CANMonLogFile;
  * Local Functions
  *****************************************************************************/
 
-#include "CANMonLogInit.c"
-#include "CANMonLogWrite.c"
-#include "CANMonLogSetFilename.c"
+#include "CANMonLog/CANMonLogInit.c"
+#include "CANMonLog/CANMonLogWrite.c"
+#include "CANMonLog/CANMonLogSetFilename.c"

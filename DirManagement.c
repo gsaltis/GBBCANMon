@@ -52,89 +52,10 @@ static char*
 DMGetFileName
 (char* InReturnFileName, const char* InFileName, uint16_t InMaxFileNameLength);
 
-/*******************************************************************************!
- * Function : DirManagementInitialize
- *******************************************************************************/
-void
-DirManagementInitialize
-()
-{
-  char                                  buffer[FILENAME_MAX+1];
-  string                                s;
-  int                                   n, m;
-
-  getcwd(buffer, sizeof(buffer)-1);
-
-  n = strlen(buffer);
-  m = n - 1;
-
-  s = StringCopy(buffer);
-  if ( buffer[m] != DirManagementDirSepChar ) {
-    s = StringConcatTo(s, DirManagementDirSepString);
-  }
-  DMBaseDirectoryName = s; 
-  CANMonLogWrite("Base directory name :  %s\n", DMBaseDirectoryName);
-  DMMinFileLength = strlen(DMBaseDirectoryName) + 64;
-}
-
-/*******************************************************************************!
- * Function : GetDeviceDefsFileName
- *******************************************************************************/
-char*
-GetDeviceDefsFileName
-(
- char*                                  InFileName,
- uint16_t                               InMaxFileNameLength
-)
-{
-    return DMGetFileName(InFileName, DMDeviceDefsFileName, InMaxFileNameLength);
-}
-
-/*******************************************************************************!
- * Function : GetDeviceDataFileName
- *******************************************************************************/
-char*
-GetDeviceDataFileName
-(
- char*                                  InFileName,
- uint16_t                               InMaxFileNameLength
-)
-{
-    return DMGetFileName(InFileName, DMDeviceDataFileName, InMaxFileNameLength);
-}
-
-/*******************************************************************************!
- * Function : GetDeviceProtocolFileName
- *******************************************************************************/
-char*
-GetDeviceProtocolFileName
-(
- char*                                  InFileName,
- uint16_t                               InMaxFileNameLength
-)
-{
-    return DMGetFileName(InFileName, DMDeviceProtocolFileName, InMaxFileNameLength);
-}
-
-/*******************************************************************************!
- * Function : DMGetFileName
- *******************************************************************************/
-char*
-DMGetFileName
-(
- char*                                  InReturnFileName,
- const char*                            InFileName,
- uint16_t                               InMaxFileNameLength
-)
-{
-    if ( NULL == InReturnFileName || InMaxFileNameLength < DMMinFileLength ) {
-        return NULL;
-    }
-    strcpy(InReturnFileName, DMBaseDirectoryName);
-    strcat(InReturnFileName, InFileName);
-    return InReturnFileName;
-}
-
-#include "DirManagementGetInstallDir.c"
-#include "DirManagementSetInstallDir.c"
-
+#include "DirManagement/DirManagementGetInstallDir.c"
+#include "DirManagement/DirManagementSetInstallDir.c"
+#include "DirManagement/DMGetFileName.c"
+#include "DirManagement/GetDeviceProtocolFileName.c"
+#include "DirManagement/GetDeviceDataFileName.c"
+#include "DirManagement/GetDeviceDefsFileName.c"
+#include "DirManagement/DirManagementInitialize.c"

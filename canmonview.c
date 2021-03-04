@@ -16,15 +16,15 @@
 #include <sys/stat.h>
 #include <errno.h>
 #include <json.h>
+#include <StringUtils.h>
+#include <MemoryManager.h>
+#include <ascii.h>
+#include <FileUtils.h>
+#include <NumericTypes.h>
 
 /*****************************************************************************!
  * Local Headers
  *****************************************************************************/
-#include "String.h"
-#include "MemoryManager.h"
-#include "ascii.h"
-#include "FileUtils.h"
-#include "NumericTypes.h"
 #include "CanMsg.h"
 
 /*****************************************************************************!
@@ -277,7 +277,7 @@ MainProcessLine
           data.data.MsgType, 
           mainRegNameLen,
           regDefNameP,
- 		  data.data.ValueType,
+                  data.data.ValueType,
           valueString);
   StringListDestroy(elements);
 }
@@ -289,7 +289,7 @@ void
 MainProcessCommandLine
 (int argc, char** argv)
 {
-  string					command;
+  string                                        command;
 
   for ( int i = 1; i < argc; i++ ) {
     command = argv[i];
@@ -301,11 +301,11 @@ MainProcessCommandLine
     if ( StringEqualsOneOf(command, "-f", "--file", NULL) ) {
       i++;
       if ( i == argc ) {
-	fprintf(stderr, "%s requires a data file name\n", command);
-	MainDisplayHelp();
+        fprintf(stderr, "%s requires a data file name\n", command);
+        MainDisplayHelp();
       }
       if ( mainFileName ) {
-	FreeMemory(mainFileName);
+        FreeMemory(mainFileName);
       }
       mainFileName = StringCopy(argv[i]);
       continue;
@@ -314,8 +314,8 @@ MainProcessCommandLine
     if ( StringEqualsOneOf(command, "-d", "--deffile", NULL) ) {
       i++;
       if ( i == argc ) {
-	fprintf(stderr, "%s requires definition file name\n", command);
-  	exit(EXIT_FAILURE);
+        fprintf(stderr, "%s requires definition file name\n", command);
+        exit(EXIT_FAILURE);
       }
       if ( deviceDefName ) {
         FreeMemory(deviceDefName);

@@ -7,12 +7,16 @@
 #ifndef _devicemessagedef_h_
 #define _devicemessagedef_h_
 
+/*****************************************************************************!
+ * Global Headers
+ *****************************************************************************/
+#include <StringUtils.h>
+
 /*******************************************************************************!
  * Local Headers
  *******************************************************************************/
 #include "DeviceDefines.h"
 #include "DeviceRegDef.h"
-#include "String.h"
 
 /*******************************************************************************!
  * Exported Type : DeviceMessageResponse
@@ -31,7 +35,7 @@ struct  _DeviceMessageDef {
     string                              messageName;
     DeviceMessageResponse               responses[MAXRESP];
     int                                 responsesCount;
-    struct _DeviceDef*			deviceDefParent;
+    struct _DeviceDef*                  deviceDefParent;
     struct _DeviceMessageDef*           next;
 };
 typedef struct _DeviceMessageDef        DeviceMessageDef;

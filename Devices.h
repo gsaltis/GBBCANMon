@@ -1,7 +1,7 @@
 /*******************************************************************************
- * FILE		: Devices.h
- * DATE		: April 26 2018
- * COPYRIGHT	: Copyright (c) 2018 Vertiv Company
+ * FILE         : Devices.h
+ * DATE         : April 26 2018
+ * COPYRIGHT    : Copyright (c) 2018 Vertiv Company
  *******************************************************************************/
 #ifndef _devices_h_
 #define _devices_h_
@@ -10,20 +10,20 @@
  * Global Headers
  *****************************************************************************/
 #include <time.h>
+#include <StringUtils.h>
 
 /*****************************************************************************!
  * Local Headers
  *****************************************************************************/
 #include "CanMsg.h"
-#include "String.h"
 #include "CANInterface.h"
 
 /*******************************************************************************
  * Exported Macros
  *******************************************************************************/
-#define DEVICE_ERROR_NONE			0
-#define DEVICE_ERROR_DEVICE_NOT_FOUND		1
-#define DEVICE_ERROR_REGISTER_NOT_FOUND		2
+#define DEVICE_ERROR_NONE                       0
+#define DEVICE_ERROR_DEVICE_NOT_FOUND           1
+#define DEVICE_ERROR_REGISTER_NOT_FOUND         2
 
 /*******************************************************************************
  * Export Functions

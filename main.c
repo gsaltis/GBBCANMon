@@ -19,21 +19,22 @@
 #include <errno.h>
 #include <dirent.h>
 #include <unistd.h>
+#include <FileUtils.h>
+#include <StringUtils.h>
+#include <MemoryManager.h>
 
 /*****************************************************************************!
  * Local Headers
  *****************************************************************************/
 #include "CANInterface.h"
-#include "String.h"
 #include "DeviceDef.h"
 #include "CANInterfaceThread.h"
-#include "MemoryManager.h"
 #include "UserInputThread.h"
 #include "HTTPServerThread.h"
 #include "WebSocketIF.h"
 #include "DirManagement.h"
 #include "CANMonLog.h"
-#include "FileUtils.h"
+#include "main.h"
 
 /*****************************************************************************!
  * Local Macros
@@ -152,7 +153,7 @@ MainProcessCommandLine
 (int argc, char** argv);
 
 void
-VerifyCommandLine
+MainVerifyCommandLine
 ();
 
 void
@@ -181,17 +182,17 @@ int
 main
 (int argc, char** argv)
 {
-  void*					retval1;
-  void*					retval2;
-  void*					retval3;
-  void*					retval4;
+  void*                                 retval1;
+  void*                                 retval2;
+  void*                                 retval3;
+  void*                                 retval4;
 
   MainInitialize();
   MainProcessCommandLine(argc, argv);
 
   CANMonLogInit();
   CANMonLogWrite("%s starting\n", MainProgramName);
-  VerifyCommandLine();
+  MainVerifyCommandLine();
   MainOpenDatabase();
   WebSocketIFCreateInfoScript();
   if ( MainClearDatabaseSwitch ) {
@@ -219,55 +220,14 @@ main
   return EXIT_SUCCESS;
 }
 
-/*****************************************************************************!
- * Function : VerifyCommandLine
- *****************************************************************************/
-void
-VerifyCommandLine
-()
-{
-
-}
-
-
-/*****************************************************************************!
- * Function : MainOpenDatabase
- *****************************************************************************/
-void
-MainOpenDatabase
-()
-{
-  int					n;
-
-  n = sqlite3_open(MainDatabaseName, &MainDatabase);
-  if ( SQLITE_OK != n ) {
-    fprintf(stderr, "Could not open database %s\n", MainDatabaseName);
-    exit(EXIT_FAILURE);
-  }
-}
-
-/*****************************************************************************!
- * Function : MainClearDatabase
- *****************************************************************************/
-void
-MainClearDatabase
-()
-{
-  string				statement;
-  char*					errormessage;
-
-  statement = "DELETE from RegisterValues;";
-  if ( SQLITE_OK != sqlite3_exec(MainDatabase, statement, NULL, NULL, &errormessage) ) {
-    fprintf(stderr, "SQL Error : %s %s\n", statement, errormessage);
-    sqlite3_free(errormessage);
-  }
-}
-
-#include "MainProcessCommandLine.c"
-#include "MainDisplayHelp.c"
-#include "MainInitialize.c"
-#include "MainExit.c"
-#include "MainRemoveTarFiles.c"
-#include "MainLimitSet.c"
-#include "MainDisplayVersion.c"
-#include "MainInitializeStartTime.c"
+#include "Main/MainProcessCommandLine.c"
+#include "Main/MainDisplayHelp.c"
+#include "Main/MainInitialize.c"
+#include "Main/MainExit.c"
+#include "Main/MainRemoveTarFiles.c"
+#include "Main/MainLimitSet.c"
+#include "Main/MainDisplayVersion.c"
+#include "Main/MainInitializeStartTime.c"
+#include "Main/MainClearDatabase.c"
+#include "Main/MainOpenDatabase.c"
+#include "Main/MainVerifyCommandLine.c"

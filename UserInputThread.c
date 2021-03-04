@@ -14,19 +14,18 @@
 #include <stdint.h>
 #include <string.h>
 #include <pthread.h>
+#include <linenoise.h>
+#include <StringUtils.h>
+#include <MemoryManager.h>
+#include <ANSIColors.h>
+#include <FileUtils.h>
 
 /*****************************************************************************!
  * Local Headers
  *****************************************************************************/
 #include "UserInputThread.h"
-#include "linenoise.h"
-#include "String.h"
-#include "MemoryManager.h"
-#include "ANSIColors.h"
-#include "linenoise.h"
 #include "CANInterfaceThread.h"
 #include "main.h"
-#include "FileUtils.h"
 #include "CANMonLog.h"
 
 /*****************************************************************************!
@@ -119,9 +118,9 @@ void*
 UserInputThread
 (void* InArg)
 {
-  string				prompt = "Enter Command : ";
-  string				commandline;
-  StringList*				strings;
+  string                                prompt = "Enter Command : ";
+  string                                commandline;
+  StringList*                           strings;
 
   MainDisplayVersion();
   while (true) {
@@ -141,7 +140,7 @@ void
 HandleCommand
 (StringList* InStrings)
 {
-  string				command;
+  string                                command;
   if ( NULL == InStrings || InStrings->stringCount == 0 ) {
     return;
   }
@@ -159,7 +158,7 @@ HandleCommand
   } else if ( StringEqualNoCase(command, "LOG") ) {
     HandleCommandLog(InStrings);
   } else if ( StringEqualNoCase(command, "LIMIT") ) {
-	HandleCommandLimit(InStrings);
+        HandleCommandLimit(InStrings);
   }
 }
 
@@ -185,8 +184,8 @@ void
 HandleCommandTimeElapsed
 (StringList* InStrings)
 {
-  time_t				t;
-  uint32_t				e, hours, minutes, seconds;
+  time_t                                t;
+  uint32_t                              e, hours, minutes, seconds;
 
   t = time(NULL);
 
@@ -220,7 +219,7 @@ void
 HandleCommandMessage
 (StringList* InStrings)
 {
-  string				command;
+  string                                command;
 
   if ( NULL == InStrings || InStrings->stringCount < 2 ) {
     return;
@@ -238,8 +237,8 @@ void
 HandleCommandMessageCount
 (StringList* InStrings)
 {
-  time_t				currentTime = time(NULL);
-  time_t				elapsedTime = currentTime - MainStartTime;
+  time_t                                currentTime = time(NULL);
+  time_t                                elapsedTime = currentTime - MainStartTime;
   fprintf(stdout, "%sMessage Count : %d %ld seconds%s\n", ColorBrightGreen, CANInterfaceMessagesCount, elapsedTime, ColorReset);
 }
 

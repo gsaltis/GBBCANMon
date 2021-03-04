@@ -13,16 +13,16 @@
 #include <string.h>
 #include <stdint.h>
 #include <stdbool.h>
+#include <NumericTypes.h>
+#include <MemoryManager.h>
+#include <StringUtils.h>
 
 /*******************************************************************************!
  * Local Headers
  *******************************************************************************/
 #include "DeviceRegDef.h"
 #include "DefFileToken.h"
-#include "NumericTypes.h"
-#include "MemoryManager.h"
 #include "ThreadSafePrint.h"
-#include "String.h"
 
 /*******************************************************************************!
  * Local Macros
@@ -201,10 +201,10 @@ DumpDeviceRegDefListShort
 (DeviceRegDefList* InDeviceDefRegList, int InIndent, int InSortOrder)
 {
   DeviceRegDef*                         regDef;
-  int					maxGroupLen, maxShortNameLen;
-  int					maxNameLen, maxDisplayLabelLen;
-  int					k, n, i;
-  DeviceRegDef**			regs;
+  int                                   maxGroupLen, maxShortNameLen;
+  int                                   maxNameLen, maxDisplayLabelLen;
+  int                                   k, n, i;
+  DeviceRegDef**                        regs;
  
   n = GetDeviceRegCount(InDeviceDefRegList);
 
@@ -302,7 +302,7 @@ DumpDeviceRegDefShort
 (DeviceRegDef* InRegDef, int InIndent, int InNameIndent, int InShortNameIndent, 
  int InGroupIndent, int InDisplayLabelIndent)
 {
-  string				indentString;
+  string                                indentString;
 
   if ( InIndent > 0 )  {
     indentString = StringFill(' ', InIndent);
@@ -315,13 +315,13 @@ DumpDeviceRegDefShort
          InNameIndent,
          InRegDef->name,
 
-	 InShortNameIndent,
+         InShortNameIndent,
          InRegDef->shortName,
 
-	 InDisplayLabelIndent,
+         InDisplayLabelIndent,
          InRegDef->displayLabel,
 
-	 InGroupIndent,
+         InGroupIndent,
          InRegDef->group,
 
          InRegDef->valueType,
@@ -472,8 +472,8 @@ static int
 DeviceRegDefCompareByName
 (const void* InPointer1, const void* InPointer2)
 {
-  DeviceRegDef**			reg1;
-  DeviceRegDef**			reg2;
+  DeviceRegDef**                        reg1;
+  DeviceRegDef**                        reg2;
 
   reg1 = (DeviceRegDef**)InPointer1;
   reg2 = (DeviceRegDef**)InPointer2;
@@ -488,9 +488,9 @@ static int
 DeviceRegDefCompareByGroupName
 (const void* InPointer1, const void* InPointer2)
 {
-  DeviceRegDef**			reg1;
-  DeviceRegDef**			reg2;
-  int					n;
+  DeviceRegDef**                        reg1;
+  DeviceRegDef**                        reg2;
+  int                                   n;
 
   reg1 = (DeviceRegDef**)InPointer1;
   reg2 = (DeviceRegDef**)InPointer2;
@@ -509,8 +509,8 @@ static int
 DeviceRegDefCompareByNumber
 (const void* InPointer1, const void* InPointer2)
 {
-  DeviceRegDef**			reg1;
-  DeviceRegDef**			reg2;
+  DeviceRegDef**                        reg1;
+  DeviceRegDef**                        reg2;
 
   reg1 = (DeviceRegDef**)InPointer1;
   reg2 = (DeviceRegDef**)InPointer2;
@@ -525,9 +525,9 @@ DeviceRegDef*
 DeviceRegDefFromJSON
 (json_value* InValue)
 {
-  DeviceRegDef*				def;
-  string				s;
-  bool					b;
+  DeviceRegDef*                         def;
+  string                                s;
+  bool                                  b;
 
   def = (DeviceRegDef*)GetMemory(sizeof(DeviceRegDef));
   memset(def, 0x00, sizeof(DeviceRegDef));
@@ -571,9 +571,9 @@ string
 DeviceRegDefListToJSON
 (DeviceRegDefList* InDefinitions)
 {
-  string				defsString;
-  string				defString;
-  DeviceRegDef*				regDef;
+  string                                defsString;
+  string                                defString;
+  DeviceRegDef*                         regDef;
 
   defsString = StringCopy("  [\n");
   for ( regDef = InDefinitions->definitions; regDef; regDef = regDef->next ) {
@@ -598,8 +598,8 @@ string
 DeviceRegDefToJSON
 (DeviceRegDef* InDefinition)
 {
-  string				defString;
-  char					s[15];
+  string                                defString;
+  char                                  s[15];
 
   defString = StringCopy("  {\n");
   sprintf(s, "%d, ",  InDefinition->valueType);

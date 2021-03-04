@@ -77,7 +77,7 @@ void
 CANInterfaceThreadInit
 ()
 {
-  string				installDir;
+  string                                installDir;
 
   installDir = DirManagementGetInstallDir();
   CANInterfaceThreadManageArchives(CANInterfaceOutputFilename);
@@ -86,7 +86,7 @@ CANInterfaceThreadInit
   if ( CANInterfaceOutputFile == NULL ) {
     CANMonLogWrite("Could not open %s\n", CANInterfaceOutputFilename);
   }
-	 
+         
   pthread_create(&CANInterfaceThreadID, NULL, CANInterfaceThread, NULL);
 }
 
@@ -101,11 +101,11 @@ CANInterfaceThread
 
   while (true)
   {
-    uint32_t				id;
-    uint64_t				data;
-    uint8_t				dataLength;
-    uint8_t 				result;
-    time_t				t;
+    uint32_t                            id;
+    uint64_t                            data;
+    uint8_t                             dataLength;
+    uint8_t                             result;
+    time_t                              t;
 
     result = CANInterfaceRead(MainCANInterface, &id, &data, &dataLength);
     switch ( result ) {
@@ -118,19 +118,19 @@ CANInterfaceThread
         dataframe df;
         df.data64 = ByteManageSwap8(data);
         if ( CANInterfaceMonitor ) {
-	  if ( !CANInterfaceThreadThrottleFile() ) {
-	    t = time(NULL) - MainStartTime;
-    	    CANInterfaceThreadHandleRequest(MainCANInterface, fid, df, MainTimeStampTime + t);
+          if ( !CANInterfaceThreadThrottleFile() ) {
+            t = time(NULL) - MainStartTime;
+            CANInterfaceThreadHandleRequest(MainCANInterface, fid, df, MainTimeStampTime + t);
             CANInterfaceMessagesCount++;
           }
         }
-	break;
+        break;
       }
       case CAN_READ_ERROR : {
-	break;
+        break;
       }
       default : {
-	break;
+        break;
       }
     }
   }
@@ -163,7 +163,7 @@ void
 CANInterfaceFileOpen
 (bool InAppendFile)
 {
-  string				installDir;
+  string                                installDir;
 
   installDir = DirManagementGetInstallDir();
   do
@@ -176,7 +176,7 @@ CANInterfaceFileOpen
       CANInterfaceOutputFile = FileUtilsOpen(installDir, CANInterfaceOutputFilename, "wb");
       if ( NULL == CANInterfaceOutputFile ) {
         fprintf(stderr, "Could not open %s\n", CANInterfaceOutputFilename);
-	break;
+        break;
       }
     }
     if ( InAppendFile ) {
@@ -202,8 +202,9 @@ CANInterfaceFileClose
     CANInterfaceOutputFile = NULL;
   }
 }
-#include "CANInterfaceThreadManageArchives.c"
-#include "CANInterfaceThreadGetArchivedFilenames.c"
-#include "CANInterfaceThreadCreateArchive.c"
-#include "CANInterfaceThreadThrottleFile.c"
-#include "CANInterfaceThreadHandleRequest.c"
+
+#include "CANInterfaceThread/CANInterfaceThreadManageArchives.c"
+#include "CANInterfaceThread/CANInterfaceThreadGetArchivedFilenames.c"
+#include "CANInterfaceThread/CANInterfaceThreadCreateArchive.c"
+#include "CANInterfaceThread/CANInterfaceThreadThrottleFile.c"
+#include "CANInterfaceThread/CANInterfaceThreadHandleRequest.c"

@@ -13,13 +13,13 @@
 #include <stdbool.h>
 #include <stdint.h>
 #include <string.h>
+#include <StringUtils.h>
+#include <NumericTypes.h>
 
 /*****************************************************************************!
  * Local Headers
  *****************************************************************************/
 #include "Messages.h"
-#include "String.h"
-#include "NumericTypes.h"
 
 /*****************************************************************************!
  * Local Macros

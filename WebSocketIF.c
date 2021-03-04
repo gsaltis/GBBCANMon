@@ -23,16 +23,17 @@
 #include <net/if.h>
 #include <arpa/inet.h>
 
+#include <json.h>
+#include <StringUtils.h>
+#include <MemoryManager.h>
+#include <JSONIF.h>
+#include <FileUtils.h>
+
 /*****************************************************************************!
  * Local Headers
  *****************************************************************************/
 #include "WebSocketIF.h"
 #include "main.h"
-#include "json.h"
-#include "String.h"
-#include "MemoryManager.h"
-#include "JSONIF.h"
-#include "FileUtils.h"
 #include "Devices.h"
 #include "ThreadSafePrint.h"
 #include "CANInterfaceThread.h"
@@ -226,8 +227,8 @@ void
 HandleToggleMonitorRequest
 (struct mg_connection* InConnection, json_value* InPacket)
 {
-  int					packetid;
-  string				s;
+  int                                   packetid;
+  string                                s;
 
   if ( CANInterfaceMonitor ) {
     CANInterfaceMonitorStop();
@@ -290,16 +291,14 @@ WebSocketFrameResponseSendError
   FreeMemory(responseString);
 }
 
-
-#include "WebSocketIFSetPort.c"
-#include "WebSocketIFCreateInfoScript.c"
-#include "HandlePrepareDownloadRequest.c"
-
-#include "HandleGetLimitsRequest.c"
-#include "WebSocketIFHandleSetTimeStampRequest.c"
-#include "WebSocketFrameResponseSend.c"
-#include "WebSocketFrameSend.c"
-#include "WebSocketIFHandleSetLimitsRequest.c"
-#include "WebSocketIFHandleGetMonitorInfoRequest.c"
-#include "WebSocketIFHandlePacketRequest.c"
-#include "WebSocketIFHandleRemoveArchiveFiles.c"
+#include "WebSocketIF/WebSocketIFSetPort.c"
+#include "WebSocketIF/WebSocketIFCreateInfoScript.c"
+#include "WebSocketIF/HandlePrepareDownloadRequest.c"
+#include "WebSocketIF/HandleGetLimitsRequest.c"
+#include "WebSocketIF/WebSocketIFHandleSetTimeStampRequest.c"
+#include "WebSocketIF/WebSocketFrameResponseSend.c"
+#include "WebSocketIF/WebSocketFrameSend.c"
+#include "WebSocketIF/WebSocketIFHandleSetLimitsRequest.c"
+#include "WebSocketIF/WebSocketIFHandleGetMonitorInfoRequest.c"
+#include "WebSocketIF/WebSocketIFHandlePacketRequest.c"
+#include "WebSocketIF/WebSocketIFHandleRemoveArchiveFiles.c"

@@ -1,4 +1,3 @@
-*.o
 canmon
 canmonview
 canmoncl
@@ -7,6 +6,7 @@ CANMon*.txt
 *-bak
 www/websocketinfo.js
 www/bundle
+obj/
 *.log
 *~
 *.exe

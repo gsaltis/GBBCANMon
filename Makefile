@@ -7,52 +7,49 @@ TARGET_FLAGS		= -DNEED_NET_IF_H -DNEED_SYS_IOCTL_H -DNEED_LINUX_CAN_H -DNEED_LIN
 LINK_FLAGS		= -g 
 
 TARGET			= canmon
-
+OBJ			= obj
 ALLTARGETS		= $(TARGET)
 
 OBJS			= $(sort 				\
-			    CANInterface.o			\
-			    CANInterfaceThread.o		\
-			    CANMonLog.o				\
-			    CanMsg.o				\
-			    DefFileToken.o			\
-			    DeviceDef.o                         \
-			    DeviceMessageDef.o			\
-			    DeviceRegDef.o			\
-			    Devices.o				\
-			    DirManagement.o			\
-			    HTTPServerThread.o			\
-			    Messages.o				\
-			    SQLStatements.o			\
-			    ThreadSafePrint.o			\
-			    UserInputThread.o			\
-			    WebSocketIF.o			\
-			    main.o				\
+			    $(OBJ)/CANInterface.o		\
+			    $(OBJ)/CANInterfaceThread.o	        \
+			    $(OBJ)/CANMonLog.o			\
+			    $(OBJ)/CanMsg.o			\
+			    $(OBJ)/DefFileToken.o		\
+			    $(OBJ)/DeviceDef.o                  \
+			    $(OBJ)/DeviceMessageDef.o		\
+			    $(OBJ)/DeviceRegDef.o		\
+			    $(OBJ)/Devices.o			\
+			    $(OBJ)/DirManagement.o		\
+			    $(OBJ)/HTTPServerThread.o		\
+			    $(OBJ)/Messages.o			\
+			    $(OBJ)/SQLStatements.o		\
+			    $(OBJ)/ThreadSafePrint.o		\
+			    $(OBJ)/UserInputThread.o		\
+			    $(OBJ)/WebSocketIF.o		\
+			    $(OBJ)/main.o			\
 			   )
 
- LIBS			= -ldl -lutils -lmongoose -lm -lpthread -lsqlite3 -lrt -llinenoise
+LIBS			= -ldl -lutils -lmongoose -lm -lpthread -lsqlite3 -lrt -llinenoise
 
-.PHONY			: all clean veryclean
 
-all			: $(ALLTARGETS)
 
 $(TARGET)		: $(OBJS)
 			  @echo [LD] $(TARGET)
 			  @$(LINK) $(LINK_FLAGS) -o $(TARGET) $(OBJS) $(LIBS)
 
-%.o			: %.c
+$(OBJ)/%.o		: %.c
 			  @echo [CC] $@
-			  @$(CC) $(CC_FLAGS) $(TARGET_FLAGS) $<
-
-%.o			: lib/%.c
-			  @echo [CC] $@
-			  @$(CC) $(CC_FLAGS) $<
+			  @$(CC) $(CC_FLAGS) $(TARGET_FLAGS) $< -o $@
 
 include			  depends.mk
 
-junkclean		: 
-			  -rm -rf $(wildcard CANMon*.txt *-bak *~)
+.PHONY			: clean junkclean
+junkclean		:
+			  @echo Removing junk files
+			  @-rm -rf $(wildcard CANMon*.txt *-bak *~)
 
-clean			: 
-			  -rm -rf $(wildcard *.o $(ALLTARGETS))
+clean			:
+			  @echo Removing build files
+			  @-rm -rf $(wildcard $(OBJS) $(ALLTARGETS))
 

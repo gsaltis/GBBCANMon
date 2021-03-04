@@ -1,2 +1,20 @@
 #!/bin/sh
-gcc -MM -Ilib/include *.c > depends.mk
+rm -rf depends.mk
+gcc -MM -MT obj/CANInterface.o CANInterface.c >> depends.mk
+gcc -MM -MT obj/CANInterfaceThread.o CANInterfaceThread.c >> depends.mk
+gcc -MM -MT obj/CANMonLog.o CANMonLog.c >> depends.mk
+gcc -MM -MT obj/canmonview.o canmonview.c >> depends.mk
+gcc -MM -MT obj/CanMsg.o CanMsg.c >> depends.mk
+gcc -MM -MT obj/DefFileToken.o DefFileToken.c >> depends.mk
+gcc -MM -MT obj/DeviceDef.o DeviceDef.c >> depends.mk
+gcc -MM -MT obj/DeviceMessageDef.o DeviceMessageDef.c >> depends.mk
+gcc -MM -MT obj/DeviceRegDef.o DeviceRegDef.c >> depends.mk
+gcc -MM -MT obj/Devices.o Devices.c >> depends.mk
+gcc -MM -MT obj/DirManagement.o DirManagement.c >> depends.mk
+gcc -MM -MT obj/HTTPServerThread.o HTTPServerThread.c >> depends.mk
+gcc -MM -MT obj/main.o main.c >> depends.mk
+gcc -MM -MT obj/Messages.o Messages.c >> depends.mk
+gcc -MM -MT obj/SQLStatements.o SQLStatements.c >> depends.mk
+gcc -MM -MT obj/ThreadSafePrint.o ThreadSafePrint.c >> depends.mk
+gcc -MM -MT obj/UserInputThread.o UserInputThread.c >> depends.mk
+gcc -MM -MT obj/WebSocketIF.o WebSocketIF.c >> depends.mk

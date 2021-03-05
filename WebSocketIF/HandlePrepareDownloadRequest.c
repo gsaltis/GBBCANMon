@@ -5,27 +5,27 @@ void
 HandlePrepareDownloadRequest
 (struct mg_connection* InConnection, json_value* InPacket)
 {
-  string			                	filename;
-  string				                responseString;
-  int					                packetid;
-  bool					                b;
+  string                                currentDirectory;
+  string                                filename;
+  string                                responseString;
+  int                                   packetid;
+  bool                                  b;
   string                                installDir;
-  StringList*							filenames;
-  int									i;
-  string								base;
+  StringList*                           filenames;
+  int                                   i;
+  string                                base;
   
   packetid = JSONIFGetInt(InPacket, "packetid");
-  installDir = DirManagementGetInstallDir();
   CANMonLogWrite("Request for %s file made\n", CANInterfaceOutputFilename);
   b = CANInterfaceMonitor;
-  installDir = StringConcatTo(installDir, "/");
-  installDir = StringConcatTo(installDir, HTTPWWWBaseDir);
  
   // Only manage the montior switch if the switch is true -- We are currently monitoring the CAN BUS
   if ( b ) {
     CANInterfaceMonitorStop();
   }
-  FileUtilsTarFile(CANInterfaceOutputFilename, installDir); 
+  installDir = DirManagementGetInstallDir();
+  currentDirectory = get_current_dir_name();
+  FileUtilsTarFile(CANInterfaceOutputFilename, HTTPWWWBaseDir, currentDirectory, installDir);
 
   // Ditto here
   if ( b ) {
@@ -48,16 +48,16 @@ HandlePrepareDownloadRequest
   filenames = CANInterfaceThreadGetArchivedFilenames(); 
   StringListSort(filenames);
   for (i = 0; i < filenames->stringCount; i++) {
-    string								s;
+    string                                                              s;
 
-	base = FilenameExtractBase(filenames->strings[i]);
+        base = FilenameExtractBase(filenames->strings[i]);
     if ( i + 1 < filenames->stringCount ) {
-  	  s = StringMultiConcat("\"", base, ".tar.gz\", ", NULL);
+          s = StringMultiConcat("\"", base, ".tar.gz\", ", NULL);
     } else {
-	  s = StringMultiConcat("\"", base, ".tar.gz\" ", NULL);
+          s = StringMultiConcat("\"", base, ".tar.gz\" ", NULL);
     }
     responseString = StringConcatTo(responseString, s);
-	FreeMemory(s);
+        FreeMemory(s);
   }
 
   StringListDestroy(filenames);

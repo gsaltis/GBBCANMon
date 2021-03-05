@@ -13,6 +13,7 @@
 #include <stdbool.h>
 #include <stdint.h>
 #include <string.h>
+#include <unistd.h>
 #include <mongoose.h>
 #include <StringUtils.h>
 #include <MemoryManager.h>
@@ -53,6 +54,13 @@ HTTPServerThread
 void
 HTTPEventHandler
 (struct mg_connection* nc, int ev, void* p);
+
+/*****************************************************************************!
+ * Imported Functions
+ *****************************************************************************/
+extern char*
+get_current_dir_name
+(void);
 
 #include "HTTPServerThread/HTTPEventHandler.c"
 #include "HTTPServerThread/HTTPServerThread.c"

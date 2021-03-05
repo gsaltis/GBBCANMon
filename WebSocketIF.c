@@ -125,6 +125,17 @@ WebSocketFrameSend
 (struct mg_connection* InConnection, string InBuffer, uint16_t InBufferLen);
 
 /*****************************************************************************!
+ * Imported Functions
+ *****************************************************************************/
+char*
+strptime
+(char*, char*, struct tm*);
+
+extern char*
+get_current_dir_name
+(void);
+
+/*****************************************************************************!
  * Function : WebSocketServerInit
  *****************************************************************************/
 void

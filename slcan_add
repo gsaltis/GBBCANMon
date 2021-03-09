@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export speed=4
+export speed=6
 export speedflag=-s
 if [ -e /dev/ttyUSB0 ];
 then

@@ -3,4 +3,4 @@ all				: bundle
 
 TARGET				= bundle
 $(TARGET)			: bundle.c
-				  gcc -g -Wall -o bundle bundle.c ../String.o ../MemoryManager.o ../FileUtils.o ../ThreadSafePrint.o ../DirManagement.o ../CANMonLog.o
+				  gcc -g -Wall -DANSI_COLORS_SUPPORTED -o bundle bundle.c -lutils

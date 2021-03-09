@@ -14,14 +14,14 @@
 #include <stdint.h>
 #include <dirent.h>
 #include <errno.h>
+#include <StringUtils.h>
+#include <FileUtils.h>
+#include <MemoryManager.h>
+#include <ANSIColors.h>
 
 /*****************************************************************************!
  * Local Headers
  *****************************************************************************/
-#include "../String.h"
-#include "../FileUtils.h"
-#include "../MemoryManager.h"
-#include "../ANSIColors.h"
 
 /*****************************************************************************!
  * Local Macros
@@ -31,6 +31,17 @@
 #define DIRECTORY_SEPARATOR_CHAR	'/'
 #define DIRECTORY_SEPARATOR_STRING	"/"
 #define DEFAULT_JAVASCRIPT_SUFFIX	".js"
+
+/*****************************************************************************!
+ * Local Type : Filename
+ *****************************************************************************/
+struct _FilenameType
+{
+  string								filename;
+  string								fullPathname;
+  struct _FilenameType*					next;
+};
+typedef struct _FilenameType FilenameType;
 
 /*****************************************************************************!
  * Local Functions 
@@ -59,6 +70,22 @@ void
 DisplayHelp
 ();
 
+FilenameType*
+FilenameTypeCreate
+(string InFilename, string InFullPathname);
+
+FilenameType*
+FilenameTypeInsertAlpha
+(FilenameType* InHead, FilenameType* InType);
+
+void
+FilenameTypeDump
+(FilenameType* InType);
+
+void
+FilenameTypeChainDump
+(FilenameType* InType);
+
 /*****************************************************************************!
  * Local Data
  *****************************************************************************/
@@ -71,7 +98,7 @@ MainFileName;
 string
 MainDirName;
 
-StringList*
+FilenameType*
 MainFileNames;
 
 /*****************************************************************************!
@@ -85,6 +112,8 @@ main
   ParseCommandLine(argc, argv);
   VerifyCommandLine();
   ReadDirectoryFileNames(MainDirName);
+
+  FilenameTypeChainDump(MainFileNames);
   BundleFiles();
 
   exit(EXIT_SUCCESS);
@@ -97,7 +126,7 @@ void
 Initialize
 ()
 {
-  MainFileNames = StringListCreate();
+  MainFileNames = NULL;
   MainFile = NULL;
   MainFileName = StringCopy(DEFAULT_FILE_NAME);
   MainDirName = StringCopy(DEFAULT_DIR_NAME);
@@ -191,11 +220,12 @@ void
 ReadDirectoryFileNames
 (string InBaseDirectoryName)
 {
-  DIR*					d;
-  struct dirent*			de;
-  string				td;
-  int					p, m, n;
-  string				s;
+  DIR*					                d;
+  struct dirent*			            de;
+  string				                td;
+  int					                p, m, n;
+  string                                s;
+  FilenameType*                         filenameType;
 
   p = strlen(DEFAULT_JAVASCRIPT_SUFFIX);
   d = opendir(InBaseDirectoryName);
@@ -231,7 +261,10 @@ ReadDirectoryFileNames
     if ( !StringEqual(s, DEFAULT_JAVASCRIPT_SUFFIX) ) {
       continue;
     }
-    StringListAppend(MainFileNames, StringConcat(InBaseDirectoryName, de->d_name));    
+	s = StringConcat(InBaseDirectoryName, de->d_name);
+	filenameType = FilenameTypeCreate(de->d_name, s);
+	FreeMemory(s);
+	MainFileNames = FilenameTypeInsertAlpha(MainFileNames, filenameType);
   }
   closedir(d);  
 }
@@ -243,10 +276,10 @@ void
 BundleFiles
 ()
 {
-  int					i;
   FILE*					file;
   string				buffer;
   int					bufferSize;
+  FilenameType*		    type;
 
   file = fopen(MainFileName, "wb");
   if ( NULL == file ) {
@@ -255,11 +288,14 @@ BundleFiles
   }
   
    
-  for (i = 0; i < MainFileNames->stringCount; i++) {
-    GetFileBuffer(MainFileNames->strings[i], &buffer, &bufferSize);
-    fprintf(file, "// FILE: %s\n", MainFileNames->strings[i]), 
+  for ( type = MainFileNames; type; type = type->next) {
+    GetFileBuffer(type->fullPathname, &buffer, &bufferSize);
+    fprintf(file, "// FILE: %s\n", type->fullPathname);
     fprintf(file, buffer);
     FreeMemory(buffer);
+	if ( type->next ) {
+	  fprintf(file, "\n");
+	}
   }
 
   fclose(file);
@@ -273,5 +309,140 @@ DisplayHelp
 ()
 {
 
+}
+
+/*****************************************************************************!
+ * Function : FilenameTypeCreate
+ *****************************************************************************/
+FilenameType*
+FilenameTypeCreate
+(string InFilename, string InFullPathname)
+{
+  FilenameType*							type;
+
+  if ( NULL == InFilename || NULL == InFullPathname ) {
+	return NULL;
+  }
+
+  type = (FilenameType*)GetMemory(sizeof(FilenameType));
+  type->filename = StringCopy(InFilename);
+  type->fullPathname = StringCopy(InFullPathname);
+  type->next = NULL;
+  return type;
+}
+
+/*****************************************************************************!
+ * Function : FilenameTypeDestroy
+ *****************************************************************************/
+void
+FilenameTypeDestroy
+(FilenameType* InType)
+{
+  if ( NULL == InType ) {
+	return;
+  }
+
+  FreeMemory(InType->filename);
+  FreeMemory(InType->fullPathname);
+  FreeMemory(InType);
+}
+
+/*****************************************************************************!
+ * Function : FilenameTypeChainDestroy
+ *****************************************************************************/
+void
+FilenameTypeChainDestroy
+(FilenameType* InHead)
+{
+  FilenameType*							type;
+  FilenameType*							next;
+  if ( NULL == InHead ) {
+	return;
+  }
+
+  type = InHead;
+  while (type) {
+	next = type->next;
+	FilenameTypeDestroy(type);
+	type = next;
+  }
+}
+
+/*****************************************************************************!
+ * Function : FilenameTypeInsertAlpha
+ *****************************************************************************/
+FilenameType*
+FilenameTypeInsertAlpha
+(FilenameType* InHead, FilenameType* InType)
+{
+  FilenameType*								last;
+  FilenameType*								next;
+  FilenameType*								type;
+  int                                       n;
+
+  if ( NULL == InType ) {
+	return InHead;
+  }
+
+  if ( NULL == InHead ) {
+	return InType;
+  }
+
+  // Check to see if this should be the new head
+  n = strcmp(InType->filename, InHead->filename);
+  if ( n < 0 ) {
+	InType->next = InHead;
+	return InType;
+  }
+
+  type = InHead;
+  last = type;
+
+  // Cycle through current list
+  while (type) {
+	next = type->next;
+
+	// Check to see if current is > InType
+    n = strcmp(type->filename, InType->filename);
+    if ( n <= 0 ) {
+	  last = type;
+	  type = next;
+	  continue;
+    }
+	// Insert the item before the current item
+	InType->next = type;
+	last->next = InType;
+    return InHead;	
+  }
+  last->next = InType;
+  return InHead;
+}
+
+/*****************************************************************************!
+ * Function : FilenameTypeChainDump
+ *****************************************************************************/
+void
+FilenameTypeChainDump
+(FilenameType* InType)
+{
+  FilenameType*							type;
+
+  if ( NULL == InType ) {
+	return;
+  }
+
+  for ( type = InType ; type ; type = type->next ) {
+	FilenameTypeDump(type);
+  }
+}
+
+/*****************************************************************************!
+ * Function : FilenameTypeDump
+ *****************************************************************************/
+void
+FilenameTypeDump
+(FilenameType* InType)
+{
+  printf("    %-50s %s\n", InType->filename, InType->fullPathname);
 }
 

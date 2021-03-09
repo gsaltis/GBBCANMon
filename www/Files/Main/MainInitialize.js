@@ -25,5 +25,9 @@ MainInitialize()
  	option.innerHTML = i;
 	d.appendChild(option)
   }
+
+  d = document.getElementById("DataArea");
+  d.addEventListener("transitionend", CBDataAreaTransitionEnd, true);
+  d.addEventListener("transitionstart", CBDataAreaTransitionStart, true);
 }
 

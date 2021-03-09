@@ -14,7 +14,6 @@ gcc -MM -MT obj/DirManagement.o DirManagement.c >> depends.mk
 gcc -MM -MT obj/HTTPServerThread.o HTTPServerThread.c >> depends.mk
 gcc -MM -MT obj/main.o main.c >> depends.mk
 gcc -MM -MT obj/Messages.o Messages.c >> depends.mk
-gcc -MM -MT obj/SQLStatements.o SQLStatements.c >> depends.mk
 gcc -MM -MT obj/ThreadSafePrint.o ThreadSafePrint.c >> depends.mk
 gcc -MM -MT obj/UserInputThread.o UserInputThread.c >> depends.mk
 gcc -MM -MT obj/WebSocketIF.o WebSocketIF.c >> depends.mk

@@ -23,7 +23,6 @@ OBJS			= $(sort 				\
 			    $(OBJ)/DirManagement.o		\
 			    $(OBJ)/HTTPServerThread.o		\
 			    $(OBJ)/Messages.o			\
-			    $(OBJ)/SQLStatements.o		\
 			    $(OBJ)/ThreadSafePrint.o		\
 			    $(OBJ)/UserInputThread.o		\
 			    $(OBJ)/WebSocketIF.o		\

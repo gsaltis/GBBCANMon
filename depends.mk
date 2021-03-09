@@ -116,7 +116,6 @@ obj/main.o: main.c CANInterface.h DeviceDef.h DeviceDefines.h \
  Main/MainInitializeStartTime.c Main/MainClearDatabase.c \
  Main/MainOpenDatabase.c Main/MainVerifyCommandLine.c
 obj/Messages.o: Messages.c Messages.h Messages/MessageSetLimitsResponse.c
-obj/SQLStatements.o: SQLStatements.c SQLStatements.h
 obj/ThreadSafePrint.o: ThreadSafePrint.c
 obj/UserInputThread.o: UserInputThread.c UserInputThread.h \
  CANInterfaceThread.h main.h DeviceDef.h DeviceDefines.h DeviceRegDef.h \
@@ -148,4 +147,9 @@ obj/WebSocketIF.o: WebSocketIF.c WebSocketIF.h Messages.h main.h \
  WebSocketIF/WebSocketIFHandleSetLimitsRequest.c \
  WebSocketIF/WebSocketIFHandleGetMonitorInfoRequest.c \
  WebSocketIF/WebSocketIFHandlePacketRequest.c \
- WebSocketIF/WebSocketIFHandleRemoveArchiveFiles.c
+ WebSocketIF/WebSocketIFHandleRemoveArchiveFiles.c \
+ WebSocketIF/WebSocketFrameResponseSendError.c \
+ WebSocketIF/HandleToggleMonitorRequest.c \
+ WebSocketIF/HandleSetBayRegValuesRequest.c \
+ WebSocketIF/HandleWebSocketRequest.c WebSocketIF/WebSocketEventHandler.c \
+ WebSocketIF/WebSocketServerThread.c WebSocketIF/WebSocketServerInit.c

@@ -101,7 +101,8 @@ obj/DirManagement.o: DirManagement.c DirManagement.h CANMonLog.h \
  DirManagement/GetDeviceProtocolFileName.c \
  DirManagement/GetDeviceDataFileName.c \
  DirManagement/GetDeviceDefsFileName.c \
- DirManagement/DirManagementInitialize.c
+ DirManagement/DirManagementInitialize.c DirManagement/DirManagementLog.c \
+ DirManagement/DirManagementGetWebDir.c
 obj/HTTPServerThread.o: HTTPServerThread.c HTTPServerThread.h main.h \
  DeviceDef.h DeviceDefines.h DeviceRegDef.h DeviceMessageDef.h \
  CANInterface.h DirManagement.h CANMonLog.h CANInterfaceThread.h \

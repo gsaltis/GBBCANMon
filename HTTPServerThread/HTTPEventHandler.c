@@ -7,7 +7,7 @@ HTTPEventHandler
 {
   string                                installDirectory;       // Free me
   string                                currentDirectory;       // Free me
-  int                                   n;
+  int                                   k, n;
   struct http_message*                  message;
   string                                s;
   StringList*                           lines;
@@ -36,7 +36,8 @@ HTTPEventHandler
       elements = StringSplit(lines->strings[0], " ", true);
       urlParts = StringSplit(elements->strings[0], "/", true);
       if ( urlParts->stringCount > 0 ) {
-        base = FilenameExtractBase(urlParts->strings[0]);
+	k = urlParts->stringCount - 1;
+        base = FilenameExtractBase(urlParts->strings[k]);
         if ( base ) {
           // Check if this is a archived version file (begins with the filename but is not the filename)
           if ( StringBeginsWith(base, fileNameBase) && !StringEqual(base, fileNameBase) ) {

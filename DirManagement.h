@@ -24,6 +24,14 @@
 /*******************************************************************************!
  * Exported Functions
  *******************************************************************************/
+string
+DirManagementGetWebDir
+();
+
+void
+DirManagementLog
+();
+
 void
 DirManagementSetInstallDir
 (string InInstallDir);

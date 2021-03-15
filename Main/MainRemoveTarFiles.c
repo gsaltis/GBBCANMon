@@ -7,25 +7,20 @@ MainRemoveTarFiles
 ()
 {
   string								wwwDir;
-  string								currentDir;
   string								s;
-  struct dirent*						entry;
+  struct dirent*							entry;
   DIR*									dir;
   int									n;
 
   // Get the current directory and the full www directory name
-  currentDir = get_current_dir_name();
-  s = DirManagementGetInstallDir();
-  wwwDir = StringMultiConcat(s, HTTPWWWBaseDir, NULL);
-  FreeMemory(s);
+  wwwDir = DirManagementGetWebDir();
 
   // Switch to the www directory 
   n = chdir(wwwDir);
   if ( n != 0 ) {
-	CANMonLogWrite("Could not change directory to %s : %s\n", wwwDir, strerror(errno));
-	free(currentDir);
+    CANMonLogWrite("Could not change directory to %s : %s\n", wwwDir, strerror(errno));
     FreeMemory(wwwDir);
-	return;
+    return;
   }
   
   // Walk the contents of the www directory and remove .tar.gz (Zipped tar) files 
@@ -37,14 +32,14 @@ MainRemoveTarFiles
 	}
 	suffix = FilenameExtractSuffix(entry->d_name);
 	if ( StringEqual(suffix, "tar.gz") ) {
-	  unlink(entry->d_name);
+	  s = StringConcat(wwwDir, entry->d_name);
+	  unlink(s);
+	  FreeMemory(s);
 	}	
  	FreeMemory(suffix);
   }
 
   // Restore everything  
   closedir(dir);
-  chdir(currentDir);   
-  free(currentDir);
   FreeMemory(wwwDir);    
 }

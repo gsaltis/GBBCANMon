@@ -14,7 +14,12 @@ HandlePrepareDownloadRequest
   StringList*                           filenames;
   int                                   i;
   string                                base;
-  
+  JSONOut*				json;
+  JSONOut*                              fileArray;
+  string                                suffix;
+  string                                wwwfilename;
+  string                                linkfilename;
+ 
   packetid = JSONIFGetInt(InPacket, "packetid");
   CANMonLogWrite("Request for %s file made\n", CANInterfaceOutputFilename);
   b = CANInterfaceMonitor;
@@ -31,40 +36,51 @@ HandlePrepareDownloadRequest
   if ( b ) {
     CANInterfaceMonitorStart();
   }
-  base = FilenameExtractBase(CANInterfaceOutputFilename);
-  
+  base = FileGetBaseFilename(CANInterfaceOutputFilename);
+  suffix = FileGetFileSuffix(CANInterfaceOutputFilename);
+ 
   filename = StringMultiConcat(base, ".tar.gz", NULL);
   FreeMemory(installDir);
-  responseString = StringCopy("{\n");
-  responseString = StringConcatTo(responseString, "  \"linkname\" : \"");
-  responseString = StringConcatTo(responseString, filename);
-  responseString = StringConcatTo(responseString, "\",\n");
-  
-  responseString = StringConcatTo(responseString, "  \"filename\" : \"");
-  responseString = StringConcatTo(responseString, filename);
-  responseString = StringConcatTo(responseString, "\",\n");
-  responseString = StringConcatTo(responseString, "  \"archivedfiles\" : [ \n");
-  
+
+  json = JSONOutCreateObject(NULL);
+
+  wwwfilename = StringMultiConcat(base, ".", suffix, NULL);
+  linkfilename = StringMultiConcat(base, ".tar.gz", NULL);
+
+  JSONOutObjectAddObjects(json, 
+                          JSONOutCreateString("filename", wwwfilename),
+                          JSONOutCreateString("linkname", linkfilename),
+                          NULL); 
+
+  FreeMemory(wwwfilename);
+  FreeMemory(linkfilename);
+  FreeMemory(suffix);
+  FreeMemory(filename);
+ 
+  fileArray = JSONOutCreateArray("archivedfiles");
+ 
   filenames = CANInterfaceThreadGetArchivedFilenames(); 
   StringListSort(filenames);
   for (i = 0; i < filenames->stringCount; i++) {
-    string                                                              s;
-
-        base = FilenameExtractBase(filenames->strings[i]);
-    if ( i + 1 < filenames->stringCount ) {
-          s = StringMultiConcat("\"", base, ".tar.gz\", ", NULL);
-    } else {
-          s = StringMultiConcat("\"", base, ".tar.gz\" ", NULL);
-    }
-    responseString = StringConcatTo(responseString, s);
-        FreeMemory(s);
+    string                                                              s, s2;
+    JSONOut*					archiveJSON;
+    base = FileGetBaseFilename(filenames->strings[i]);
+    suffix = FileGetFileSuffix(filenames->strings[i]);
+    
+    s = StringMultiConcat(base, ".", suffix, NULL);
+    s2 = StringMultiConcat(base, ".tar.gz", NULL);
+    archiveJSON = JSONOutCreateObject(NULL);
+    JSONOutObjectAddObjects(archiveJSON, JSONOutCreateString("filename", s), JSONOutCreateString("linkname", s2), NULL); 
+    JSONOutArrayAddObject(fileArray, archiveJSON);
+    FreeMemory(s);
+    FreeMemory(s2);
+    FreeMemory(base);
+    FreeMemory(suffix);
   }
 
-  StringListDestroy(filenames);
-  responseString = StringConcatTo(responseString, "]\n");
-  responseString = StringConcatTo(responseString, "}\n");
-
+  JSONOutObjectAddObject(json, fileArray); 
+  StringListDestroy(filenames); 
+  responseString = JSONOutToString(json, 2);
   WebSocketFrameResponseSend(InConnection, "respreparedownloadfile", responseString, packetid, 0, "");
   FreeMemory(responseString);
-  FreeMemory(filename);
 }

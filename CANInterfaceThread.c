@@ -81,6 +81,7 @@ CANInterfaceThreadInit
 
   installDir = DirManagementGetInstallDir();
   CANInterfaceThreadManageArchives(CANInterfaceOutputFilename);
+  unlink(CANInterfaceOutputFilename);
   CANInterfaceOutputFile = FileUtilsOpen(installDir, CANInterfaceOutputFilename, "wb");
   FreeMemory(installDir);
   if ( CANInterfaceOutputFile == NULL ) {

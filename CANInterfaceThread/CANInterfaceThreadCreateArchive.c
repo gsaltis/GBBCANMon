@@ -5,27 +5,29 @@ void
 CANInterfaceThreadCreateArchive
 (string InFilename)
 {
-  struct stat					statbuf;
-  struct tm*					tm;
+  struct stat					        statbuf;
+  struct tm*					        tm;
   time_t						filetime;
   int							n;
   string						newFilename;
   string						base;
   string						suffix;
 
+  CANMonLogWrite("Archiving %s\n", InFilename);
   if ( InFilename == NULL ) {
 	return;
   }
   if ( !FileExists(InFilename) ) {
 	return;
   }
- 
+
+
   base = FilenameExtractBase(InFilename);
   suffix = FilenameExtractSuffix(InFilename); 
 
   stat(InFilename, &statbuf);
-  filetime = statbuf.st_atim.tv_sec;
-
+  filetime = statbuf.st_mtim.tv_sec;
+ 
   n = strlen(InFilename);
 
   newFilename = (string)GetMemory(n + 32);

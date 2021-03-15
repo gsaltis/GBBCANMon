@@ -6,6 +6,7 @@ CANMon*.txt
 *-bak
 www/websocketinfo.js
 www/bundle
+www/*.db
 obj/
 *.log
 *~

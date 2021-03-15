@@ -44,7 +44,7 @@
  * Local Data
  *****************************************************************************/
 string
-MainVersionNumber = "1.1.0";
+MainVersionNumber = "1.2.0";
 
 bool
 MainVerbose = false;
@@ -191,13 +191,19 @@ main
   MainProcessCommandLine(argc, argv);
 
   CANMonLogInit();
+  DirManagementLog();
   CANMonLogWrite("%s starting\n", MainProgramName);
+  
+  // Clean up any tar files lying around after previous sessions
+  MainRemoveTarFiles();
+
   MainVerifyCommandLine();
   MainOpenDatabase();
   WebSocketIFCreateInfoScript();
   if ( MainClearDatabaseSwitch ) {
     MainClearDatabase();
   }
+
   MainCANInterface = CANInterfaceInit(MainCANInterfaceName);
   if ( NULL == MainCANInterface ) {
     fprintf(stderr, "Could not open CAN Interface %s\n", MainCANInterfaceName);

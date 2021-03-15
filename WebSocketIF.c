@@ -28,6 +28,7 @@
 #include <MemoryManager.h>
 #include <JSONIF.h>
 #include <FileUtils.h>
+#include <JSONOut.h>
 
 /*****************************************************************************!
  * Local Headers

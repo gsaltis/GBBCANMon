@@ -25,7 +25,7 @@
  * Local Data
  *******************************************************************************/
 string
-DMBaseDirectoryName; 
+DMBaseDirectoryName;
 
 static const char*
 DMDeviceDefsFileName = "devicedefs.txt";
@@ -45,6 +45,9 @@ DirManagementDirSepChar = '/';
 string
 DirManagementDirSepString = "/";
 
+string
+DirManagementWebDirName = "www";
+
 /*******************************************************************************!
  * Local Functions
  *******************************************************************************/
@@ -59,3 +62,5 @@ DMGetFileName
 #include "DirManagement/GetDeviceDataFileName.c"
 #include "DirManagement/GetDeviceDefsFileName.c"
 #include "DirManagement/DirManagementInitialize.c"
+#include "DirManagement/DirManagementLog.c"
+#include "DirManagement/DirManagementGetWebDir.c"

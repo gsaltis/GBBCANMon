@@ -19,6 +19,5 @@ DirManagementInitialize
     s = StringConcatTo(s, DirManagementDirSepString);
   }
   DMBaseDirectoryName = s; 
-  CANMonLogWrite("Base directory name :  %s\n", DMBaseDirectoryName);
   DMMinFileLength = strlen(DMBaseDirectoryName) + 64;
 }

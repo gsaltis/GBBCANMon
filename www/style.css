@@ -13,6 +13,21 @@
     --DataLineHeight			: 20px;
 }
 
+div.HeadingArea
+{
+    position				: absolute;
+    left				: var(--VertivLogoAreaSize);
+    top					: 0px;
+    height				: var(--VertivLogoAreaSize);
+    right				: 0px;
+    line-height				: var(--VertivLogoAreaSize);
+    color				: white;
+    text-align				: left;
+    font-family				: Segoe UI;
+    font-weight				: bold;
+    font-size				: 40pt;
+}
+
 div.MainArea
 {
     position				: absolute;

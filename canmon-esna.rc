@@ -44,7 +44,7 @@ start() {
   fi
 
   log_daemon_msg "Starting CAN Monitor Service" "canmon"
-  start_daemon -p $PIDFILE $DAEMON -n -id /home/pi/Source/GBBCANMon
+  start_daemon -p $PIDFILE $DAEMON -c size -C 2000 -n -id /home/pi/Source/GBBCANMon
   log_end_msg $?
 }
 

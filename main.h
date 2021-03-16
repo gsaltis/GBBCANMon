@@ -118,4 +118,12 @@ bool
 MainLimitSet
 (string InType, int InValue);
 
+void
+MainLimitTypeSet
+(string InType);
+
+void
+MainLimitSizeSet
+(int InSize);
+
 #endif

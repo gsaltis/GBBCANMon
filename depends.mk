@@ -115,7 +115,8 @@ obj/main.o: main.c CANInterface.h DeviceDef.h DeviceDefines.h \
  Main/MainInitialize.c Main/MainExit.c Main/MainRemoveTarFiles.c \
  Main/MainLimitSet.c Main/MainDisplayVersion.c \
  Main/MainInitializeStartTime.c Main/MainClearDatabase.c \
- Main/MainOpenDatabase.c Main/MainVerifyCommandLine.c
+ Main/MainOpenDatabase.c Main/MainVerifyCommandLine.c \
+ Main/MainLimitTypeSet.c Main/MainLimitSizeSet.c
 obj/Messages.o: Messages.c Messages.h Messages/MessageSetLimitsResponse.c
 obj/ThreadSafePrint.o: ThreadSafePrint.c
 obj/UserInputThread.o: UserInputThread.c UserInputThread.h \

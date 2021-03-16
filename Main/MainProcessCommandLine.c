@@ -74,6 +74,30 @@ MainProcessCommandLine
       continue;
     }
 
+    //! Specify the file constraint
+    if ( StringEqualsOneOf(command, "-c", "--constraint", NULL) ) {
+      i++;
+      if ( i == argc ) {
+        fprintf(stderr, "%s requires a constraint type\n", command);
+        MainDisplayHelp();
+        exit(EXIT_FAILURE);
+      }
+      MainLimitTypeSet(argv[i]);
+      continue;
+    }
+    
+    //! Specify the file constraint size
+    if ( StringEqualsOneOf(command, "-C", "--constraintsize", NULL) ) {
+      i++;
+      if ( i == argc ) {
+        fprintf(stderr, "%s requires a constraint size\n", command);
+        MainDisplayHelp();
+        exit(EXIT_FAILURE);
+      }
+      MainLimitSizeSet(atoi(argv[i]));
+      continue;
+    }
+
     //! Specify the directory where the installation files live
     if ( StringEqualsOneOf(command, "-id", "--installdir", NULL) ) {
       i++;

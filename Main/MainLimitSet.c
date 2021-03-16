@@ -14,7 +14,7 @@ MainLimitSet
   }
 
   if ( StringEqualNoCase(InType, "count") ) {
-	if ( InValue < MainMinLimitCount || InValue > MainMaxLimitCount ) {
+	if ( InValue < MainMinLimitCount || InValue >= MainMaxLimitCount ) {
 	  return false;
 	}
 	if ( MainLimitType ) {
@@ -25,7 +25,7 @@ MainLimitSet
 	return true;
   }
   if ( StringEqualNoCase(InType, "days") ) {
-	if ( InValue < MainMinLimitDays || InValue > MainMaxLimitDays ) {
+	if ( InValue < MainMinLimitDays || InValue >= MainMaxLimitDays ) {
 	  return false;
 	}
 	if ( MainLimitType ) {
@@ -36,7 +36,7 @@ MainLimitSet
 	return true;
   }
   if ( StringEqualNoCase(InType, "size") ) {
-	if ( InValue < MainMinLimitSize || InValue > MainMaxLimitSize ) {
+	if ( InValue < MainMinLimitSize || InValue >= MainMaxLimitSize ) {
 	  return false;
 	}
 	if ( MainLimitType ) {
@@ -47,7 +47,7 @@ MainLimitSet
 	return true;
   }
   if ( StringEqualNoCase(InType, "hours") ) {
-	if ( InValue < MainMinLimitHours || InValue > MainMaxLimitHours ) {
+	if ( InValue < MainMinLimitHours || InValue >= MainMaxLimitHours ) {
 	  return false;
 	}
 	if ( MainLimitType ) {

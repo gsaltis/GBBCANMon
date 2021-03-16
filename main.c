@@ -53,13 +53,13 @@ int
 MainMinLimitCount = 1;
 
 int
-MainMaxLimitCount = 10000000;
+MainMaxLimitCount = 100000000;
 
 int
 MainMinLimitSize = 1;
 
 int
-MainMaxLimitSize = 500000000;
+MainMaxLimitSize = 2000000000;
 
 int
 MainMinLimitHours = 1;
@@ -237,3 +237,5 @@ main
 #include "Main/MainClearDatabase.c"
 #include "Main/MainOpenDatabase.c"
 #include "Main/MainVerifyCommandLine.c"
+#include "Main/MainLimitTypeSet.c"
+#include "Main/MainLimitSizeSet.c"

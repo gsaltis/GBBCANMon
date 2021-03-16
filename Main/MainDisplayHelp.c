@@ -15,4 +15,12 @@ MainDisplayHelp
   fprintf(stdout, "        -l,  --logfile                    - Specify the log filename\n");
   fprintf(stdout, "        -n,  --noui                       - Specify to not use the command line interface\n");
   fprintf(stdout, "        -v,  --verbose                    - Be verbose in interactive messages\n");
+  fprintf(stdout, "        -c,  --constraint type            - Specify the file constraint type\n");
+  fprintf(stdout, "                                            (none | size | days | hours | count)\n");
+  fprintf(stdout, "        -C,  --constrainsize size         - Specify the file constraint size\n");
+  fprintf(stdout, "                                             size : %d -- %d (in Megabytes)\n", MainMinLimitSize, MainMaxLimitSize / 1000000);
+  fprintf(stdout, "                                            count : %d -- %d\n", MainMinLimitCount, MainMaxLimitCount);
+  fprintf(stdout, "                                            hours : %d -- %d\n", MainMinLimitHours, MainMaxLimitHours);
+  fprintf(stdout, "                                             days : %d -- %d\n", MainMinLimitDays, MainMaxLimitDays); 
+
 }
